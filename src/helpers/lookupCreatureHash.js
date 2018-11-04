@@ -1,10 +1,10 @@
 /**
- * Locate and return a character based on their hash
+ * Locates the key of a creature based on their hash
  * @param {str} hash the hash you want to find
  * @param {obj} state the state of characters
  * @returns {int} of the key that was found, or -1
  */
-const lookupCharacterHash = (hash,state) => {
+const lookupCreatureHash = (hash,state) => {
   let key = -1
   state.forEach((v,k)=>{
     if(v.hash===hash){
@@ -14,4 +14,4 @@ const lookupCharacterHash = (hash,state) => {
   return key
 }
 
-export default lookupCharacterHash
+export default lookupCreatureHash
