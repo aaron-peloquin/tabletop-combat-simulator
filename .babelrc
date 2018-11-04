@@ -1,0 +1,9 @@
+{
+  "presets": ["next/babel"],
+  "env": {
+    "quokka": {
+      "presets": ["@babel/preset-env","@babel/preset-react"]
+    }
+  }
+
+}
