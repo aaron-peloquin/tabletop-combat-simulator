@@ -4,7 +4,8 @@
  * @returns {string} of the generated hash
  */
 const generateHash = () => {
-  return 'h'+Math.random().toString(36).substr(3, 7);
+  const hash = Math.random().toString(36).substr(3, 7)
+  return `h${hash}`
 }
 
 export default generateHash
