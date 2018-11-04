@@ -1,4 +1,4 @@
-import lookupCreatureHash from './lookupCreatureHash'
+import lookupCreatureHash from "./lookupCreatureHash"
 
 const mockState = [
   {hash:"abc1d"},
@@ -8,12 +8,12 @@ const mockState = [
 ]
 const fakeHash = "ef8gh"
 
-test('lookupCreatureHash() returns a number', () => {
+test("lookupCreatureHash() returns a number", () => {
   const result = lookupCreatureHash(fakeHash, mockState)
   expect(typeof result).toBe("number")
 })
 
-test('lookupCreatureHash() finds a match', () => {
+test("lookupCreatureHash() finds a match", () => {
   const result = lookupCreatureHash(fakeHash, mockState)
   expect(result).toBe(2)
 })
