@@ -6,7 +6,7 @@ Allows a user to create a number of creature objects. Creature objects can be ad
 On update, sync to localStorage
 ### Actions
 * CreateCreature {_this takes a payload of the data listed below_}
-* UpdateCreature {hash, data:{_keys from data, listed below_}}
+* UpdateCreature {hash, newCreatureData:{_keys from data, listed below_}}
 * DeleteCreature {hash}
 ### Data
 This is an array of objects. Those objects have the following keys:
