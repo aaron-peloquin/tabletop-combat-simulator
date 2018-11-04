@@ -1,5 +1,5 @@
 # Overview of Tabletop Combat Simulator
-Allows a user to create a number of creature objects. Creature objects can be added to “Team A” and/or “Team B”. The user may then simulate combat between Team A and Team B.
+Allows a user to create a number of creature objects. Creature objects can be added to **Team A** or **Team B**. The user may then simulate tabletop combat between Team A and Team B, rolling attacks and damage at random.
 
 # Redux spec
 ## Creatures
@@ -14,6 +14,7 @@ This is an array of objects. Those objects have the following keys:
 * {str} Hash (unique ID)
 * {str} Description
 * {num} Default Initiative
+* {num} HP
 * {num} Armor
 * {str} Hit Dice equation
 * {str} Damage dice equation
@@ -24,11 +25,12 @@ This is an array of objects. Those objects have the following keys:
 * UpdateInititive {Key, team}
 ### Data
 * TeamA (array of objects)
-  * CreatureHash
-  * Inititive
+  * {str} CreatureHash
+  * {num} Inititive
+  * {num} Times Hit
+  * {num} Current HP
 * TeamB (array of objects)
-  * CreatureHash
-  * Inititive
-
-
-
+  * {str} CreatureHash
+  * {num} Inititive
+  * {num} Times Hit
+  * {num} Current HP
