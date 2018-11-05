@@ -1,7 +1,7 @@
 /**
  * Load and parse a JSON string from localStorage
  * @param {str} key The key you want to load from
- * localStorage (prefixed with "ttdr-")
+ * localStorage (prefixed with "ttcs-")
  * @returns {obj} the parsed object from lcoalStorage
  */
 const localStorageLoad = (key) => {
