@@ -1,9 +1,8 @@
 import localStorageSave from "./localStorageSave"
-import localStorageLoad from "./localStorageLoad"
 
 test("localStorageSave() works", ()=>{
   localStorageSave("testSave",{test:true})
-  const test = localStorageLoad("testSave")
+  const test = localStorage.getItem("ttcs-testSave")
   localStorage.removeItem("ttcs-testSave")
-  expect(test).toEqual({test:true})
+  expect(JSON.parse(test)).toEqual({test:true})
 })
