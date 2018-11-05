@@ -16,7 +16,9 @@ const localStorageLoad = (key) => {
     }
   }
   catch(e) {
-    console.warn("[localStorageLoad] not accessible to load")
+    if(typeof window !== "undefined") {
+      console.warn("[localStorageLoad] not accessible to load")
+    }
   }
   return returnData
 }

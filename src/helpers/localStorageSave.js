@@ -10,7 +10,9 @@ const localStorageSave = (key,obj) => {
     localStorage.setItem(`ttcs-${key}`, saveObj)
   }
   catch(e){
-    console.warn("[localStorageSave] not accessible to save")
+    if(typeof window !== "undefined") {
+      console.warn("[localStorageSave] not accessible to save")
+    }
   }
 }
 
