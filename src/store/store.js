@@ -1,13 +1,13 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import thunkMiddleware from 'redux-thunk'
+import { createStore, applyMiddleware, combineReducers } from "redux"
+import { composeWithDevTools } from "redux-devtools-extension"
+import thunkMiddleware from "redux-thunk"
 
 /** Reducers */
-import reducer from 'some-reducer-file'
+import creatures from "./reducer/creatures"
 
 /** Reducers */
 const reducers = combineReducers({
-  reducerKey: reducer
+  creatures
 })
 
 /** initialize store */

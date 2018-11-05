@@ -1,7 +1,7 @@
-import React from 'react'
-import {initializeStore} from './store'
+import React from "react"
+import {initializeStore} from "./store"
 
-const isServer = typeof window === 'undefined'
+const isServer = typeof window === "undefined"
 const reduxStoreSymbol = Symbol("reduxStore")
 
 function getOrCreateStore (initialState) {
@@ -28,7 +28,7 @@ export default (App) => {
       appContext.ctx.reduxStore = reduxStore
 
       let appProps = {}
-      if (typeof App.getInitialProps === 'function') {
+      if (typeof App.getInitialProps === "function") {
         appProps = await App.getInitialProps(appContext)
       }
 

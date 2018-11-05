@@ -21,7 +21,7 @@ const defaultState = {}
  */
 const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
   let saveToStorage = true
-  const creaturesStorage = load('creatures')
+  const creaturesStorage = load("creatures")
   if(creaturesStorage.length>0) {
     state = creaturesStorage
   }

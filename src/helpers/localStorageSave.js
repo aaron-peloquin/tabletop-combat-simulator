@@ -7,10 +7,10 @@
 const localStorageSave = (key,obj) => {
   try{
     const saveObj = JSON.stringify(obj)
-    localStorage.setItem('ttcs-'+key, saveObj)
+    localStorage.setItem(`ttcs-${key}`, saveObj)
   }
   catch(e){
-    console.warn("localStorage is diabled, cannot save")
+    console.warn("[localStorageSave] not accessible to save")
   }
 }
 

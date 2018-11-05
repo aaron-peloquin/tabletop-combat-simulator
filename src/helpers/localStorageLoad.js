@@ -16,7 +16,7 @@ const localStorageLoad = (key) => {
     }
   }
   catch(e) {
-    console.warn("localStorage is diabled, cannot load")
+    console.warn("[localStorageLoad] not accessible to load")
   }
   return returnData
 }

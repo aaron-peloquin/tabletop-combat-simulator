@@ -12,13 +12,13 @@ import lookupCreatureHash from "./lookupCreatureHash"
 const standardizeCreatureData = (creatureData={}, state=null) => {
   const {
     name = "Unnamed Creature",
-    hash=null,
-    description="",
-    defaultInitiative=10,
-    armor=10,
-    hp=15,
-    hitDiceEquation='1d20+2',
-    damageDiceEquation='1d6+3'
+    hash = null,
+    description = "",
+    defaultInitiative = 10,
+    armor = 10,
+    hp = 15,
+    hitDiceEquation = "1d20+2",
+    damageDiceEquation = "1d6+3"
   } = creatureData
 
   /** If we were not given a hash, and we were given a state, generate a unique hash */
@@ -30,9 +30,9 @@ const standardizeCreatureData = (creatureData={}, state=null) => {
       }
     }
     else {
-      console.warn("[helper] standardizeCreatureData: This creature does not has a hash")
+      console.warn("[standardizeCreatureData] creature does not has a hash")
     }
-}
+  }
 
   return {
     name, hash, description,
