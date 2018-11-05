@@ -1,5 +1,5 @@
 import actionTypes from "./../actionTypes"
-const addCharacter = (dispatch) => {
+const CreateCreature = (dispatch) => {
   const data = {
     type: actionTypes.CreateCreature,
     payload: {}
@@ -7,4 +7,4 @@ const addCharacter = (dispatch) => {
   return dispatch(data)
 }
 
-export default addCharacter
+export default CreateCreature
