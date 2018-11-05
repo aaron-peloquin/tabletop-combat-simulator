@@ -6,7 +6,7 @@ import lookup from "./../../helpers/lookupCreatureHash"
 
 import actionTypes from "./../actionTypes"
 
-const defaultState = {}
+const defaultState = []
 
 /**
  * Reducer for the redux key of "creatures".
