@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { Fragment } from "react"
+import Link from "next/link"
 
 const index = () => {
-  return <h1>Hello, world!</h1>
+  return <Fragment>
+    <Link href="/about"><a>About</a></Link>
+  </Fragment>
 }
 
 export default index
