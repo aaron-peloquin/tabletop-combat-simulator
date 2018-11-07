@@ -4,9 +4,9 @@ const about = () => {
   return <p>About page content</p>
 }
 
-about.getInitialProps = async ({ req }) => {
+about.getInitialProps = async () => {
   let title = "About"
-  let data = await fetch('https://jsonplaceholder.typicode.com/todos/1').then(response => response.json()).then(data => {
+  let data = await fetch("https://jsonplaceholder.typicode.com/todos/1").then(response => response.json()).then(data => {
     title = data.title
   })
   return { title }

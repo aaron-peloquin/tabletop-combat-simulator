@@ -1,4 +1,5 @@
 import actionTypes from "./../actionTypes"
+
 const CreateCreature = (dispatch) => {
   const data = {
     type: actionTypes.CreateCreature,
