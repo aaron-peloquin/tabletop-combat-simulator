@@ -5,6 +5,7 @@
 */
 const actions = {
   CreateCreature: "CreateCreature",
+  ToggleSidebar: "ToggleSidebar"
 }
 
 export default actions
