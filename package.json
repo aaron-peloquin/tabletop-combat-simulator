@@ -22,6 +22,7 @@
   "dependencies": {
     "@material-ui/core": "^3.3.0",
     "@material-ui/icons": "^3.0.1",
+    "enzyme-redux": "^0.2.1",
     "express": "^4.16.4",
     "isomorphic-fetch": "^2.2.1",
     "next": "^7.0.2",
