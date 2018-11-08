@@ -16,7 +16,7 @@ import ToggleSidebar from "./../store/dispatcher/ToggleSidebar";
 const SideBar = (props) => {
   const { dispatch, open } = props
   return <Drawer open={open} anchor="left" onOpen={()=>{ return ToggleSidebar(dispatch); }} onClose={()=>{ return ToggleSidebar(dispatch); }}>
-    <Link href="/about" onClick={()=>{ return ToggleSidebar(dispatch); }}><a>About</a></Link>
+    <Link href="/about"><a onClick={()=>{ return ToggleSidebar(dispatch); }}>About</a></Link>
   </Drawer>;
 }
 
