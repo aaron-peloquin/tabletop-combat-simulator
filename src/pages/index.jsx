@@ -1,10 +1,12 @@
-import React, { Fragment } from "react"
-import Link from "next/link"
+import React, { Fragment } from "react";
+import SideBar from "../components/SideBar";
+import HeaderBar from "./../components/HeaderBar";
 
 const index = () => {
   return <Fragment>
-    <Link href="/about"><a>About</a></Link>
-  </Fragment>
+    <HeaderBar />
+    <SideBar />
+  </Fragment>;
 }
 
-export default index
+export default index;

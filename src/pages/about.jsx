@@ -1,15 +1,18 @@
-import "isomorphic-fetch"
+import { Fragment } from "react";
+import SideBar from "../components/SideBar";
+import HeaderBar from "./../components/HeaderBar";
 
 const about = () => {
-  return <p>About page content</p>
-}
+  return <Fragment>
+    <HeaderBar />
+    <SideBar />
+    <p>Some about page copy.</p>
+  </Fragment>;
+};
 
 about.getInitialProps = async () => {
-  let title = "About"
-  let data = await fetch("https://jsonplaceholder.typicode.com/todos/1").then(response => response.json()).then(data => {
-    title = data.title
-  })
-  return { title }
-}
+  let title = "About";
+  return { title };
+};
 
-export default about
+export default about;
