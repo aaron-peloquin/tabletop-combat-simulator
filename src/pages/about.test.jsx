@@ -1,26 +1,23 @@
-import React from "react";
+// import renderer from "react-test-renderer";
 import { connect } from "react-redux";
 import { mountWithStore } from "enzyme-redux";
 import { createMockStore } from "redux-test-utils";
-import renderer from "react-test-renderer";
+import mockStoreState from "./../testHelpers/mockStoreState";
 
 import About from "./about";
-import expectedState from "./../testHelpers/mockStoreState";
 
 describe("<About />", ()=>{
-  const ReactComponent = () => (<About />);
-  it("has a .title is `About`", () => {
-    const mapStateToProps = (state) => ({
-      state,
-    });
-    const ConnectedComponent = connect(mapStateToProps)(ReactComponent);
-    const component = mountWithStore(<ConnectedComponent />, createMockStore(expectedState));
-    expect(component.props()).toBe(expectedState);
-})
+  it("has a title of About", async () => {
+    const props = await About.getInitialProps();
+    expect(props.title).toBe("About");
+  });
 
   // it("Snapshots", () => {
-  //   const aboutPage = renderer.create(<About store={mockStore} />);
+  //   const ReactComponent = () => (<About />);
+  //   const mapStateToProps = (state) => ({state});
+  //   const ConnectedComponent = connect(mapStateToProps)(ReactComponent);
+  //   const aboutPage = mountWithStore(ConnectedComponent, createMockStore(mockStoreState));
   //   const tree = aboutPage.toJSON();
   //   expect(tree).toMatchSnapshot();
-  // })
-})
+  // });
+});

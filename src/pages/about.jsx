@@ -2,12 +2,12 @@ import { Fragment } from "react";
 import SideBar from "../components/SideBar";
 import HeaderBar from "./../components/HeaderBar";
 
-const about = () => {
-  return <Fragment>
+const about = (props) => {
+  return <div id="Test">
     <HeaderBar />
     <SideBar />
     <p>Some about page copy.</p>
-  </Fragment>;
+  </div>;
 };
 
 about.getInitialProps = async () => {
