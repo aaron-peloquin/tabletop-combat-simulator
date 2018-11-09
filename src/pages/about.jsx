@@ -1,8 +1,7 @@
-import { Fragment } from "react";
 import SideBar from "../components/SideBar";
 import HeaderBar from "./../components/HeaderBar";
 
-const about = (props) => {
+const about = () => {
   return <div id="Test">
     <HeaderBar />
     <SideBar />
