@@ -14,15 +14,14 @@ import { connect } from "react-redux";
 import ToggleSidebar from "./../store/dispatcher/ToggleSidebar";
 
 const SideBar = (props) => {
-  const { dispatch, open } = props
+  const { dispatch, open } = props;
   return <Drawer open={open} anchor="left" onOpen={()=>{ return ToggleSidebar(dispatch); }} onClose={()=>{ return ToggleSidebar(dispatch); }}>
     <Link href="/about"><a onClick={()=>{ return ToggleSidebar(dispatch); }}>About</a></Link>
   </Drawer>;
-}
+};
 
 const mapStateToProps = (state) => {
-  console.log("ALERT",state);
   return {open:state.sideBar};
-}
+};
 
 export default connect(mapStateToProps)(SideBar);
