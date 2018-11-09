@@ -1,6 +1,6 @@
 // import renderer from "react-test-renderer";
 import { connect } from "react-redux";
-import { shallowWithStore } from "enzyme-redux";
+import { mountWithStore } from "enzyme-redux";
 import { createMockStore } from "redux-test-utils";
 import mockStoreState from "./../testHelpers/mockStoreState";
 import toJson from "enzyme-to-json";
@@ -16,9 +16,9 @@ describe("<About />", ()=>{
   it("Snapshots", () => {
     const ReactComponent = () => (<About />);
     const mapStateToProps = (state) => ({state});
+    const store = createMockStore(mockStoreState);
     const ConnectedComponent = connect(mapStateToProps)(ReactComponent);
-    const aboutPage = shallowWithStore(<ConnectedComponent />, createMockStore(mockStoreState));
-    const tree = aboutPage.dive();
-    expect(toJson(tree)).toMatchSnapshot();
+    const component = mountWithStore(<ConnectedComponent />, store);
+    expect(toJson(component)).toMatchSnapshot();
   });
 });
