@@ -2,7 +2,7 @@ import SideBar from "../components/SideBar";
 import HeaderBar from "./../components/HeaderBar";
 
 const about = () => {
-  return <div id="Test">
+  return <div>
     <HeaderBar />
     <SideBar />
     <p>Some about page copy.</p>
