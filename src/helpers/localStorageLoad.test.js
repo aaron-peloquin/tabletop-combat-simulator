@@ -1,8 +1,10 @@
-import localStorageLoad from "./localStorageLoad"
+import localStorageLoad from "./localStorageLoad";
 
-test("localStorageLoad() loads", ()=>{
-  localStorage.setItem("ttcs-testLoad",JSON.stringify({test:true}))
-  const test = localStorageLoad("testLoad")
-  localStorage.removeItem("ttcs-testLoad")
-  expect(test).toEqual({test:true})
-})
+describe("[helper] localStorageLoad()", ()=>{
+  it("can load", async () => {
+    localStorage.setItem("ttcs-testLoad",JSON.stringify({test:true}));
+    const test = localStorageLoad("testLoad");
+    localStorage.removeItem("ttcs-testLoad");
+    expect(test).toEqual({test:true});
+  });
+});
