@@ -45,4 +45,4 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   return { pageProps };
 };
 
-export default withRedux(initializeStore,{debug: true})(MyApp);
+export default withRedux(initializeStore)(MyApp);
