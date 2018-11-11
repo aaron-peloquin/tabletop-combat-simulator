@@ -3,6 +3,7 @@ import React from "react";
 import {Provider} from "react-redux";
 import Head from "next/head";
 import {MuiThemeProvider} from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import JssProvider from "react-jss/lib/JssProvider";
 
 import {initializeStore} from "../store/store";
@@ -25,6 +26,7 @@ const MyApp = (props) => {
       <Provider store={store}>
         <JssProvider registry={pageContext.sheetsRegistry} generateClassName={pageContext.generateClassName}>
           <MuiThemeProvider theme={pageContext.theme} sheetsManager={pageContext.sheetsManager}>
+            <CssBaseline />
             <Layout>
               <Component pageContext={pageContext} {...pageProps} />
             </Layout>
@@ -32,25 +34,29 @@ const MyApp = (props) => {
         </JssProvider>
       </Provider>
     </Container>
+  );
+};
 
-  );};
+MyApp.componentDidMount = () => {
+  // Remove the server-side injected CSS.
+  const jssStyles = document.querySelector("#jss-server-side");
+  if (jssStyles && jssStyles.parentNode) {
+    jssStyles.parentNode.removeChild(jssStyles);
+  }
+};
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
   let pageProps = {};
-
   /** If this page has getInitialProps(), run it to fill pageProps */
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
   }
-
   /** Extract pageProp title, or set title to the default */
   const {title = defaultWebsiteTitle} = pageProps;
-
-  /** If we have a document, update it'"s title for UX */
+  /** If we have a document, update it's title for UX */
   if (typeof document != "undefined" ) {
     document.title = title;
   }
-
   return { pageProps };
 };
 
