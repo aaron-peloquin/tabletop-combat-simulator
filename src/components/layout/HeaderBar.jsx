@@ -14,13 +14,14 @@ const HeaderBar = (props) => {
       <IconButton color="inherit" aria-label="Menu" onClick={()=>{ return ToggleSidebar(dispatch); }} >
         <MenuIcon />
       </IconButton>
-      <Typography variant="h6" color="inherit">Tabletop Combat Simulator</Typography>
+      <Typography variant="h4" color="inherit">Tabletop Combat Simulator</Typography>
     </Toolbar>
   </AppBar>;
 };
 
 const mapStateToProps = (state) => {
-  return {open:state.sideBar};
+  const open = state.sideBar;
+  return {open};
 };
 
 export default connect(mapStateToProps)(HeaderBar);

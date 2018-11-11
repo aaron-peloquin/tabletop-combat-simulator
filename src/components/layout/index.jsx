@@ -19,20 +19,21 @@ const styles = (theme) => {
   };
 };
 
-const Layout = ({children="No page content was passed",classes}) => (
-  <div>
-    <HeaderBar />
-    <SideBar />
-    <main className={classes.content}>
-      <Grid container>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            {children}
-          </Paper>
+const Layout = ({children="No page content was passed",classes}) => {
+  return (
+    <div>
+      <HeaderBar />
+      <SideBar />
+      <main className={classes.content}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              {children}
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
-    </main>
-  </div>
-);
+      </main>
+    </div>
+  );};
 
 export default withStyles(styles)(Layout);

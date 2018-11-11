@@ -1,9 +1,7 @@
 import ListCreatures from "./../components/ListCreatures";
 
 const creatures = () => {
-  return <p>
-    <ListCreatures />
-  </p>;
+  return <ListCreatures />;
 };
 
 creatures.getInitialProps = async () => {

@@ -1,7 +1,7 @@
 const express = require("express");
 const next = require("next");
 
-const server = (dev) => {
+const server = (dev=true) => {
   const port = (dev?3000:80);
   const dir = "./src/";
   const app = next({ dev, dir });
@@ -9,8 +9,8 @@ const server = (dev) => {
   app.prepare().then(() => {
     const server = express();
 
-    server.get("/character/:hash", (req, res) => {
-      return app.render(req, res, "/character", { hash: req.params.hash });
+    server.get("/creature/:hash", (req, res) => {
+      return app.render(req, res, "/creature", { hash: req.params.hash });
     });
 
     server.get("*", (req, res) => {

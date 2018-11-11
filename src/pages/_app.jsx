@@ -1,26 +1,35 @@
-import { Container } from "next/app";
+import {Container} from "next/app";
 import React from "react";
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
 import Head from "next/head";
+import {MuiThemeProvider} from "@material-ui/core/styles";
+import JssProvider from "react-jss/lib/JssProvider";
 
 import {initializeStore} from "../store/store";
 import withRedux from "next-redux-wrapper";
 import Layout from "./../components/layout";
+import getPageContext from "./../muiHelpers";
 
 const defaultWebsiteTitle = "Default Website Title";
 
 const MyApp = (props) => {
   const {Component, pageProps, store} = props;
   const {title=defaultWebsiteTitle} = pageProps;
+  const pageContext = getPageContext();
+
   return (
     <Container>
       <Head>
         <title>{title}</title>
       </Head>
       <Provider store={store}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <JssProvider registry={pageContext.sheetsRegistry} generateClassName={pageContext.generateClassName}>
+          <MuiThemeProvider theme={pageContext.theme} sheetsManager={pageContext.sheetsManager}>
+            <Layout>
+              <Component pageContext={pageContext} {...pageProps} />
+            </Layout>
+          </MuiThemeProvider>
+        </JssProvider>
       </Provider>
     </Container>
 
