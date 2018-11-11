@@ -1,7 +1,12 @@
+import {Fragment} from "react";
+import NewCreature from "../components/NewCreature";
 import ListCreatures from "./../components/ListCreatures";
 
 const creatures = () => {
-  return <ListCreatures />;
+  return <Fragment>
+    <NewCreature />
+    <ListCreatures />
+  </Fragment>;
 };
 
 creatures.getInitialProps = async () => {
