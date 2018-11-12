@@ -7,9 +7,14 @@ import toJson from "enzyme-to-json"
 import About from "./about"
 
 describe("<About />", ()=>{
+  const ReactComponent = () => <About />
+  const mapStateToProps = (state) => ({state})
+  const store = createMockStore(mockStoreState)
+  const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
+  const component = mountWithStore(<ConnectedComponent />, store)
+
   it("loads", async () => {
-    const ReactComponent = () => <About />
-    expect(typeof ReactComponent).toBe("function")
+    expect(typeof component).toBe("object")
   })
 
   it("has a NextJS prop.title of About", async () => {
@@ -18,11 +23,6 @@ describe("<About />", ()=>{
   })
 
   it("Snapshots", () => {
-    const ReactComponent = () => <About />
-    const mapStateToProps = (state) => ({state})
-    const store = createMockStore(mockStoreState)
-    const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
-    const component = mountWithStore(<ConnectedComponent />, store)
     expect(toJson(component)).toMatchSnapshot()
   })
 })
