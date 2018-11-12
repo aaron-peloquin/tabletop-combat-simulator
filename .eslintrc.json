@@ -18,6 +18,6 @@
     "no-console": ["error",{"allow": ["warn","log"]}],
     "indent": ["error",2],
     "quotes": ["error","double"],
-    "semi": ["error","always"]
+    "semi": ["error","never"]
   }
 }
