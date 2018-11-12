@@ -17,8 +17,6 @@ const MyApp = (props) => {
   const {Component, pageProps, store, router} = props;
   const {title=defaultWebsiteTitle} = pageProps;
   const pageContext = getPageContext();
-  pageProps.pageContext = pageContext;
-  pageProps.router = router;
 
   return (
     <Container>
@@ -30,7 +28,7 @@ const MyApp = (props) => {
           <MuiThemeProvider theme={pageContext.theme} sheetsManager={pageContext.sheetsManager}>
             <CssBaseline />
             <Layout>
-              <Component {...pageProps} />
+              <Component pageContext={pageContext} router={router} {...pageProps} />
             </Layout>
           </MuiThemeProvider>
         </JssProvider>
