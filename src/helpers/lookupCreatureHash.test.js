@@ -6,14 +6,21 @@ const mockState = [
   {hash:"ef8gh"},
   {hash:"nk34j"}
 ]
-const fakeHash = "ef8gh"
+const validFakeHash = "ef8gh"
+const invalidFakeHash = "hijk1m"
 
-test("lookupCreatureHash() returns a number", () => {
-  const result = lookupCreatureHash(fakeHash, mockState)
-  expect(typeof result).toBe("number")
+describe("lookupCreatureHash()", ()=>{
+  const validResult = lookupCreatureHash(validFakeHash, mockState)
+  const invalidResult = lookupCreatureHash(invalidFakeHash, mockState)
+
+  it("returns a number", ()=>{
+    expect(typeof validResult).toBe("number")
+    expect(typeof invalidResult).toBe("number")
+  })
+
+  it("returns correct results", () => {
+    expect(validResult).toBe(2)
+    expect(invalidResult).toBe(-1)
+  })
 })
 
-test("lookupCreatureHash() finds a match", () => {
-  const result = lookupCreatureHash(fakeHash, mockState)
-  expect(result).toBe(2)
-})
