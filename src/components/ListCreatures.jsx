@@ -1,10 +1,22 @@
 import { connect } from "react-redux";
+import Link from "next/link";
 import {
   Table,
   TableHead, TableBody,
   TableRow, TableCell,
   TableSortLabel
 } from "@material-ui/core/";
+
+const CreatureRow = ({data}) => {
+  return <TableRow key={data.hash}>
+    <TableCell>
+      <Link as={`/creature/${data.hash}`} href={`/creature?hash=${data.hash}`}>Edit</Link>
+      {data.name}
+    </TableCell>
+    <TableCell>1</TableCell>
+    <TableCell>{data.description}</TableCell>
+  </TableRow>;
+}
 
 const CreaturesTable = ({data}) => {
   if(data.length>0) {
@@ -15,12 +27,7 @@ const CreaturesTable = ({data}) => {
           {columns.map((label)=>{return <TableCell key={label}>{label}</TableCell>})}
         </TableRow>
       </TableHead>
-      {data.map((d)=>{
-        return <TableRow key={d.hash}>
-          <TableCell>{d.name}</TableCell>
-          <TableCell>1</TableCell>
-          <TableCell>{d.hash}, {d.description}</TableCell>
-        </TableRow>;})}
+      {data.map((d)=><CreatureRow data={d} />)}
     </Table>;
   }
   return <p>No creatures.</p>
