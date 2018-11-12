@@ -7,7 +7,7 @@ import toJson from "enzyme-to-json"
 
 import Index from "./index"
 
-describe("<About />", ()=>{
+describe("<Index /> page", ()=>{
   it("loads", async () => {
     const ReactComponent = () => <Index />
     expect(typeof ReactComponent).toBe("function")

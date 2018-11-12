@@ -7,7 +7,7 @@ import toJson from "enzyme-to-json"
 
 import Creatures from "./creatures"
 
-describe("<About />", ()=>{
+describe("<Creatures /> page", ()=>{
   it("loads", async () => {
     const ReactComponent = () => <Creatures />
     expect(typeof ReactComponent).toBe("function")
