@@ -14,9 +14,11 @@ import getPageContext from "./../muiHelpers";
 const defaultWebsiteTitle = "Default Website Title";
 
 const MyApp = (props) => {
-  const {Component, pageProps, store} = props;
+  const {Component, pageProps, store, router} = props;
   const {title=defaultWebsiteTitle} = pageProps;
   const pageContext = getPageContext();
+  pageProps.pageContext = pageContext;
+  pageProps.router = router;
 
   return (
     <Container>
@@ -28,7 +30,7 @@ const MyApp = (props) => {
           <MuiThemeProvider theme={pageContext.theme} sheetsManager={pageContext.sheetsManager}>
             <CssBaseline />
             <Layout>
-              <Component pageContext={pageContext} {...pageProps} />
+              <Component {...pageProps} />
             </Layout>
           </MuiThemeProvider>
         </JssProvider>
