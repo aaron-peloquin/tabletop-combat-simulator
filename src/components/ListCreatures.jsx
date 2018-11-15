@@ -1,11 +1,11 @@
-import { connect } from "react-redux";
-import Link from "next/link";
+import { connect } from "react-redux"
+import Link from "next/link"
 import {
   Table,
   TableHead, TableBody,
   TableRow, TableCell,
   TableSortLabel
-} from "@material-ui/core/";
+} from "@material-ui/core/"
 
 const CreatureRow = ({data}) => {
   return <TableRow key={data.hash}>
@@ -15,12 +15,12 @@ const CreatureRow = ({data}) => {
     </TableCell>
     <TableCell>1</TableCell>
     <TableCell>{data.description}</TableCell>
-  </TableRow>;
+  </TableRow>
 }
 
 const CreaturesTable = ({data}) => {
   if(data.length>0) {
-    const columns = ["Name","CR","Description"];
+    const columns = ["Name","CR","Description"]
     return <Table>
       <TableHead>
         <TableRow>
@@ -28,22 +28,23 @@ const CreaturesTable = ({data}) => {
         </TableRow>
       </TableHead>
       {data.map((d)=><CreatureRow data={d} />)}
-    </Table>;
+    </Table>
   }
   return <p>No creatures.</p>
-};
+}
 
 const ListCreatures = (props) => {
-  const {creatures} = props;
+  const {creatures,numCreatures} = props
   return <div>
-    <p>Showing {creatures.length} Creatures</p>
+    <p>Showing {numCreatures} Creatures</p>
     <CreaturesTable data={creatures} />
-  </div>;
-};
+  </div>
+}
 
 const mapStateToProps = (state) => {
-  const creatures = state.creatures;
-  return {creatures};
-};
+  const creatures = state.creatures
+  const numCreatures = state.creatures
+  return {creatures,numCreatures}
+}
 
-export default connect(mapStateToProps)(ListCreatures);
+export default connect(mapStateToProps)(ListCreatures)
