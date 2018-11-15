@@ -4,7 +4,7 @@ import { Home, Info, ViewList, } from "@material-ui/icons";
 import { connect } from "react-redux";
 import Link from "next/link";
 
-import ToggleSidebar from "./../../store/dispatcher/ToggleSidebar";
+import ToggleSidebar from "./../../store/action/ToggleSidebar";
 
 /** MUI Styles for <SideBar />, and it's internal <SideBarLink /> */
 const styles = {

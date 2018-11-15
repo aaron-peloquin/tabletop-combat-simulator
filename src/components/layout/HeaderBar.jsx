@@ -5,7 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { connect } from "react-redux";
 
-import ToggleSidebar from "./../../store/dispatcher/ToggleSidebar";
+import ToggleSidebar from "./../../store/action/ToggleSidebar";
 
 const HeaderBar = (props) => {
   const {dispatch} = props;

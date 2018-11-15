@@ -5,7 +5,7 @@ import toJson from "enzyme-to-json"
 import sinon from "sinon"
 
 import NewCreature from "./NewCreature"
-import CreateCreature from "./../store/dispatcher/CreateCreature"
+import CreateCreature from "./../store/action/CreateCreature"
 import mockStoreState from "./../testHelpers/mockStoreState"
 
 describe("<New Creature />", ()=>{
