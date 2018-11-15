@@ -1,10 +1,10 @@
 import { connect } from "react-redux"
 import { mountWithStore } from "enzyme-redux"
 import { createMockStore } from "redux-test-utils"
-import mockStoreState from "./../testHelpers/mockStoreState"
+import mockStoreState from "../../testHelpers/mockStoreState"
 import toJson from "enzyme-to-json"
 
-import About from "./about"
+import About from "../../pages/about"
 
 describe("<About />", ()=>{
   const ReactComponent = () => <About />
