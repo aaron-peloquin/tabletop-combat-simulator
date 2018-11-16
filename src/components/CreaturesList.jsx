@@ -8,9 +8,10 @@ import {
 } from "@material-ui/core/"
 
 const CreatureRow = ({data}) => {
+  console.log("CreatureRow Data",data)
   return <TableRow key={data.hash}>
     <TableCell>
-      <Link as={`/creature/${data.hash}`} href={`/creature?hash=${data.hash}`}>Edit</Link>
+      <Link as={`/creature/${data.hash}`} href={`/creature?hash=${data.hash}`}><a>Edit</a></Link>
       {data.name}
     </TableCell>
     <TableCell>1</TableCell>
@@ -19,6 +20,7 @@ const CreatureRow = ({data}) => {
 }
 
 const CreaturesTable = ({data}) => {
+  console.log("CreaturesTable Data",data)
   if(data.length>0) {
     const columns = ["Name","CR","Description"]
     return <Table>
@@ -27,7 +29,9 @@ const CreaturesTable = ({data}) => {
           {columns.map((label)=>{return <TableCell key={label}>{label}</TableCell>})}
         </TableRow>
       </TableHead>
-      {data.map((d)=><CreatureRow data={d} />)}
+      <TableBody>
+        {data.map((d)=><CreatureRow key={d.hash} data={d} />)}
+      </TableBody>
     </Table>
   }
   return <p>No creatures.</p>
