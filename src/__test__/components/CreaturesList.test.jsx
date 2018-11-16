@@ -3,11 +3,11 @@ import { mountWithStore } from "enzyme-redux"
 import { createMockStore } from "redux-test-utils"
 import toJson from "enzyme-to-json"
 
-import ListCreatures from "../../components/ListCreatures"
+import CreaturesList from "../../components/CreaturesList"
 import mockStoreState from "../../testHelpers/mockStoreState"
 
-describe("<ListCreatures />", () => {
-  const ReactComponent = () => <ListCreatures />
+describe("<CreaturesList />", () => {
+  const ReactComponent = () => <CreaturesList />
   const mapStateToProps = (state) => ({state})
   const store = createMockStore(mockStoreState)
   const ConnectedComponent = connect(mapStateToProps)(ReactComponent)

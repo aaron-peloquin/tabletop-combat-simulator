@@ -1,11 +1,11 @@
 import {Fragment} from "react"
-import NewCreature from "../components/NewCreature"
-import ListCreatures from "./../components/ListCreatures"
+import CreatureFormNew from "../components/CreatureFormNew"
+import CreaturesList from "./../components/CreaturesList"
 
 const creatures = () => {
   return <Fragment>
-    <NewCreature />
-    <ListCreatures />
+    <CreatureFormNew />
+    <CreaturesList />
   </Fragment>
 }
 

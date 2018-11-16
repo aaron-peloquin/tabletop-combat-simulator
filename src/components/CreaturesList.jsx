@@ -33,7 +33,7 @@ const CreaturesTable = ({data}) => {
   return <p>No creatures.</p>
 }
 
-const ListCreatures = (props) => {
+const CreaturesList = (props) => {
   const {creatures,numCreatures} = props
   return <div>
     <p>Showing {numCreatures} Creatures</p>
@@ -47,4 +47,4 @@ const mapStateToProps = (state) => {
   return {creatures,numCreatures}
 }
 
-export default connect(mapStateToProps)(ListCreatures)
+export default connect(mapStateToProps)(CreaturesList)
