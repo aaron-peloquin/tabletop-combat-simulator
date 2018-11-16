@@ -18,6 +18,10 @@ describe("<ListCreatures />", () => {
     expect(typeof component).toBe("object")
   })
 
+  it("Contains a table", () => {
+    expect(component.find("CreaturesTable").length).toBeGreaterThanOrEqual(1)
+  })
+
   it("Snapshots", () => {
     expect(toJson(component)).toMatchSnapshot()
   })
