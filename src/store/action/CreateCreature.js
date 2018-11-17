@@ -1,9 +1,9 @@
 import actionTypes from "./../actionTypes"
 
-const CreateCreature = (dispatch) => {
+const CreateCreature = (dispatch, payload) => {
   const data = {
     type: actionTypes.CreateCreature,
-    payload: {}
+    payload
   }
   return dispatch(data)
 }
