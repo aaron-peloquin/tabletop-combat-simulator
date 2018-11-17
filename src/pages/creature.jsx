@@ -4,10 +4,18 @@ import { connect } from "react-redux"
 import lookupCreatureHash from "./../helpers/lookupCreatureHash"
 
 let creature = props => {
-  const { id, char } = props
+  const {creature={}} = props
+  if(typeof creature.name == "undefined") {
+    return <h1>Unknown Creature</h1>
+  }
 
   return <Fragment>
-    <h1>Creature: {id}</h1>
+    <h1>{creature.name}</h1>
+    <ul>
+      <li><strong>Armor</strong> {creature.armor}</li>
+      <li><strong>Default Initiative</strong> {creature.defaultInitiative}</li>
+      <li><strong>HP</strong> {creature.hp}</li>
+    </ul>
   </Fragment>
 }
 
