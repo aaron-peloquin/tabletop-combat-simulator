@@ -47,8 +47,8 @@ const CreaturesList = (props) => {
 
 const mapStateToProps = (state) => {
   const creatures = state.creatures
-  const numCreatures = state.creatures
-  return {creatures,numCreatures}
+  const numCreatures = state.creatures.length
+  return {creatures, numCreatures}
 }
 
 export default connect(mapStateToProps)(CreaturesList)
