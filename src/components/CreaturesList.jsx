@@ -8,7 +8,6 @@ import {
 } from "@material-ui/core/"
 
 const CreatureRow = ({data}) => {
-  console.log("CreatureRow Data",data)
   return <TableRow key={data.hash}>
     <TableCell>
       <Link as={`/creature/${data.hash}`} href={`/creature?hash=${data.hash}`}><a>Edit</a></Link>
@@ -20,7 +19,6 @@ const CreatureRow = ({data}) => {
 }
 
 const CreaturesTable = ({data}) => {
-  console.log("CreaturesTable Data",data)
   if(data.length>0) {
     const columns = ["Name","CR","Description"]
     return <Table>
