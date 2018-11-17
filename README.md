@@ -11,7 +11,8 @@ On update, sync to localStorage
 ### Data
 This is an array of objects. Those objects have the following keys:
 * {str} Name
-* {str} Hash (unique ID)
+* {str} CR (Challenge Rating)
+* {str} Hash (hidden unique ID)
 * {str} Description
 * {num} Default Initiative
 * {num} HP

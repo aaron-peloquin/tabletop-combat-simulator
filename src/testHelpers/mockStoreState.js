@@ -2,6 +2,7 @@ export default {
   "creatures": [
     {
       "name": "Goplin",
+      "cr": "1/4",
       "hash": "hivn3p0k",
       "description": "A stout monster",
       "defaultInitiative": 10,
@@ -12,6 +13,7 @@ export default {
     },
     {
       "name": "Elven Ranger",
+      "cr": "1/2",
       "hash": "h3dxf5wl",
       "description": "A swift hunter",
       "defaultInitiative": 16,
@@ -22,6 +24,7 @@ export default {
     },
     {
       "name": "Knight",
+      "cr": "1",
       "hash": "hee9p286",
       "description": "An honorable soldier",
       "defaultInitiative": 11,
@@ -32,6 +35,7 @@ export default {
     },
     {
       "name": "Lizardfolk",
+      "cr": "3",
       "hash": "howx26rt",
       "description": "An ancient sneaky monster",
       "defaultInitiative": 14,
