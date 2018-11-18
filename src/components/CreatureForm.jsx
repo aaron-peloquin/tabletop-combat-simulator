@@ -2,6 +2,8 @@ import React from "react"
 import {Button,Grid,TextField} from "@material-ui/core/"
 import { withStyles } from "@material-ui/core/styles"
 
+import standardizeCreatureData from "./../helpers/standardizeCreatureData"
+
 let data, originalData, _cbSubmit, _cbUpdate
 
 const styles = (theme) => {
@@ -69,7 +71,7 @@ let GridField = (props) => {
 GridField = withStyles(styles)(GridField)
 
 const CreatureForm = (props) => {
-  data = props.creature||{}
+  data = standardizeCreatureData(props.creature)
   originalData = Object.assign({}, data)
   _cbSubmit = props.onSubmit||function(){}
   _cbUpdate = props.onUpdate||function(){}
