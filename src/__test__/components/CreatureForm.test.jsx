@@ -2,17 +2,14 @@ import { connect } from "react-redux"
 import { mountWithStore } from "enzyme-redux"
 import { createMockStore } from "redux-test-utils"
 import toJson from "enzyme-to-json"
-import sinon from "sinon"
 
 import CreatureForm from "../../components/CreatureForm"
 import mockStoreState from "../../testHelpers/mockStoreState"
 
 describe("<CreatureForm />", ()=>{
   const logger = (msg) => {console.log("MSG:",msg)}
-  const mockChangeCallback = () => {logger("change")}
-  const mockSubmitCallback = () => {logger("submit")}
-  const spyChange = sinon.spy(mockChangeCallback)
-  const spySubmit = sinon.spy(mockSubmitCallback)
+  const mockChangeCallback = jest.fn(()=>{logger("change")})
+  const mockSubmitCallback = jest.fn(() => {logger("submit")})
 
   const ReactComponent = () => <CreatureForm onUpdate={mockChangeCallback} onSubmit={mockSubmitCallback} />
   const mapStateToProps = (state) => ({state})
@@ -27,14 +24,15 @@ describe("<CreatureForm />", ()=>{
 
   it("does not fire submit callback when name is blank", ()=>{
     component.simulate("submit")
-    expect(spySubmit.called).toBe(false)
+    expect(mockSubmitCallback).toHaveBeenCalledTimes(0)
   })
 
   it("fires onChange", () =>{
-    const nameInput = component.find("TextField[label=\"Name\"] input")
+    const nameInput = component.find("TextField[label=\"Name\"]").simulate("change")
     nameInput.value = "Test"
     nameInput.simulate("change")
-    expect(spyChange.called).toBe(true)
+    // mockChangeCallback()
+    expect(mockChangeCallback).toHaveBeenCalledTimes(2)
   })
 
   // it("fires submit callback", ()=>{
