@@ -8,12 +8,13 @@ import CreatureForm from "../../components/CreatureForm"
 import mockStoreState from "../../testHelpers/mockStoreState"
 
 describe("<CreatureForm />", ()=>{
-  const mockChangeCallback = () => {}
-  const mockSubmitCallback = () => {}
+  const logger = (msg) => {console.log("MSG:",msg)}
+  const mockChangeCallback = () => {logger("change")}
+  const mockSubmitCallback = () => {logger("submit")}
   const spyChange = sinon.spy(mockChangeCallback)
   const spySubmit = sinon.spy(mockSubmitCallback)
 
-  const ReactComponent = () => <CreatureForm onChange={mockChangeCallback} onSubmit={mockSubmitCallback} />
+  const ReactComponent = () => <CreatureForm onUpdate={mockChangeCallback} onSubmit={mockSubmitCallback} />
   const mapStateToProps = (state) => ({state})
   const store = createMockStore(mockStoreState)
   const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
@@ -29,12 +30,12 @@ describe("<CreatureForm />", ()=>{
     expect(spySubmit.called).toBe(false)
   })
 
-  // it("fires onChange", () =>{
-  //   const nameInput = component.find("TextField[label=\"Name\"]")
-  //   nameInput.value = "Test"
-  //   nameInput.simulate("change")
-  //   expect(spyChange.calledOnce).toBe(true)
-  // })
+  it("fires onChange", () =>{
+    const nameInput = component.find("TextField[label=\"Name\"] input")
+    nameInput.value = "Test"
+    nameInput.simulate("change")
+    expect(spyChange.called).toBe(true)
+  })
 
   // it("fires submit callback", ()=>{
   //   component.simulate("submit")
