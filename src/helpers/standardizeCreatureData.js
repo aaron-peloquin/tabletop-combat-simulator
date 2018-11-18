@@ -31,7 +31,7 @@ const standardizeCreatureData = (creatureData={}, state=null) => {
       }
     }
     else {
-      console.warn("[standardizeCreatureData] creature does not has a hash")
+      console.warn("[standardizeCreatureData] creature does not have a hash")
     }
   }
 
