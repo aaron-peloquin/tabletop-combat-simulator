@@ -12,6 +12,7 @@ import lookupCreatureHash from "./lookupCreatureHash"
 const standardizeCreatureData = (creatureData={}, state=null) => {
   let {
     name = "Unnamed Creature",
+    cr = "1",
     hash = null,
     description = "",
     defaultInitiative = 10,
@@ -35,7 +36,7 @@ const standardizeCreatureData = (creatureData={}, state=null) => {
   }
 
   return {
-    name, hash, description,
+    name, cr, hash, description,
     defaultInitiative, armor, hp,
     hitDiceEquation, damageDiceEquation
   }
