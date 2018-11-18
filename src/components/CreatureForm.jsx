@@ -2,9 +2,7 @@ import React from "react"
 import {Button,Grid,TextField} from "@material-ui/core/"
 import { withStyles } from "@material-ui/core/styles"
 
-let data
-let originalData
-let _cb
+let data, originalData, _cbSubmit, _cbUpdate
 
 const styles = (theme) => {
   return {
@@ -17,38 +15,53 @@ const styles = (theme) => {
   }
 }
 
+/** Handle updating data */
 const updateData = (e, key) => {
   const curValue = e.target.value||""
   data[key] = curValue
+  if(typeof _cbUpdate=="function") {
+    _cbUpdate(key,curValue)
+  }
 }
 
+/** Handle the form submissions callback */
 const submitData = (e) => {
   e.preventDefault()
-  if(data.name.length>0) {
-    _cb(data)
+  if(data.name.length>0 && typeof _cbSubmit=="function") {
+    _cbSubmit(data)
   }
   data = originalData
 }
 
+/** Builds <Grid> input fields for the <CreatureForm /> element */
 let GridField = (props) => {
-  const {classes, dataKey, label, size} = props
-  let wrappedField
+  const {classes, dataKey, field, label, size} = props
+  let wrappedField, DataField
 
-  let DataField = <TextField
-    onChange={(e)=>{ updateData(e, dataKey) }}
-    className={classes.formField}
-    defaultValue={data[dataKey]}
-    label={label}
-  />
-
-  if(size=="large") {
-    wrappedField = <Grid item xs={12}>{DataField}</Grid>
+  let attributes = {
+    onChange: (e)=>{ updateData(e, dataKey) },
+    className: classes.formField,
+    defaultValue: data[dataKey],
+    label: label
   }
-  else if(size=="medium") {
-    wrappedField = <Grid item xs={12} sm={6}>{DataField}</Grid>
+  if(field=="multiline") {
+    DataField = <TextField multiline rows="3" {...attributes} />
   }
   else {
+    DataField = <TextField {...attributes} />
+  }
+
+  switch(size) {
+  default:
+  case "small":
     wrappedField = <Grid item xs={12} sm={6} md={3}>{DataField}</Grid>
+    break
+  case "medium":
+    wrappedField = <Grid item xs={12} sm={6}>{DataField}</Grid>
+    break
+  case "large":
+    wrappedField = <Grid item xs={12}>{DataField}</Grid>
+    break
   }
 
   return wrappedField
@@ -58,13 +71,14 @@ GridField = withStyles(styles)(GridField)
 const CreatureForm = (props) => {
   data = props.creature||{}
   originalData = Object.assign({}, data)
-  _cb = props.onSubmit||function(){}
+  _cbSubmit = props.onSubmit||function(){}
+  _cbUpdate = props.onUpdate||function(){}
   return <form noValidate autoComplete="off" onSubmit={submitData}>
     <fieldset>
       <legend>Creature</legend>
       <Grid container>
         <GridField size="large" dataKey="name" label="Name" />
-        <GridField size="large" field="textarea" dataKey="description" label="Description" />
+        <GridField size="large" field="multiline" dataKey="description" label="Description" />
 
         <GridField dataKey="cr" label="Challenge Rating" />
         <GridField dataKey="hp" label="Hit Points" />
@@ -79,4 +93,4 @@ const CreatureForm = (props) => {
   </form>
 }
 
-export default (CreatureForm)
+export default CreatureForm
