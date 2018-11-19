@@ -22,23 +22,22 @@ describe("<CreatureForm />", ()=>{
     expect(typeof component).toBe("object")
   })
 
-  it("does not fire submit callback when name is blank", ()=>{
+  it("fires submit callback", ()=>{
     component.simulate("submit")
-    expect(mockSubmitCallback).toHaveBeenCalledTimes(0)
+    expect(mockSubmitCallback).toHaveBeenCalledTimes(1)
   })
 
   it("fires onChange", () =>{
-    const nameInput = component.find("TextField[label=\"Name\"]").simulate("change")
-    nameInput.value = "Test"
-    nameInput.simulate("change")
-    // mockChangeCallback()
-    expect(mockChangeCallback).toHaveBeenCalledTimes(2)
+    component.find("TextField[label=\"Name\"] input").simulate("change")
+    expect(mockChangeCallback).toHaveBeenCalledTimes(1)
   })
 
-  // it("fires submit callback", ()=>{
-  //   component.simulate("submit")
-  //   expect(spySubmit.calledOnce).toBe(true)
-  // })
+  it("does not fire submit callback when name is blank", ()=>{
+    component.find("TextField[label=\"Name\"] input").simulate("change",{target:{value:""}})
+    component.simulate("submit")
+    /** Note: we expect this to be called once, since the previous test "fires submit callback" called it once already */
+    expect(mockSubmitCallback).toHaveBeenCalledTimes(1)
+  })
 
   it("snapshots", () => {
     expect(toJson(component)).toMatchSnapshot()
