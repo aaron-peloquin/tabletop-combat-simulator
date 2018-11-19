@@ -5,7 +5,7 @@ Allows a user to create a number of creature objects. Creature objects can be ad
 ## Creatures
 On update, sync to localStorage
 ### Actions
-* CreateCreature {_this takes a payload of the data listed below_}
+* CreatureCreate {_this takes a payload of the data listed below_}
 * UpdateCreature {hash, newCreatureData:{_keys from data, listed below_}}
 * DeleteCreature {hash}
 ### Data

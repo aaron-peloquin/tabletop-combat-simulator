@@ -34,7 +34,7 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
     break}
 
   /** Payload: {some-creature-data} */
-  case actionTypes.CreateCreature:{
+  case actionTypes.CreatureCreate:{
     if(payload) {
       /** Ensure creatures have standardized data */
       payload = standardize(payload, state)

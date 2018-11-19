@@ -1,12 +1,12 @@
 import {connect} from "react-redux"
 
 import CreatureForm from "./CreatureForm"
-import CreateCreature from "./../store/action/CreateCreature"
+import CreatureCreate from "./../store/action/CreatureCreate"
 
 let data = {name:"", hp:""}
 
 const handleSubmit = (dispatch, data) => {
-  CreateCreature(dispatch, data)
+  CreatureCreate(dispatch, data)
 }
 
 const CreatureFormNew = (props) => {

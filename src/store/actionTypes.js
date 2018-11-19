@@ -4,7 +4,7 @@
  *  also be used as a list of our existing actions
 */
 const actions = {
-  CreateCreature: "CreateCreature",
+  CreatureCreate: "CreatureCreate",
   ToggleSidebar: "ToggleSidebar"
 }
 
