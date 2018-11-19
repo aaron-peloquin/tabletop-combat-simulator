@@ -73,7 +73,7 @@ GridField = withStyles(styles)(GridField)
 
 const CreatureForm = (props) => {
   const {creature={}} = props
-  /** If this object does not has a hash, set it to null so we generate one */
+  /** If this object does not have a hash, set it to null so we generate one */
   if(!creature.hasOwnProperty("hash")) {
     creature.hash = null
   }
