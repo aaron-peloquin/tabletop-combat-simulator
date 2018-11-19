@@ -21,6 +21,7 @@ const styles = (theme) => {
 const updateData = (e, key) => {
   const curValue = e.target.value||""
   data[key] = curValue
+
   if(typeof _cbUpdate=="function") {
     _cbUpdate(key,curValue)
   }
@@ -71,6 +72,11 @@ let GridField = (props) => {
 GridField = withStyles(styles)(GridField)
 
 const CreatureForm = (props) => {
+  const {creature={}} = props
+  /** If this object does not has a hash, set it to null so we generate one */
+  if(!creature.hasOwnProperty("hash")) {
+    creature.hash = null
+  }
   data = standardizeCreatureData(props.creature)
   originalData = Object.assign({}, data)
   _cbSubmit = props.onSubmit||function(){}
