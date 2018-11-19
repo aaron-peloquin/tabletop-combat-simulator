@@ -1,6 +1,7 @@
 import React from "react"
 import {Button,Grid,TextField} from "@material-ui/core/"
 import { withStyles } from "@material-ui/core/styles"
+import { connect } from "react-redux"
 
 import standardizeCreatureData from "./../helpers/standardizeCreatureData"
 
@@ -72,12 +73,8 @@ let GridField = (props) => {
 GridField = withStyles(styles)(GridField)
 
 const CreatureForm = (props) => {
-  const {creature={}} = props
-  /** If this object does not have a hash, set it to null so we generate one */
-  if(!creature.hasOwnProperty("hash")) {
-    creature.hash = null
-  }
-  data = standardizeCreatureData(props.creature)
+  const {creature={}, creatures} = props
+  data = standardizeCreatureData(props.creature, creatures)
   originalData = Object.assign({}, data)
   _cbSubmit = props.onSubmit||function(){}
   _cbUpdate = props.onUpdate||function(){}
@@ -101,4 +98,8 @@ const CreatureForm = (props) => {
   </form>
 }
 
-export default CreatureForm
+const mapStateToProps = (state) => {
+  return {creatures:state.creatures}
+}
+
+export default connect(mapStateToProps)(CreatureForm)
