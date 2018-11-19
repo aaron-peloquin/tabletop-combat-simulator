@@ -74,7 +74,7 @@ GridField = withStyles(styles)(GridField)
 
 const CreatureForm = (props) => {
   const {creature={}, creatures} = props
-  data = standardizeCreatureData(props.creature, creatures)
+  data = standardizeCreatureData(creature, creatures)
   originalData = Object.assign({}, data)
   _cbSubmit = props.onSubmit||function(){}
   _cbUpdate = props.onUpdate||function(){}

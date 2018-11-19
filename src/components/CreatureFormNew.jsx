@@ -3,15 +3,11 @@ import {connect} from "react-redux"
 import CreatureForm from "./CreatureForm"
 import CreatureCreate from "./../store/action/CreatureCreate"
 
-let data = {name:"", hp:""}
-
-const handleSubmit = (dispatch, data) => {
-  CreatureCreate(dispatch, data)
-}
+let data = {}
 
 const CreatureFormNew = (props) => {
   const {dispatch} = props
-  return <CreatureForm creature={data} onSubmit={()=>{handleSubmit(dispatch, data)}} />
+  return <CreatureForm creature={data} onSubmit={(payload)=>{CreatureCreate(dispatch, payload)}} />
 }
 
 export default connect()(CreatureFormNew)
