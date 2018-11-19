@@ -21,6 +21,7 @@ const defaultState = []
  */
 const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
   let saveToStorage = true
+  let id
   const creaturesStorage = load("creatures")
   if(creaturesStorage.length>0) {
     state = creaturesStorage
@@ -29,33 +30,39 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
   state = state.slice()
 
   switch (type) {
-  default:{
+  default:
     saveToStorage = false
-    break}
+    break
 
   /** Payload: {some-creature-data} */
-  case actionTypes.CreatureCreate:{
+  case actionTypes.CreatureCreate:
     if(payload) {
       /** Ensure creatures have standardized data */
       payload = standardize(payload, state)
       /** If this creature has any data, add them into the state */
       state.push(payload)
     }
-    break}
+    break
+
+  /** Payload: {} */
+  case actionTypes.CreatureDeleteAll:
+    /** !Revisit & finish later */
+    state = defaultState
+    break
 
   /** Payload: {hash,newCreatureData} */
-  case actionTypes.UpdateCreature:{
+  case actionTypes.CreatureUpdate:
     /** !Revisit & finish later */
-    let id = lookup(payload.hash,state)
+    id = lookup(payload.hash,state)
     console.log("found id", id)
-    break}
+    break
 
   /** Payload: {hash} */
-  case actionTypes.DeleteCreature:{
+  case actionTypes.CreatureDeleteOne:
     /** !Revisit & finish later */
-    let id = lookup(payload.hash,state)
+    id = lookup(payload.hash,state)
     console.log("found id", id)
-    break}
+    break
   }
 
   /** If we have modified our state, save it */
