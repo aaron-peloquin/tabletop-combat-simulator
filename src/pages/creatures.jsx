@@ -1,10 +1,16 @@
 import {Fragment} from "react"
 import CreatureFormNew from "../components/CreatureFormNew"
 import CreaturesList from "./../components/CreaturesList"
+import { connect } from "react-redux"
+import { Button } from "@material-ui/core"
 
-const creatures = () => {
+import CreatureDeleteAll from "./../store/action/CreatureDeleteAll"
+
+const creatures = (props) => {
+  const {dispatch} = props
   return <Fragment>
     <CreatureFormNew />
+    <Button onClick={()=>{CreatureDeleteAll(dispatch,"delete all")}} color="secondary">DELETE ALL</Button>
     <CreaturesList />
   </Fragment>
 }
@@ -14,4 +20,4 @@ creatures.getInitialProps = async () => {
   return { title }
 }
 
-export default creatures
+export default connect()(creatures)
