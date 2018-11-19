@@ -5,7 +5,10 @@
 */
 const actions = {
   CreatureCreate: "CreatureCreate",
-  ToggleSidebar: "ToggleSidebar"
+  CreatureDeleteAll: "CreatureDeleteAll",
+  CreatureDeleteOne: "CreatureDeleteOne",
+  CreatureUpdate: "CreatureUpdate",
+  ToggleSidebar: "ToggleSidebar",
 }
 
 export default actions
