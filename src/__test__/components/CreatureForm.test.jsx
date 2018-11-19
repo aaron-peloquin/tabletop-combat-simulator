@@ -7,9 +7,8 @@ import CreatureForm from "../../components/CreatureForm"
 import mockStoreState from "../../testHelpers/mockStoreState"
 
 describe("<CreatureForm />", ()=>{
-  const logger = (msg) => {console.log("MSG:",msg)}
-  const mockChangeCallback = jest.fn(()=>{logger("change")})
-  const mockSubmitCallback = jest.fn(() => {logger("submit")})
+  const mockChangeCallback = jest.fn(()=>{})
+  const mockSubmitCallback = jest.fn(() => {})
 
   const ReactComponent = () => <CreatureForm onUpdate={mockChangeCallback} onSubmit={mockSubmitCallback} />
   const mapStateToProps = (state) => ({state})
