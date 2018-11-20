@@ -52,9 +52,10 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
 
   /** Payload: {hash,newCreatureData} */
   case actionTypes.CreatureUpdate:
-    /** !Revisit & finish later */
     id = lookup(payload.hash,state)
-    console.log("found id", id)
+    if(id>=0) {
+      state[id] = payload
+    }
     break
 
   /** Payload: {hash} */
