@@ -1,0 +1,15 @@
+{
+  "git.enableSmartCommit": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "workbench.colorTheme": "Monokai",
+  "http.proxyStrictSSL": false,
+  "workbench.startupEditor": "welcomePage",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.enabled": false,
+  "gitlens.blame.separateLines": false,
+  "gitlens.blame.highlight.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "files.autoSave": "onFocusChange",
+  "editor.minimap.enabled": false
+}
