@@ -7,9 +7,10 @@ import { Button } from "@material-ui/core"
 import CreatureDeleteAll from "./../store/action/CreatureDeleteAll"
 
 const creatures = (props) => {
-  const {dispatch} = props
+  const {dispatch, router} = props
+
   return <Fragment>
-    <CreatureFormNew />
+    <CreatureFormNew router={router} />
     <Button onClick={()=>{CreatureDeleteAll(dispatch,"delete all")}} color="secondary">DELETE ALL</Button>
     <CreaturesList />
   </Fragment>
