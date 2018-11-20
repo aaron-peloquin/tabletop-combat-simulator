@@ -2,6 +2,7 @@ import React, { Fragment } from "react"
 import { connect } from "react-redux"
 
 import lookupCreatureHash from "./../helpers/lookupCreatureHash"
+import CreatureFormEdit from "./../components/CreatureFormEdit"
 
 let creature = props => {
   const {creature={}} = props
@@ -16,6 +17,7 @@ let creature = props => {
       <li><strong>Default Initiative</strong> {creature.defaultInitiative}</li>
       <li><strong>HP</strong> {creature.hp}</li>
     </ul>
+    <CreatureFormEdit creature={creature} />
   </Fragment>
 }
 
