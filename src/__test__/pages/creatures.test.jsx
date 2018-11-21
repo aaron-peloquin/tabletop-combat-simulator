@@ -20,7 +20,6 @@ describe("<Creatures /> page", ()=>{
   })
 
   it("Contains required elements", ()=>{
-    expect(component.find("CreatureFormNew").length).toBe(1)
     expect(component.find("CreaturesList").length).toBe(1)
   })
 
