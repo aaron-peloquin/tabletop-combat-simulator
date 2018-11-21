@@ -15,7 +15,7 @@ let creature = props => {
 
   return <Fragment>
     <h1>Editing {creature.name}</h1>
-    <p><Link href="/creatures"><a className={classes.link}><Button variant="contained">List of Creatures</Button></a></Link></p>
+    <p><Link href="/creatures"><a className={classes.link}><Button variant="contained" color="primary">List of Creatures</Button></a></Link></p>
     <CreatureFormEdit router={router} creature={creature} />
   </Fragment>
 }

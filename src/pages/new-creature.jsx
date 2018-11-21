@@ -10,7 +10,7 @@ const newCreature = (props) => {
   
   return <Fragment>
     <h1>New Creature</h1>
-    <p><Link href="/creatures"><a className={classes.link}><Button variant="contained">List of Creatures</Button></a></Link></p>
+    <p><Link href="/creatures"><a className={classes.link}><Button variant="contained" color="primary">List of Creatures</Button></a></Link></p>
     <CreatureFormNew router={router} />
   </Fragment>
 }

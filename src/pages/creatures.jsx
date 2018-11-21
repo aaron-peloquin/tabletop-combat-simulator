@@ -11,6 +11,7 @@ const creatures = (props) => {
   const {dispatch, classes} = props
 
   return <Fragment>
+    <h1>All Creatures</h1>
     <Grid container justify="center">
       <Grid item xs={6}>
         <Link href="/new-creature"><a className={classes.link}><Button variant="contained" color="primary">New Creature</Button></a></Link>
