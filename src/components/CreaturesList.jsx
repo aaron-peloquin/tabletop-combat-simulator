@@ -12,13 +12,12 @@ const CreatureRow = ({data}) => {
     <TableCell><Link as={`/creature/${data.hash}`} href={`/creature?hash=${data.hash}`}><a>Edit</a></Link></TableCell>
     <TableCell>{data.name}</TableCell>
     <TableCell>{data.cr}</TableCell>
-    <TableCell>{data.description}</TableCell>
   </TableRow>
 }
 
 const CreaturesTable = ({data}) => {
   if(data.length>0) {
-    const columns = ["Edit","Name","CR","Description"]
+    const columns = ["Edit","Name","CR"]
     return <Table>
       <TableHead>
         <TableRow>
@@ -43,8 +42,14 @@ const CreaturesList = (props) => {
 
 const mapStateToProps = (state) => {
   const creatures = state.creatures
+  const sortedCreatures = creatures.sort((a,b)=>{
+    let r = 0
+    if(a.name<b.name){ r = -1 }
+    else if(a.name>b.name) { r = 1 }
+    return r
+  })
   const numCreatures = state.creatures.length
-  return {creatures, numCreatures}
+  return {creatures:sortedCreatures, numCreatures}
 }
 
 export default connect(mapStateToProps)(CreaturesList)
