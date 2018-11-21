@@ -10,7 +10,9 @@ describe("<CreatureForm />", ()=>{
   const mockChangeCallback = jest.fn(()=>{})
   const mockSubmitCallback = jest.fn(() => {})
 
-  const ReactComponent = () => <CreatureForm onUpdate={mockChangeCallback} onSubmit={mockSubmitCallback} />
+  const mockCreature = mockStoreState.creatures[0]
+
+  const ReactComponent = () => <CreatureForm creature={mockCreature} onUpdate={mockChangeCallback} onSubmit={mockSubmitCallback} />
   const mapStateToProps = (state) => ({state})
   const store = createMockStore(mockStoreState)
   const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
