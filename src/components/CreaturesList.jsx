@@ -9,18 +9,16 @@ import {
 
 const CreatureRow = ({data}) => {
   return <TableRow key={data.hash}>
-    <TableCell>
-      <Link as={`/creature/${data.hash}`} href={`/creature?hash=${data.hash}`}><a>Edit</a></Link>
-      {data.name}
-    </TableCell>
-    <TableCell>1</TableCell>
+    <TableCell><Link as={`/creature/${data.hash}`} href={`/creature?hash=${data.hash}`}><a>Edit</a></Link></TableCell>
+    <TableCell>{data.name}</TableCell>
+    <TableCell>{data.cr}</TableCell>
     <TableCell>{data.description}</TableCell>
   </TableRow>
 }
 
 const CreaturesTable = ({data}) => {
   if(data.length>0) {
-    const columns = ["Name","CR","Description"]
+    const columns = ["Edit","Name","CR","Description"]
     return <Table>
       <TableHead>
         <TableRow>
