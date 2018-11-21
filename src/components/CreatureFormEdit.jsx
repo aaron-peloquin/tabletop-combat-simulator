@@ -8,8 +8,4 @@ const CreatureFormEdit = (props) => {
   return <CreatureForm router={router} creature={creature} onSubmit={(payload)=>{CreatureUpdate(dispatch, payload)}} />
 }
 
-const mapStateToProps = (state) => {
-  return {creature:state.creatures[0]}
-}
-
-export default connect(mapStateToProps)(CreatureFormEdit)
+export default connect()(CreatureFormEdit)
