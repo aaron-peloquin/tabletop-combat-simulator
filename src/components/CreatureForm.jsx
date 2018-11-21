@@ -91,7 +91,7 @@ const CreatureForm = (props) => {
 
         <GridField dataKey="cr" label="Challenge Rating" />
         <GridField dataKey="hp" label="Hit Points" />
-        <GridField dataKey="armor" label="Hit Points" />
+        <GridField dataKey="armor" label="Armor" />
         <GridField dataKey="defaultInitiative" label="Default Initiative" />
 
         <GridField size="medium" dataKey="hitDiceEquation" label="Hit Dice Equation" placeholder="eg. 1d20+4" />
@@ -99,7 +99,7 @@ const CreatureForm = (props) => {
 
         <GridField size="large" field="multiline" dataKey="description" label="Description" />
       </Grid>
-      <Button type="submit" variant="contained" color="primary" onClick={submitData}>Submit</Button>
+      <Button type="submit" variant="contained" color="primary" onClick={submitData}>Save</Button>
     </fieldset>
   </form>
 }
