@@ -1,23 +1,22 @@
 import React, { Fragment } from "react"
+import {Button} from "@material-ui/core"
 import { connect } from "react-redux"
+import { withStyles } from "@material-ui/core/styles"
+import Link from "next/link"
 
 import lookupCreatureHash from "./../helpers/lookupCreatureHash"
 import CreatureFormEdit from "./../components/CreatureFormEdit"
 
 let creature = props => {
-  const {creature={}} = props
+  const {creature={}, router, classes} = props
   if(typeof creature.name == "undefined") {
     return <h1>Unknown Creature</h1>
   }
 
   return <Fragment>
-    <h1>{creature.name}</h1>
-    <ul>
-      <li><strong>Armor</strong> {creature.armor}</li>
-      <li><strong>Default Initiative</strong> {creature.defaultInitiative}</li>
-      <li><strong>HP</strong> {creature.hp}</li>
-    </ul>
-    <CreatureFormEdit creature={creature} />
+    <h1>Editing {creature.name}</h1>
+    <p><Link href="/creatures"><a className={classes.link}><Button variant="contained">List of Creatures</Button></a></Link></p>
+    <CreatureFormEdit router={router} creature={creature} />
   </Fragment>
 }
 
@@ -37,5 +36,13 @@ const mapStateToProps = (state, props) => {
   return {creature}
 }
 
-const creatureWithState = connect(mapStateToProps)(creature)
+const styles = {
+  link: { textDecoration: "none", },
+}
+
+/** Add MUI styles to this component */
+const creatureWithStyles = withStyles(styles)(creature)
+
+/** Connect component to redux state */
+const creatureWithState = connect(mapStateToProps)(creatureWithStyles)
 export default creatureWithState
