@@ -1,14 +1,13 @@
-// import renderer from "react-test-renderer"
 import { connect } from "react-redux"
 import { mountWithStore } from "enzyme-redux"
 import { createMockStore } from "redux-test-utils"
-import mockStoreState from "../../testHelpers/mockStoreState"
 import toJson from "enzyme-to-json"
 
-import Creatures from "../../pages/creatures"
+import CreaturesList from "./CreaturesList"
+import mockStoreState from "../testHelpers/mockStoreState"
 
-describe("<Creatures /> page", ()=>{
-  const ReactComponent = () => <Creatures />
+describe("<CreaturesList />", () => {
+  const ReactComponent = () => <CreaturesList />
   const mapStateToProps = (state) => ({state})
   const store = createMockStore(mockStoreState)
   const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
@@ -19,8 +18,8 @@ describe("<Creatures /> page", ()=>{
     expect(typeof component).toBe("object")
   })
 
-  it("Contains required elements", ()=>{
-    expect(component.find("CreaturesList").length).toBe(1)
+  it("Contains a table", () => {
+    expect(component.find("CreaturesTable").length).toBeGreaterThanOrEqual(1)
   })
 
   it("Snapshots", () => {

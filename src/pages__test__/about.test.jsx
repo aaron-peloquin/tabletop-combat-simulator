@@ -1,21 +1,25 @@
 import { connect } from "react-redux"
 import { mountWithStore } from "enzyme-redux"
 import { createMockStore } from "redux-test-utils"
+import mockStoreState from "../testHelpers/mockStoreState"
 import toJson from "enzyme-to-json"
 
-import CreatureFormNew from "../../components/CreatureFormNew"
-import mockStoreState from "../../testHelpers/mockStoreState"
+import About from "../pages/about"
 
-describe("<CreatureFormNew />", ()=>{
-  const ReactComponent = () => <CreatureFormNew />
+describe("<About />", ()=>{
+  const ReactComponent = () => <About />
   const mapStateToProps = (state) => ({state})
   const store = createMockStore(mockStoreState)
   const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
   const component = mountWithStore(<ConnectedComponent />, store)
 
   it("loads", async () => {
-    expect(typeof ReactComponent).toBe("function")
     expect(typeof component).toBe("object")
+  })
+
+  it("has a NextJS prop.title of About", async () => {
+    const props = await About.getInitialProps()
+    expect(props.title).toBe("About")
   })
 
   it("Snapshots", () => {

@@ -2,10 +2,10 @@
 import { connect } from "react-redux"
 import { mountWithStore } from "enzyme-redux"
 import { createMockStore } from "redux-test-utils"
-import mockStoreState from "../../testHelpers/mockStoreState"
+import mockStoreState from "../testHelpers/mockStoreState"
 import toJson from "enzyme-to-json"
 
-import Index from "../../pages/index"
+import Index from "../pages/index"
 
 describe("<Index /> page", ()=>{
   it("loads", async () => {

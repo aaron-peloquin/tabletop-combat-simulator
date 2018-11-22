@@ -1,4 +1,4 @@
-import CreatureDeleteAll from "../../../store/action/CreatureDeleteAll"
+import CreatureDeleteAll from "./CreatureDeleteAll"
 
 describe("[reduxAction] CreatureDeleteAll", ()=>{
   const mockFunction = jest.fn(()=>{})
