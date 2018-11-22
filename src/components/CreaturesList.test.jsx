@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { mountWithStore } from "enzyme-redux"
+import { mountWithStore, shallowWithStore } from "enzyme-redux"
 import { createMockStore } from "redux-test-utils"
 import toJson from "enzyme-to-json"
 
@@ -21,6 +21,13 @@ describe("<CreaturesList />", () => {
   it("Contains a table", () => {
     expect(component.find("CreaturesTable").length).toBeGreaterThanOrEqual(1)
   })
+
+  it("Snapshots with no creatures", ()=> {
+    const emptyStore = createMockStore({})
+    const emptyComponent = shallowWithStore(<ConnectedComponent />, emptyStore)
+    expect(toJson(emptyComponent)).toMatchSnapshot()
+  })
+
 
   it("Snapshots", () => {
     expect(toJson(component)).toMatchSnapshot()
