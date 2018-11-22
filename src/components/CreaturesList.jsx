@@ -44,7 +44,7 @@ const CreaturesTable = ({data, dispatch}) => {
       </TableBody>
     </Table>
   }
-  return <p>No creatures.</p>
+  return <p class="no-creatures">No creatures exist yet</p>
 }
 
 const CreaturesList = (props) => {
@@ -56,14 +56,14 @@ const CreaturesList = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  const creatures = state.creatures
+  const {creatures=[]} = state
   const sortedCreatures = creatures.sort((a,b)=>{
     let r = 0
     if(a.name<b.name) { r = -1 }
     else if(a.name>b.name) { r = 1 }
     return r
   })
-  const numCreatures = state.creatures.length
+  const numCreatures = creatures.length
   return {creatures:sortedCreatures, numCreatures}
 }
 
