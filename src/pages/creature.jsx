@@ -22,7 +22,7 @@ let creature = props => {
 }
 
 creature.getInitialProps = async () => {
-  let title = "Creature"
+  let title = "Edit Creature"
   return { title }
 }
 

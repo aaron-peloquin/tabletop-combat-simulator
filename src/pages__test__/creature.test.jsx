@@ -30,6 +30,11 @@ describe("<Creature /> page", ()=>{
     expect(text).toBe("Creature #404, not found")
   })
 
+  it("has a NextJS prop.title of Edit Creature", async () => {
+    const props = await Creature.getInitialProps()
+    expect(props.title).toBe("Edit Creature")
+  })
+
   it("Snapshots", () => {
     expect(toJson(CreaturelessComponent)).toMatchSnapshot()
     expect(toJson(ValidComponent)).toMatchSnapshot()
