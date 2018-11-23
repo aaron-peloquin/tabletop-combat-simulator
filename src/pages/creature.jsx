@@ -3,6 +3,7 @@ import {Button} from "@material-ui/core"
 import { connect } from "react-redux"
 import { withStyles } from "@material-ui/core/styles"
 import Link from "next/link"
+import { Typography } from "@material-ui/core"
 
 import lookupCreatureHash from "./../helpers/lookupCreatureHash"
 import CreatureFormEdit from "./../components/CreatureFormEdit"
@@ -10,11 +11,11 @@ import CreatureFormEdit from "./../components/CreatureFormEdit"
 let creature = props => {
   const {creature={}, router, classes} = props
   if(typeof creature.name == "undefined") {
-    return <h1>Unknown Creature</h1>
+    return <Typography variant="h1">Creature #404, not found</Typography>
   }
 
   return <Fragment>
-    <h1>Editing {creature.name}</h1>
+    <Typography variant="h3">Editing {creature.name}</Typography>
     <p><Link href="/creatures"><a className={classes.link}><Button variant="contained" color="primary">List of Creatures</Button></a></Link></p>
     <CreatureFormEdit router={router} creature={creature} />
   </Fragment>
