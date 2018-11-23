@@ -1,4 +1,3 @@
-// import renderer from "react-test-renderer"
 import { connect } from "react-redux"
 import { mountWithStore } from "enzyme-redux"
 import { createMockStore } from "redux-test-utils"
