@@ -2,25 +2,36 @@
 import { connect } from "react-redux"
 import { mountWithStore } from "enzyme-redux"
 import { createMockStore } from "redux-test-utils"
-import mockStoreState from "../testHelpers/mockStoreState"
 import toJson from "enzyme-to-json"
 
+import mockStoreState from "../testHelpers/mockStoreState"
 import Creature from "../pages/creature"
 
 describe("<Creature /> page", ()=>{
-  const hashProp = {query:{hash:"h2348gj4"}}
-  const ReactComponent = () => <Creature router={hashProp} />
+  const InvalidReactComponent = () => <Creature router={{query:{hash:"hivn4p0k"}}} />
+  const ReactComponent = () => <Creature router={{query:{hash:"hivn3p0k"}}} />
   const mapStateToProps = (state) => ({state})
   const store = createMockStore(mockStoreState)
+  const InvalidConnectedComponent = connect(mapStateToProps)(InvalidReactComponent)
   const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
-  const component = mountWithStore(<ConnectedComponent />, store)
 
-  it("loads", async () => {
+  const CreaturelessComponent = mountWithStore(<InvalidConnectedComponent />, store)
+  const ValidComponent = mountWithStore(<ConnectedComponent />, store)
+
+  it("loads", () => {
+    expect(typeof InvalidReactComponent).toBe("function")
     expect(typeof ReactComponent).toBe("function")
-    expect(typeof component).toBe("object")
+    expect(typeof CreaturelessComponent).toBe("object")
+    expect(typeof ValidComponent).toBe("object")
+  })
+
+  it("has heading when no creature is found", () => {
+    const text = CreaturelessComponent.find("Typography").text()
+    expect(text).toBe("Creature #404, not found")
   })
 
   it("Snapshots", () => {
-    expect(toJson(component)).toMatchSnapshot()
+    expect(toJson(CreaturelessComponent)).toMatchSnapshot()
+    expect(toJson(ValidComponent)).toMatchSnapshot()
   })
 })
