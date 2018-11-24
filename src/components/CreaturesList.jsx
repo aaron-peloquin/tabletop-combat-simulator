@@ -44,7 +44,7 @@ const CreaturesTable = ({data, dispatch}) => {
       </TableBody>
     </Table>
   }
-  return <p class="no-creatures">No creatures exist yet</p>
+  return <p data-class="no-creatures">No creatures exist yet</p>
 }
 
 const CreaturesList = (props) => {
