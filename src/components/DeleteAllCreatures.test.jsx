@@ -16,10 +16,13 @@ describe("<DeleteAllCreatures />", ()=>{
   })
 
   it("calls dispatch on click", () => {
-    const Tree = toJson(DeleteAllCreaturesComponent)
-    expect(Tree).toMatchSnapshot()
     DeleteAllCreaturesComponent.simulate("click")
     expect(props.ActionDeleteAll).toBeCalledTimes(1)
     expect(store.dispatch).toBeCalledTimes(1)
+  })
+
+  it("snapshots", () => {
+    const Tree = toJson(DeleteAllCreaturesComponent)
+    expect(Tree).toMatchSnapshot()
   })
 })
