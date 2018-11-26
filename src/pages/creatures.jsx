@@ -1,32 +1,32 @@
-import {Fragment} from "react"
-import {connect} from "react-redux"
+import { Fragment } from "react"
+import { connect } from "react-redux"
 import { withStyles } from "@material-ui/core/styles"
-import {Button, Grid} from "@material-ui/core"
+import { Button, Grid, Typography } from "@material-ui/core"
+
 import Link from "next/link"
 
-import CreatureDeleteAll from "./../store/action/CreatureDeleteAll"
 import CreaturesList from "./../components/CreaturesList"
+import DeleteAllCreatures from "./../components/DeleteAllCreatures"
 
 const creatures = (props) => {
-  const {dispatch, classes} = props
+  const { classes } = props
 
   return <Fragment>
-    <h1>All Creatures</h1>
+    <Typography variant="h3">All Creatures</Typography>
     <Grid container justify="center">
       <Grid item xs={6}>
         <Link href="/new-creature"><a className={classes.link}><Button variant="contained" color="primary">New Creature</Button></a></Link>
       </Grid>
       <Grid item xs={6}>
-        <Button onClick={()=>{CreatureDeleteAll(dispatch,"delete all")}} variant="contained" color="secondary">Delete All Creatures</Button>
+        <DeleteAllCreatures />
       </Grid>
     </Grid>
-    
     <CreaturesList />
   </Fragment>
 }
 
 creatures.getInitialProps = async () => {
-  let title = "Creatures Database"
+  let title = "All Creatures"
   return { title }
 }
 

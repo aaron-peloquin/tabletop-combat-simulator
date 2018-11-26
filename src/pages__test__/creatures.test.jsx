@@ -1,28 +1,25 @@
-import { connect } from "react-redux"
-import { mountWithStore } from "enzyme-redux"
-import { createMockStore } from "redux-test-utils"
-import mockStoreState from "../testHelpers/mockStoreState"
+import { Provider } from "react-redux"
+import { createShallow } from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
+import { initializeStore } from "../store/store"
 
 import Creatures from "../pages/creatures"
 
 describe("<Creatures /> page", ()=>{
-  const ReactComponent = () => <Creatures />
-  const mapStateToProps = (state) => ({state})
-  const store = createMockStore(mockStoreState)
-  const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
-  const component = mountWithStore(<ConnectedComponent />, store)
-
-  it("loads", async () => {
-    expect(typeof ReactComponent).toBe("function")
-    expect(typeof component).toBe("object")
+  const RenderShallowUntilComponent = createShallow({"untilSelector":"creatures"})
+  let Component, store, props
+  beforeEach(async ()=>{
+    store = initializeStore({})
+    props = Creatures.getInitialProps()
+    Component = RenderShallowUntilComponent(<Provider store={store}><Creatures {...props} /></Provider>)
   })
 
   it("Contains required elements", ()=>{
-    expect(component.find("CreaturesList").length).toBe(1)
+    expect(Component.find("Connect(DeleteAllCreatures)").length).toBe(1)
+    expect(Component.find("Connect(CreaturesList)").length).toBe(1)
   })
 
   it("Snapshots", () => {
-    expect(toJson(component)).toMatchSnapshot()
+    expect(toJson(Component)).toMatchSnapshot()
   })
 })
