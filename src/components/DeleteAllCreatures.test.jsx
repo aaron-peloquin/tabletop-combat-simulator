@@ -1,8 +1,8 @@
 import { Provider } from "react-redux"
 import { createShallow } from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
-
 import { initializeStore } from "../store/store"
+
 import DeleteAllCreatures from "../components/DeleteAllCreatures"
 
 
