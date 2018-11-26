@@ -1,52 +1,40 @@
-import { connect } from "react-redux"
-import { mountWithStore } from "enzyme-redux"
-import { createMockStore } from "redux-test-utils"
+import { Provider } from "react-redux"
+import { createShallow } from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
+import { initializeStore } from "../store/store"
 
 import CreatureForm from "./CreatureForm"
 import mockStoreState from "../testHelpers/mockStoreState"
 
 describe("<CreatureForm />", ()=>{
-  const mockChangeCallback = jest.fn(()=>{})
-  const mockSubmitCallback = jest.fn(() => {})
-  const mockRouter = {push:jest.fn(() => {})}
-
-  const mockCreature = mockStoreState.creatures[0]
-
-  const ReactComponent = () => <CreatureForm router={mockRouter} creature={mockCreature} onUpdate={mockChangeCallback} onSubmit={mockSubmitCallback} />
-  const mapStateToProps = (state) => ({state})
-  const store = createMockStore(mockStoreState)
-  const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
-  const component = mountWithStore(<ConnectedComponent />, store)
+  const RenderShallowUntilComponent = createShallow({"untilSelector":"CreatureForm"})
+  let store, props, Component
+  beforeEach(async ()=>{
+    store = initializeStore(mockStoreState)
+    props = {
+      onSubmit: jest.fn(()=>{}),
+      router: {push:jest.fn(() => {})},
+      creature: mockStoreState.creatures[0]
+    }
+    Component = RenderShallowUntilComponent(<Provider store={store}><CreatureForm {...props} /></Provider>)
+  })
 
   it("loads", async () => {
-    expect(typeof ReactComponent).toBe("function")
-    expect(typeof component).toBe("object")
+    expect(typeof Component).toBe("object")
   })
 
   it("fires submit callback", ()=>{
-    component.simulate("submit")
-    expect(mockSubmitCallback).toHaveBeenCalledTimes(1)
+    Component.simulate("submit", {preventDefault:()=>{}})
+    expect(props.onSubmit).toHaveBeenCalledTimes(1)
   })
 
-  it("used router to navigate to /creatures", () => {
-    expect(mockSubmitCallback).toHaveBeenCalledTimes(1)
-  })
-
-  it("fires onChange", () =>{
-    component.find("TextField[label=\"Name\"] input").simulate("change")
-    expect(mockRouter.push).toHaveBeenCalledTimes(1)
-    expect(mockRouter.push).toHaveBeenCalledWith("/creatures")
-  })
-
-  it("does not fire submit callback when name is blank", ()=>{
-    component.find("TextField[label=\"Name\"] input").simulate("change",{target:{value:""}})
-    component.simulate("submit")
-    /** Note: we expect this to be called once, since the previous test "fires submit callback" called it once already */
-    expect(mockSubmitCallback).toHaveBeenCalledTimes(1)
+  it("submit routes to /creatures", () => {
+    Component.simulate("submit", {preventDefault:()=>{}})
+    expect(props.router.push).toHaveBeenCalledTimes(1)
+    expect(props.router.push).toHaveBeenCalledWith("/creatures")
   })
 
   it("snapshots", () => {
-    expect(toJson(component)).toMatchSnapshot()
+    expect(toJson(Component)).toMatchSnapshot()
   })
 })
