@@ -13,7 +13,7 @@ const CreatureForm = (props) => {
 
   const FieldProps = {
     onChange,
-    _data
+    "creature":_data
   }
 
   /** Handle the form submissions callback */
