@@ -23,6 +23,10 @@ describe("<CreatureForm />", ()=>{
     expect(typeof Component).toBe("object")
   })
 
+  it("has a <Grid> container", ()=>{
+    expect(Component.find("WithStyles(Grid)[container=true]").length).toBeGreaterThanOrEqual(1)
+  })
+
   it("fires submit callback", ()=>{
     Component.simulate("submit", {preventDefault:()=>{}})
     expect(props.onSubmit).toHaveBeenCalledTimes(1)
