@@ -4,13 +4,10 @@ import { connect } from "react-redux"
 import CreatureFormGridField from "./CreatureFormGridField"
 import standardizeCreatureData from "./../helpers/standardizeCreatureData"
 
-
-
-
 const CreatureForm = (props) => {
   const {creature={}, creatures={}, router, onChange, onSubmit} = props
   let _data = standardizeCreatureData(creature, creatures)
-
+  
   const FieldProps = {
     onChange,
     "creature":_data
