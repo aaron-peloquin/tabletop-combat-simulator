@@ -1,40 +1,47 @@
-import { connect } from "react-redux"
-import { mountWithStore } from "enzyme-redux"
-import { createMockStore } from "redux-test-utils"
+import { Provider } from "react-redux"
+import { createShallow } from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
+import { initializeStore } from "../store/store"
 
-import CreaturesList from "./CreaturesList"
+import CreaturesList, { mapStateToProps } from "./CreaturesList"
 import mockStoreState from "../testHelpers/mockStoreState"
 
-describe("<CreaturesList />", () => {
-  const ReactComponent = () => <CreaturesList />
-  const mapStateToProps = (state) => ({state})
-  const store = createMockStore(mockStoreState)
-  const EmptyStore = createMockStore({})
-  const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
-  const componentWithStore = mountWithStore(<ConnectedComponent />, store)
-  const EmptyComponentWithStore = mountWithStore(<ConnectedComponent />, EmptyStore)
-
-  it("loads", async () => {
-    expect(typeof ReactComponent).toBe("function")
-    expect(typeof componentWithStore).toBe("object")
+describe("<CreaturesList />", ()=>{
+  const RenderShallowUntilComponent = createShallow({"untilSelector":"CreaturesList"})
+  let store, state, props, Component
+  beforeEach(async ()=>{
+    store = initializeStore(mockStoreState)
+    Component = RenderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
   })
 
-  it("Contains a table", () => {
-    expect(componentWithStore.find("CreaturesTable").length).toBeGreaterThanOrEqual(1)
+  it("loads", () => {
+    expect(typeof Component).toBe("object")
   })
 
-  it("Contains a message about seeing no creatures", () => {
-    const NoCreaturesMsg = EmptyComponentWithStore.find("[data-class=\"no-creatures\"]")
-    expect(NoCreaturesMsg.length).toBe(1)
+  it("has a mui table", ()=>{
+    expect(Component.find("WithStyles(Table)").length).toBe(1)
+    expect(Component.find("WithStyles(TableHead)").length).toBe(1)
+    expect(Component.find("WithStyles(TableBody)").length).toBe(1)
   })
 
-  it("Snapshots with no creatures", ()=> {
-    expect(toJson(EmptyComponentWithStore)).toMatchSnapshot()
+  it("has a row for each creature", () => {
+    state = store.getState()
+    expect(state.creatures.length).toBe(Component.find("Connect(CreaturesTableRow)").length)
   })
 
+  it("shows message when empty", () => {
+    store = initializeStore({})
+    Component = RenderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
+    expect(Component.text()).toBe("No creatures exist yet")
+  })
 
   it("Snapshots", () => {
-    expect(toJson(componentWithStore)).toMatchSnapshot()
+    expect(toJson(Component)).toMatchSnapshot()
+  })
+
+  it("Snapshots without any creatures", () => {
+    store = initializeStore({})
+    Component = RenderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
+    expect(toJson(Component)).toMatchSnapshot()
   })
 })
