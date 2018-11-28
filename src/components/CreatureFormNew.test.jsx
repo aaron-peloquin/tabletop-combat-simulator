@@ -1,24 +1,27 @@
-import { connect } from "react-redux"
-import { mountWithStore } from "enzyme-redux"
-import { createMockStore } from "redux-test-utils"
+import { Provider } from "react-redux"
+import { createShallow } from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
+import { initializeStore } from "../store/store"
 
 import CreatureFormNew from "./CreatureFormNew"
 import mockStoreState from "../testHelpers/mockStoreState"
 
-describe("<CreatureFormNew />", ()=>{
-  const ReactComponent = () => <CreatureFormNew />
-  const mapStateToProps = (state) => ({state})
-  const store = createMockStore(mockStoreState)
-  const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
-  const component = mountWithStore(<ConnectedComponent />, store)
-
-  it("loads", async () => {
-    expect(typeof ReactComponent).toBe("function")
-    expect(typeof component).toBe("object")
+describe("<CreatureForm />", ()=>{
+  const RenderShallowUntilComponent = createShallow({"untilSelector":"CreatureFormNew"})
+  let store, props, Component
+  beforeEach(async ()=>{
+    store = initializeStore(mockStoreState)
+    props = {
+      creature: mockStoreState.creatures[0]
+    }
+    Component = RenderShallowUntilComponent(<Provider store={store}><CreatureFormNew {...props} /></Provider>)
   })
 
-  it("Snapshots", () => {
-    expect(toJson(component)).toMatchSnapshot()
+  it("loads", async () => {
+    expect(typeof Component).toBe("object")
+  })
+
+  it("snapshots", () => {
+    expect(toJson(Component)).toMatchSnapshot()
   })
 })
