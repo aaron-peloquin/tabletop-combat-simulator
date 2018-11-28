@@ -1,24 +1,31 @@
-// import renderer from "react-test-renderer"
-import { connect } from "react-redux"
-import { shallowWithStore } from "enzyme-redux"
-import { createMockStore } from "redux-test-utils"
-import mockStoreState from "../testHelpers/mockStoreState"
+import { Provider } from "react-redux"
+import { createShallow } from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
+import { initializeStore } from "../store/store"
 
 import Index from "../pages/index"
+import mockStoreState from "../testHelpers/mockStoreState"
 
-describe("<Index /> page", ()=>{
-  it("loads", async () => {
-    const ReactComponent = () => <Index />
-    expect(typeof ReactComponent).toBe("function")
+describe("<Creature /> Page", ()=>{
+  const RenderShallowUntilComponent = createShallow({"untilSelector":"Index"})
+  let store, props, Component
+
+  beforeEach(()=>{
+    store = initializeStore(mockStoreState)
+    props = Index.getInitialProps(props)
+    Component = RenderShallowUntilComponent(<Provider store={store}><Index {...props} /></Provider>)
   })
 
+  it("loads", ()=>{
+    expect(typeof Component).toBe("object")
+  })
+
+  it("has the expected page title", () => {
+    expect(props.title).toBe("Tabletop Combat Simulator")
+  })
+
+
   it("Snapshots", () => {
-    const ReactComponent = () => <Index />
-    const mapStateToProps = (state) => ({state})
-    const store = createMockStore(mockStoreState)
-    const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
-    const component = shallowWithStore(<ConnectedComponent />, store)
-    expect(toJson(component)).toMatchSnapshot()
+    expect(toJson(Component)).toMatchSnapshot()
   })
 })

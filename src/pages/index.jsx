@@ -1,9 +1,13 @@
 import React, { Fragment } from "react";
 
-const index = () => {
+const Index = () => {
   return <Fragment>
     Hello, homepage.
   </Fragment>;
 }
 
-export default index;
+Index.getInitialProps = () => {
+  const title = "Tabletop Combat Simulator"
+  return { title }
+}
+export default Index
