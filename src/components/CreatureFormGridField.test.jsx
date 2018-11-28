@@ -30,7 +30,7 @@ describe("<CreatureFormGridField />", ()=>{
     expect(Component.find("WithStyles(Grid)[item=true]").length).toBe(1)
   })
 
-  it("has a grid with xs of 12 (and no other sizes) when large", ()=>{
+  it("has a grid with xs of 12 (and no other MUI breakpoints) when large", ()=>{
     props.size = "large"
     Component = RenderShallowUntilComponent(<Provider store={store}><CreatureFormGridField {...props} /></Provider>)
     expect(Component.find("WithStyles(Grid)[xs=12]").length).toBe(1)
@@ -40,10 +40,22 @@ describe("<CreatureFormGridField />", ()=>{
     expect(Component.find("WithStyles(Grid)[xl]").length).toBe(0)
   })
 
+  it("has a grid with any xs, sm, and md when small", ()=>{
+    props.size = "small"
+    Component = RenderShallowUntilComponent(<Provider store={store}><CreatureFormGridField {...props} /></Provider>)
+    expect(Component.find("WithStyles(Grid)[xs][sm][md]").length).toBe(1)
+  })
+
   it("has a grid with any sm when medium", ()=>{
     props.size = "medium"
     Component = RenderShallowUntilComponent(<Provider store={store}><CreatureFormGridField {...props} /></Provider>)
     expect(Component.find("WithStyles(Grid)[sm]").length).toBe(1)
+  })
+
+  it("can be a textarea", ()=>{
+    props.field = "multiline"
+    Component = RenderShallowUntilComponent(<Provider store={store}><CreatureFormGridField {...props} /></Provider>)
+    expect(Component.find("TextField[multiline=true]").length).toBe(1)
   })
 
   it("fires onChange callback", ()=>{
