@@ -8,10 +8,13 @@ import { Typography } from "@material-ui/core"
 import lookupCreatureHash from "./../helpers/lookupCreatureHash"
 import CreatureFormEdit from "./../components/CreatureFormEdit"
 
-let creature = props => {
+let Creature = props => {
   const {creature={}, router, classes} = props
   if(typeof creature.name == "undefined") {
-    return <Typography variant="h1">Creature #404, not found</Typography>
+    return <Fragment>
+      <Typography variant="h1">Creature #404, not found</Typography>
+      <p><Link href="/creatures"><a className={classes.link}><Button variant="contained" color="primary">List of Creatures</Button></a></Link></p>
+    </Fragment>
   }
 
   return <Fragment>
@@ -21,19 +24,18 @@ let creature = props => {
   </Fragment>
 }
 
-creature.getInitialProps = async () => {
+Creature.getInitialProps = () => {
   let title = "Edit Creature"
   return { title }
 }
 
-const mapStateToProps = (state, props) => {
+export const mapStateToProps = (state, props) => {
   const {hash=0} = props.router.query
   const id = lookupCreatureHash(hash,state.creatures)
   let creature
   if(id>-1) {
     creature = state.creatures[id]||{}
   }
-  
   return {creature}
 }
 
@@ -42,7 +44,7 @@ const styles = {
 }
 
 /** Add MUI styles to this component */
-const creatureWithStyles = withStyles(styles)(creature)
+const creatureWithStyles = withStyles(styles)(Creature)
 
 /** Connect component to redux state */
 const creatureWithState = connect(mapStateToProps)(creatureWithStyles)
