@@ -6,7 +6,7 @@ import { initializeStore } from "../store/store"
 import Index from "../pages/index"
 import mockStoreState from "../testHelpers/mockStoreState"
 
-describe("<Creature /> Page", ()=>{
+describe("<Index /> Page", ()=>{
   const RenderShallowUntilComponent = createShallow({"untilSelector":"Index"})
   let store, props, Component
 
