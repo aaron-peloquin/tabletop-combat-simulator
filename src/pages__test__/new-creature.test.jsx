@@ -1,25 +1,34 @@
-// import renderer from "react-test-renderer"
-import { connect } from "react-redux"
-import { mountWithStore } from "enzyme-redux"
-import { createMockStore } from "redux-test-utils"
-import mockStoreState from "../testHelpers/mockStoreState"
+import { Provider } from "react-redux"
+import { createShallow } from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
+import { initializeStore } from "../store/store"
 
 import NewCreature from "../pages/new-creature"
+import mockStoreState from "../testHelpers/mockStoreState"
 
-describe("<Creature /> page", ()=>{
-  const ReactComponent = () => <NewCreature />
-  const mapStateToProps = (state) => ({state})
-  const store = createMockStore(mockStoreState)
-  const ConnectedComponent = connect(mapStateToProps)(ReactComponent)
-  const component = mountWithStore(<ConnectedComponent />, store)
+describe("<Creature /> Page", ()=>{
+  const RenderShallowUntilComponent = createShallow({"untilSelector":"NewCreature"})
+  let store, props, Component
 
-  it("loads", async () => {
-    expect(typeof ReactComponent).toBe("function")
-    expect(typeof component).toBe("object")
+  beforeEach(()=>{
+    store = initializeStore(mockStoreState)
+    props = NewCreature.getInitialProps(props)
+    Component = RenderShallowUntilComponent(<Provider store={store}><NewCreature {...props} /></Provider>)
+  })
+
+  it("loads", ()=>{
+    expect(typeof Component).toBe("object")
+  })
+
+  it("has a page title of `Edit Creature`", () => {
+    expect(props.title).toBe("New Creature")
+  })
+
+  it("has a link back to the creatures page", () => {
+    expect(Component.find("Link[href=\"/creatures\"] a").length).toBeGreaterThanOrEqual(1)
   })
 
   it("Snapshots", () => {
-    expect(toJson(component)).toMatchSnapshot()
+    expect(toJson(Component)).toMatchSnapshot()
   })
 })

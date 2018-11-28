@@ -5,7 +5,7 @@ import Link from "next/link"
 
 import CreatureFormNew from "../components/CreatureFormNew"
 
-const newCreature = (props) => {
+const NewCreature = (props) => {
   const {router, classes} = props
   
   return <Fragment>
@@ -19,7 +19,12 @@ const styles = {
   link: { textDecoration: "none", },
 }
 
+NewCreature.getInitialProps = () => {
+  const title = "New Creature"
+  return { title }
+}
+
 /** Add MUI styles to this component */
-const newCreatureWithStyles = withStyles(styles)(newCreature)
+const newCreatureWithStyles = withStyles(styles)(NewCreature)
 
 export default newCreatureWithStyles
