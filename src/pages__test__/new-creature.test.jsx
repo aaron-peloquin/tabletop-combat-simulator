@@ -20,7 +20,7 @@ describe("<Creature /> Page", ()=>{
     expect(typeof Component).toBe("object")
   })
 
-  it("has a page title of `Edit Creature`", () => {
+  it("has the expected page title", () => {
     expect(props.title).toBe("New Creature")
   })
 

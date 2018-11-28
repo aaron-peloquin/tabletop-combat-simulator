@@ -25,7 +25,7 @@ describe("<Creature /> Page", ()=>{
     expect(typeof Component).toBe("object")
   })
 
-  it("has a page title of `Edit Creature`", () => {
+  it("has the expected page title", () => {
     Component = RenderShallowUntilComponent(<Provider store={store}><Creature {...props} /></Provider>)
     expect(props.title).toBe("Edit Creature")
   })
