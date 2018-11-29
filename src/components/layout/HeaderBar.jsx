@@ -8,10 +8,10 @@ import { connect } from "react-redux"
 import ToggleSidebar from "./../../store/action/ToggleSidebar"
 
 const HeaderBar = (props) => {
-  const {dispatch} = props
+  const { dispatch, FuncToggleSidebar } = props
   return <AppBar>
     <Toolbar>
-      <IconButton color="inherit" aria-label="Menu" onClick={()=>{ return ToggleSidebar(dispatch) }} >
+      <IconButton color="inherit" aria-label="Menu" onClick={()=>{ return FuncToggleSidebar(dispatch) }} >
         <MenuIcon />
       </IconButton>
       <Typography variant="h4" color="inherit">Tabletop Combat Simulator</Typography>
@@ -19,7 +19,11 @@ const HeaderBar = (props) => {
   </AppBar>
 }
 
-const mapStateToProps = (state) => {
+HeaderBar.defaultProps = {
+  FuncToggleSidebar: ToggleSidebar
+}
+
+export const mapStateToProps = (state) => {
   return {open:state.sideBar}
 }
 
