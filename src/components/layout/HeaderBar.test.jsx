@@ -34,21 +34,6 @@ describe("<HeaderBar />", ()=>{
     expect(store.getState().sideBar).toBe(true)
   })
 
-  // it("has a <Grid> container", ()=>{
-  //   expect(Component.find("WithStyles(Grid)[container=true]").length).toBeGreaterThanOrEqual(1)
-  // })
-
-  // it("fires submit callback", ()=>{
-  //   Component.simulate("submit", {preventDefault:()=>{}})
-  //   expect(props.onSubmit).toHaveBeenCalledTimes(1)
-  // })
-
-  // it("submit routes to /creatures", () => {
-  //   Component.simulate("submit", {preventDefault:()=>{}})
-  //   expect(props.router.push).toHaveBeenCalledTimes(1)
-  //   expect(props.router.push).toHaveBeenCalledWith("/creatures")
-  // })
-
   it("snapshots", () => {
     expect(toJson(Component)).toMatchSnapshot()
   })
