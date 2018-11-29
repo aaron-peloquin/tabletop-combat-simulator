@@ -3,9 +3,9 @@ import standardizeCreatureData from "./standardizeCreatureData"
 const mockState = [{"name":"some mock data","hash":"fakeHash"}]
 
 describe("standardizeCreatureData()", ()=>{
-
+  let result
   it("returns an object with correct keys", () => {
-    const result = standardizeCreatureData({}, mockState)
+    result = standardizeCreatureData({}, mockState)
     expect(typeof result).toBe("object")
     expect(Object.keys(result)).toEqual([
       "name","cr","hash","description",
@@ -15,7 +15,7 @@ describe("standardizeCreatureData()", ()=>{
   })
   
   it("returns valid defaults for important keys", () => {
-    const result = standardizeCreatureData({}, mockState)
+    result = standardizeCreatureData({}, mockState)
     expect(typeof result).toBe("object")
     expect(typeof result.name).toBe("string")
     expect(result.name.length).toBeGreaterThan(0)
@@ -24,6 +24,11 @@ describe("standardizeCreatureData()", ()=>{
     expect(result.armor).toBe(10)
     expect(result.hp).toBe(15)
   })
+
+  it("refuses to generate a new hash when not given a state", () => {
+    console.warn = jest.fn(()=>{})
+    result = standardizeCreatureData()
+    expect(result.hash).toBe(null)
+    expect(console.warn).toBeCalled
+  })
 })
-
-
