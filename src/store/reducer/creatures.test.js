@@ -34,7 +34,6 @@ describe("[reduxReducer] creatures", ()=>{
   })
 
   it("[CreatureUpdate] modifies creature data", ()=>{
-    console.log("statestate", state)
     data = {
       type: actionTypes.CreatureUpdate,
       payload: {
