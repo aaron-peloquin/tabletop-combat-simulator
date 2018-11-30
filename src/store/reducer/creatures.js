@@ -50,20 +50,20 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
     state = defaultState
     break
 
-  /** Payload: {hash,newCreatureData} */
-  case actionTypes.CreatureUpdate:
-    id = lookup(payload.hash, state)
-    if(id>=0) {
-      state[id] = payload
-    }
-    break
-
   /** Payload: hash */
   case actionTypes.CreatureDeleteOne:
     /** !Revisit & finish later */
     id = lookup(payload, state)
     if(id>=0) {
       state.splice(id,1)
+    }
+    break
+
+  /** Payload: {hash,newCreatureData} */
+  case actionTypes.CreatureUpdate:
+    id = lookup(payload.hash, state)
+    if(id>=0) {
+      state[id] = payload
     }
     break
   }
