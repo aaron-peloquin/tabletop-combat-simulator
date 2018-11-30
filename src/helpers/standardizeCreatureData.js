@@ -25,8 +25,7 @@ const standardizeCreatureData = (creatureData={}, state=null) => {
   /** If we were not given a hash, and we were given a state, generate a unique hash */
   if(hash===null) {
     if(state!==null) {
-      hash = generateHash()
-      while(lookupCreatureHash(hash, state)>=0){
+      while(hash===null || lookupCreatureHash(hash, state)>=0){
         hash = generateHash()
       }
     }
