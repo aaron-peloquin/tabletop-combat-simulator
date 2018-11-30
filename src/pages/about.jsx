@@ -1,13 +1,14 @@
+import React, { Fragment } from "react"
 
-const about = () => {
-  return <div>
+const About = () => {
+  return <Fragment>
     <p>Some about page copy.</p>
-  </div>;
-};
+  </Fragment>
+}
 
-about.getInitialProps = async () => {
-  let title = "About";
-  return { title };
-};
+About.getInitialProps = async () => {
+  let title = "About"
+  return { title }
+}
 
-export default about;
+export default About
