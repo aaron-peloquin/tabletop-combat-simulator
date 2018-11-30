@@ -6,10 +6,10 @@
  * @param {bool} showWarning Defaulted to if window is undefined, enables console.warn when true if we cannot save 
  */
 const hasWindow = (typeof window !== "undefined")
-const localStorageLoad = (key, showWarning = hasWindow) => {
+const localStorageLoad = (key, showWarning=hasWindow, storage=localStorage) => {
   let returnData = {}
   try {
-    const localData = localStorage.getItem("ttcs-"+key)
+    const localData = storage.getItem("ttcs-"+key)
     if(localData) {
       const localDataJSON = JSON.parse(localData)
       if(localDataJSON) {
@@ -24,6 +24,5 @@ const localStorageLoad = (key, showWarning = hasWindow) => {
   }
   return returnData
 }
-
 
 export default localStorageLoad

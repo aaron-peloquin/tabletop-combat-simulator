@@ -1,10 +1,24 @@
 import localStorageSave from "./localStorageSave"
 
 describe("localStorageSave()", ()=>{
-  it("can save", ()=>{
-    localStorageSave("testSave", {test:true}, true)
-    const test = localStorage.getItem("ttcs-testSave")
+  let data = {test:true}
+  let test
+
+  afterEach(() => {
     localStorage.removeItem("ttcs-testSave")
-    expect(JSON.parse(test)).toEqual({test:true})  
+  })
+
+  it("can save", ()=>{
+    localStorageSave("testSave", data, true)
+    test = localStorage.getItem("ttcs-testSave")
+    expect(JSON.parse(test)).toEqual(data)  
+  })
+
+  it("calls console.warn when failing to access localStorage", ()=>{
+    console.warn = jest.fn(() => {})
+    localStorageSave("testSave", data, true, null)
+    test = localStorage.getItem("ttcs-testSave")
+    expect(JSON.parse(test)).not.toEqual(data)
+    expect(console.warn).toBeCalledTimes(1)
   })
 })

@@ -1,10 +1,25 @@
 import localStorageLoad from "./localStorageLoad"
 
 describe("[helper] localStorageLoad()", ()=>{
-  it("can load", async () => {
-    localStorage.setItem("ttcs-testLoad",JSON.stringify({test:true}), true)
-    const test = localStorageLoad("testLoad")
+  let data = {test:true}
+  beforeEach(()=>{
+    localStorage.setItem("ttcs-testLoad",JSON.stringify(result), true)
+  })
+  afterEach(()=>{
     localStorage.removeItem("ttcs-testLoad")
-    expect(test).toEqual({test:true})
+  })
+  let result
+  it("can load", async () => {
+    localStorage.setItem("ttcs-testLoad",JSON.stringify(data), true)
+    result = localStorageLoad("testLoad")
+    localStorage.removeItem("ttcs-testLoad")
+    expect(result).toEqual(data)
+  })
+
+  it("calls console.warn when failing to access localStorage", () => {
+    console.warn = jest.fn(() => {})
+    result = localStorageLoad("testLoad", true, null)
+    expect(result).not.toEqual(data)
+    expect(console.warn).toBeCalledTimes(1) 
   })
 })
