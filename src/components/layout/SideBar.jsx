@@ -1,33 +1,10 @@
-import { SwipeableDrawer, List, ListItem, ListItemIcon, ListItemText, } from "@material-ui/core/"
+import { SwipeableDrawer, List } from "@material-ui/core/"
 import { withStyles } from "@material-ui/core/styles"
 import { Home, Info, ViewList, } from "@material-ui/icons"
 import { connect } from "react-redux"
-import Link from "next/link"
 
 import ToggleSidebar from "./../../store/action/ToggleSidebar"
-
-/** MUI Styles for <SideBar />, and it's internal <SideBarLink /> */
-
-/**
- * Component for links as list items
- * @param {obj} props
-    * @param {str} classes MUI object for CSS
-    * @param {str} text The text of this link
-    * @param {str} url The href
-    * @param {jsx} children Optional icon
-    * @return {jsx} <Link /> component to be placed inside of a <ListItem />
- */
-const SideBarLink = (props) => {
-  const {text, url, children, classes} = props
-  return <Link href={url}>
-    <a className={classes.link}>
-      <ListItem button>
-        {children?<ListItemIcon>{children}</ListItemIcon>:""}
-        <ListItemText primary={text} />
-      </ListItem>
-    </a>
-  </Link>
-}
+import SideBarLink from "./SideBarLink"
 
 /**
  * Swipable drawer for navigation
@@ -56,9 +33,9 @@ const mapStateToProps = (state) => {
   return {open:state.sideBar}
 }
 
+/** MUI Styles for <SideBar /> */
 const styles = {
   drawerContainer: { width: 250, },
-  link: { textDecoration: "none", },
 }
 
 /** Add MUI styles to this component */
