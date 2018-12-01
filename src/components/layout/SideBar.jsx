@@ -10,26 +10,30 @@ import SideBarLink from "./SideBarLink"
  * Swipable drawer for navigation
  */
 const SideBar = (props) => {
-  const { dispatch, open, classes } = props
-  return <SwipeableDrawer onOpen={()=>{ToggleSidebar(dispatch)}} open={open} anchor="left" onClose={()=>{ToggleSidebar(dispatch)}}>
+  const { dispatch, open, classes, FuncToggleSidebar } = props
+  return <SwipeableDrawer onOpen={()=>{FuncToggleSidebar(dispatch)}} open={open} anchor="left" onClose={()=>{FuncToggleSidebar(dispatch)}}>
     <div
       className={classes.drawerContainer}
       role="button"
-      onClick={()=>{ToggleSidebar(dispatch)}}
-      onKeyDown={()=>{ToggleSidebar(dispatch)}}
+      onClick={()=>{FuncToggleSidebar(dispatch)}}
+      onKeyDown={()=>{FuncToggleSidebar(dispatch)}}
     >
       <List>
-        <SideBarLink classes={classes} text="Home" url="/"><Home /></SideBarLink>
-        <SideBarLink classes={classes} text="About" url="/about"><Info /></SideBarLink>
-        <SideBarLink classes={classes} text="Creatures" url="/creatures"><ViewList /></SideBarLink>
-        <SideBarLink classes={classes} text="Combat Simulator" url="/combat-simulator"></SideBarLink>
+        <SideBarLink text="Home" url="/"><Home /></SideBarLink>
+        <SideBarLink text="About" url="/about"><Info /></SideBarLink>
+        <SideBarLink text="Creatures" url="/creatures"><ViewList /></SideBarLink>
+        <SideBarLink text="Combat Simulator" url="/combat-simulator"></SideBarLink>
       </List>
     </div>
   </SwipeableDrawer>
 }
 
+SideBar.defaultProps = {
+  FuncToggleSidebar: ToggleSidebar
+}
+
 /** Map the {redux}.SideBar to the <SideBar /> component */
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {open:state.sideBar}
 }
 
