@@ -6,7 +6,14 @@
  * @param {bool} showWarning Defaulted to if window is undefined, enables console.warn when true if we cannot save 
  */
 const hasWindow = (typeof window !== "undefined")
-const localStorageLoad = (key, showWarning=hasWindow, storage=localStorage) => {
+let localStore
+try {
+  localStore = localStorage
+}
+catch(e){
+  localStore = null
+}
+const localStorageLoad = (key, showWarning=hasWindow, storage=localStore) => {
   let returnData = {}
   try {
     const localData = storage.getItem("ttcs-"+key)
