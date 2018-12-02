@@ -7,6 +7,11 @@ import { connect } from "react-redux"
 
 import ToggleSidebar from "./../../store/action/ToggleSidebar"
 
+/**
+ * Component for the top of every page, contains a text heading and menu toggle button
+ * @param {func} dispatch redux dispatcher
+ * @param {func} FuncToggleSidebar is the redux action (dispatcher) for toggling the sidebar open/closed
+ */
 const HeaderBar = (props) => {
   const { dispatch, FuncToggleSidebar } = props
   return <AppBar>

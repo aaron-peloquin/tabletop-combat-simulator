@@ -4,20 +4,11 @@ import {withStyles} from "@material-ui/core/styles"
 import HeaderBar from "./HeaderBar"
 import SideBar from "./SideBar"
 
-const styles = (theme) => {
-  return {
-    content: {
-      margin: "0 auto",
-      marginTop: "90px",
-      width: "80%",
-    },
-    paper: {
-      minHeight: "500px",
-      padding: theme.spacing.unit * 4,
-    }
-  }
-}
-
+/**
+ * Default page layout, wraps the <HeaderBar />, <SideBar /> and main content area for each page.
+ * @param {jsx} children is the page contents
+ * @param {obj} classes is the wrapping MUI styles for all pages
+ */
 const Layout = ({children="No page content was passed",classes}) => {
   return (
     <div>
@@ -34,5 +25,19 @@ const Layout = ({children="No page content was passed",classes}) => {
       </main>
     </div>
   )}
+
+const styles = (theme) => {
+  return {
+    content: {
+      margin: "0 auto",
+      marginTop: "90px",
+      width: "80%",
+    },
+    paper: {
+      minHeight: "500px",
+      padding: theme.spacing.unit * 4,
+    }
+  }
+}
 
 export default withStyles(styles)(Layout)

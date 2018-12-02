@@ -8,9 +8,13 @@ import SideBarLink from "./SideBarLink"
 
 /**
  * Swipable drawer for navigation
+ * @param {func} dispatch redux dispatcher
+ * @param {obj} classes is the wrapping MUI styles for all pages
+ * @param {bool} open the Redux state of the sideBar
+ * @param {func} FuncToggleSidebar is the redux action (dispatcher) for toggling the sideBar open/closed
  */
 const SideBar = (props) => {
-  const { dispatch, open, classes, FuncToggleSidebar } = props
+  const { dispatch, classes, open, FuncToggleSidebar } = props
   return <SwipeableDrawer onOpen={()=>{FuncToggleSidebar(dispatch)}} open={open} anchor="left" onClose={()=>{FuncToggleSidebar(dispatch)}}>
     <div
       className={classes.drawerContainer}
