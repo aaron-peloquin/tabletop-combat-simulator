@@ -14,7 +14,7 @@ describe("<SideBarLink />", ()=>{
     }
 
     /** Attach spy to store.dispatch */
-    Component = RenderShallowUntilComponent(<Provider store={store}><SideBarLink {...props} /></Provider>)
+    Component = RenderShallowUntilComponent(<SideBarLink {...props} />)
   })
 
   it("loads", async () => {
