@@ -8,7 +8,7 @@ const lookupCreatureHash = (hash,state) => {
   let key = -1
   state.forEach((v,k)=>{
     if(v.hash===hash){
-      key = k //?
+      key = k
     }
   })
   return key
