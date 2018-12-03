@@ -22,7 +22,12 @@ This is an array of objects. Those objects have the following keys:
 ## Teams
 ### Actions
 * AddToTeam {creatureHash, team}
+* CreatureCreate
+* CreatureDeleteAll
+* CreatureDeleteOne
+* CreatureUpdate
 * RemoveFromTeam {Key, team}
+* ToggleSidebar
 * UpdateInititive {Key, team}
 ### Data
 * TeamA (array of objects)
