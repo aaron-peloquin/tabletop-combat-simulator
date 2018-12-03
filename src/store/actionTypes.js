@@ -8,6 +8,9 @@ const actions = {
   CreatureDeleteAll: "CreatureDeleteAll",
   CreatureDeleteOne: "CreatureDeleteOne",
   CreatureUpdate: "CreatureUpdate",
+  TeamAdd: "TeamAdd",
+  TeamRemove: "TeamRemove",
+  TeamCreatureUpdate: "TeamCreatureUpdate",
   ToggleSidebar: "ToggleSidebar",
 }
 
