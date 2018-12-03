@@ -21,22 +21,25 @@ This is an array of objects. Those objects have the following keys:
 * {str} Damage dice equation
 ## Teams
 ### Actions
-* AddToTeam {creatureHash, team}
-* CreatureCreate
+* CreatureCreate { creatureData }
 * CreatureDeleteAll
-* CreatureDeleteOne
-* CreatureUpdate
-* RemoveFromTeam {Key, team}
-* ToggleSidebar
-* UpdateInititive {Key, team}
+* CreatureDeleteOne { hash }
+* CreatureUpdate { new creature data (with the hash key requierd) }
+* TeamAdd { creatureHash, team }
+* TeamRemove { hash, team }
+* TeamCreatureUpdate { hash, inititive, amount }
+* ToggleSidebar { }
+* UpdateInititive { hash, team }
 ### Data
 * TeamA (array of objects)
   * {str} CreatureHash
   * {num} Inititive
   * {num} Times Hit
   * {num} Current HP
+  * {num} Amount
 * TeamB (array of objects)
   * {str} CreatureHash
   * {num} Inititive
   * {num} Times Hit
   * {num} Current HP
+  * {num} Amount
