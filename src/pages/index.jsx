@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from "react"
 
 const Index = () => {
   return <Fragment>
     Hello, homepage.
-  </Fragment>;
+  </Fragment>
 }
 
 Index.getInitialProps = () => {
