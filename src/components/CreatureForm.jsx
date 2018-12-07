@@ -4,6 +4,15 @@ import { connect } from "react-redux"
 import CreatureFormGridField from "./CreatureFormGridField"
 import standardizeCreatureData from "./../helpers/standardizeCreatureData"
 
+/**
+ * A form for managing creature data. When the form is submitted, it redirects to `/creatures`.
+ * @param {obj} props 
+ *    @param {obj} creature a creature data object
+ *    @param {obj} creatures all of this visitor's creatures
+ *    @param {obj} router the react url router
+ *    @param {func} onChange called when any field in this form
+ *    @param {func} onSubmit called when the form is submitted
+ */
 const CreatureForm = (props) => {
   const {creature={}, creatures={}, router, onChange, onSubmit} = props
   let _data = standardizeCreatureData(creature, creatures)
@@ -13,7 +22,7 @@ const CreatureForm = (props) => {
     "creature":_data
   }
 
-  /** Handle the form submissions callback */
+  /** Handles form submissions and the onSubmit callback */
   const submitData = (e) => {
     e.preventDefault()
     if(_data.name.length>0 && typeof onSubmit=="function") {
