@@ -1,6 +1,5 @@
-import {Grid,TextField} from "@material-ui/core/"
+import { Grid, TextField, Select, MenuItem } from "@material-ui/core/"
 import { withStyles } from "@material-ui/core/styles"
-
 
 /** Builds <Grid> input fields for the <CreatureForm /> element */
 let CreatureFormGridField = (props) => {
@@ -24,11 +23,13 @@ let CreatureFormGridField = (props) => {
     label: label
   }
 
-  if(field=="multiline") {
-    DataField = <TextField multiline rows="3" {...FieldProps} />
-  }
-  else {
+  switch(field) {
+  default:
     DataField = <TextField {...FieldProps} />
+    break
+  case "multiline":
+    DataField = <TextField multiline rows="3" {...FieldProps} />
+    break
   }
 
   switch(size) {
