@@ -8,7 +8,7 @@ describe("standardizeCreatureData()", ()=>{
     result = standardizeCreatureData({}, mockState)
     expect(typeof result).toBe("object")
     expect(Object.keys(result)).toEqual([
-      "name","cr","hash","description",
+      "name","team","cr","hash","description",
       "defaultInitiative","armor","hp",
       "hitDiceEquation","damageDiceEquation"
     ])
