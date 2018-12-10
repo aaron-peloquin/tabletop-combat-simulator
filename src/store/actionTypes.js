@@ -5,6 +5,7 @@
 */
 const actions = {
   CreatureCreate: "CreatureCreate",
+  CreatureCreateUpdate: "CreatureCreateUpdate",
   CreatureDeleteAll: "CreatureDeleteAll",
   CreatureDeleteOne: "CreatureDeleteOne",
   CreatureUpdate: "CreatureUpdate",
