@@ -23,6 +23,8 @@ _This is a single creature object, see the Creature's Data listed above for keys
 # Redux Actions
 * DeleteCreature { hash }
   * Removes a creature from our dataset
+* DeleteAllCreatures { "confirm" }
+  * Removes a creature from our dataset
 * SaveCreature { _CreatureObject_ }
   * This can both creature or update a creature
 * SetEditCreature { _CreatureObject_ }

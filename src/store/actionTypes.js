@@ -4,15 +4,10 @@
  *  also be used as a list of our existing actions
 */
 const actions = {
-  CreatureCreate: "CreatureCreate",
-  CreatureCreateUpdate: "CreatureCreateUpdate",
-  CreatureDeleteAll: "CreatureDeleteAll",
-  CreatureDeleteOne: "CreatureDeleteOne",
-  CreatureUpdate: "CreatureUpdate",
-  EditingHashUpdate: "EditingHashUpdate",
-  TeamAdd: "TeamAdd",
-  TeamRemove: "TeamRemove",
-  TeamCreatureUpdate: "TeamCreatureUpdate",
+  DeleteAllCreatures: "DeleteAllCreatures",
+  DeleteCreature: "DeleteCreature",
+  SaveCreature: "SaveCreature",
+  SetEditCreature: "SetEditCreature",
   ToggleSidebar: "ToggleSidebar",
 }
 
