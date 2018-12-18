@@ -6,17 +6,19 @@ import CreatureFormGridField from "./CreatureFormGridField"
 import standardizeCreatureData from "./../helpers/standardizeCreatureData"
 
 /**
- * A form for managing creature data. When the form is submitted, it redirects to `/creatures`.
+ * A form for managing creature data.
  * @param {obj} props 
  *    @param {obj} creature a creature data object
- *    @param {obj} creatures all of this visitor's creatures
+ *    @param {obj} AllCreatures all of this visitor's creatures
  *    @param {func} onChange called when any field in this form
  *    @param {func} onSubmit called when the form is submitted
  */
 const CreatureForm = (props) => {
-  const { creature={}, creatures={}, onChange, onSubmit, classes } = props
-  let buttonText = (typeof creature.hash === "undefined"?"Create":"Save")
-  let _data = standardizeCreatureData(creature, creatures)
+  const { EditingCreature={}, AllCreatures={}, onChange, onSubmit, classes } = props
+  let buttonText = (typeof EditingCreature.hash === "undefined"?"Create":"Save")
+
+  /** Ensure we have all the proper data keys, and a unique hash */
+  let _data = standardizeCreatureData(EditingCreature, AllCreatures)
   
   const FieldProps = {
     onChange,
@@ -36,8 +38,6 @@ const CreatureForm = (props) => {
     if(_data.name.length>0 && typeof onSubmit=="function") {
       onSubmit(_data)
     }
-    /** Clear the form */
-    _data = standardizeCreatureData({}, creatures)
   }
 
   const submitDataTeamB = (e) => {
@@ -70,8 +70,13 @@ const CreatureForm = (props) => {
   </form>
 }
 
-const mapStateToProps = (state, props) => {
-  return {creatures:state.creatures}
+const mapStateToProps = (state) => {
+  const EditingCreature = state.editing
+  const AllCreatures = state.creatures
+  return {
+    AllCreatures,
+    EditingCreature,
+  }
 }
 
 const styles = (theme) => {
