@@ -35,7 +35,7 @@ let CreatureFormGridField = (props) => {
   switch(size) {
   default:
   case "small":
-    wrappedField = <Grid item xs={12} sm={6} md={3}>{DataField}</Grid>
+    wrappedField = <Grid item xs={12} sm={4} md={4}>{DataField}</Grid>
     break
   case "medium":
     wrappedField = <Grid item xs={12} sm={6}>{DataField}</Grid>

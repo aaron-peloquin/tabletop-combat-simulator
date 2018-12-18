@@ -52,10 +52,9 @@ const CreatureForm = (props) => {
       <Grid container>
         <CreatureFormGridField {...FieldProps} size="large" dataKey="name" label="Name" />
 
-        <CreatureFormGridField {...FieldProps} dataKey="cr" label="Challenge Rating" />
         <CreatureFormGridField {...FieldProps} dataKey="hp" label="Hit Points" />
         <CreatureFormGridField {...FieldProps} dataKey="armor" label="Armor" />
-        <CreatureFormGridField {...FieldProps} dataKey="defaultInitiative" label="Default Initiative" />
+        <CreatureFormGridField {...FieldProps} dataKey="initiative" label="Initiative" />
 
         <CreatureFormGridField {...FieldProps} size="medium" dataKey="hitDiceEquation" label="Hit Dice Equation" placeholder="eg. 1d20+4" />
         <CreatureFormGridField {...FieldProps} size="medium" dataKey="damageDiceEquation" label="Damage Dice Equation" placeholder="eg. 1d6+2d4+2" />
