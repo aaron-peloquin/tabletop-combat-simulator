@@ -10,12 +10,11 @@ import standardizeCreatureData from "./../helpers/standardizeCreatureData"
  * @param {obj} props 
  *    @param {obj} creature a creature data object
  *    @param {obj} creatures all of this visitor's creatures
- *    @param {obj} router the react url router
  *    @param {func} onChange called when any field in this form
  *    @param {func} onSubmit called when the form is submitted
  */
 const CreatureForm = (props) => {
-  const { creature={}, creatures={}, onChange, onSubmit, router, classes } = props
+  const { creature={}, creatures={}, onChange, onSubmit, classes } = props
   let buttonText = (typeof creature.hash === "undefined"?"Create":"Save")
   let _data = standardizeCreatureData(creature, creatures)
   
