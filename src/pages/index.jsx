@@ -6,15 +6,9 @@ import CreatureForm from "./../components/CreatureForm"
 import CreatureCreateUpdate from "./../store/action/CreatureCreateUpdate"
 
 const Index = (props) => {
-  const { dispatch, FuncCreatureCreateUpdate } = props
-
-  const runUpdate = (creatureData) => {
-    FuncCreatureCreateUpdate(dispatch, creatureData)
-  }
-
   return <Grid container spacing={24}>
     <Grid item xs={12}>
-      <CreatureForm onSubmit={runUpdate} />
+      <CreatureForm />
     </Grid>
     <Grid item xs={12} container spacing={24}>
       <Grid item sm={6}>Team A</Grid>
@@ -28,7 +22,6 @@ const Index = (props) => {
 }
 
 Index.defaultProps = {
-  FuncCreatureCreateUpdate: CreatureCreateUpdate,
 }
 
 Index.getInitialProps = () => {
@@ -36,4 +29,4 @@ Index.getInitialProps = () => {
   return { title }
 }
 
-export default connect()(Index)
+export default Index
