@@ -23,13 +23,13 @@ const editingReducer = (state=defaultState, { type=false, payload={} }) => {
   /** Payload: { starting creature data } */
   case actionTypes.SaveCreature:
     /** Clear the state */
-    state = state.slice()
+    state = Object.assign({}, state)
     state = defaultState
     break
 
   case actionTypes.SetEditCreature:
     /** Set a new creature into the state */
-    state = state.slice()
+    state = Object.assign({}, state)
     state = payload
     break
   }
