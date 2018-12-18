@@ -16,7 +16,7 @@ This is an array of objects. Those objects have the following keys:
 * {str} Hit Dice equation
 * {str} Damage dice equation
 
-## Edit
+## Editing
 ### Data
 _This is a single creature object, see the Creature's Data listed above for keys_
 
