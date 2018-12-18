@@ -21,9 +21,6 @@ const Index = (props) => {
   </Grid>
 }
 
-Index.defaultProps = {
-}
-
 Index.getInitialProps = () => {
   const title = "Tabletop Combat Simulator"
   return { title }
