@@ -1,11 +1,9 @@
 import React from "react"
 import { Grid } from "@material-ui/core"
-import { connect } from "react-redux"
 
 import CreatureForm from "./../components/CreatureForm"
-import CreatureCreateUpdate from "./../store/action/CreatureCreateUpdate"
 
-const Index = (props) => {
+const Index = () => {
   return <Grid container spacing={24}>
     <Grid item xs={12}>
       <CreatureForm />
