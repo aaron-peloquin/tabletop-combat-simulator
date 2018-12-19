@@ -1,11 +1,11 @@
-import CreatureDeleteOne from "./CreatureDeleteOne"
+import DeleteCreature from "./DeleteCreature"
 import actionTypes from "../actionTypes"
 
-describe("[reduxAction] CreatureDeleteOne", ()=>{
+describe("[reduxAction] DeleteCreature", ()=>{
   const mockFunction = jest.fn((d)=>{return d})
   const mockValidParam = "hd39ej3"
-  const expectedReturn = {"type":actionTypes.CreatureDeleteOne, "payload":mockValidParam}
-  const actualValidReturn = CreatureDeleteOne(mockFunction, mockValidParam)
+  const expectedReturn = {"type":actionTypes.DeleteCreature, "payload":mockValidParam}
+  const actualValidReturn = DeleteCreature(mockFunction, mockValidParam)
 
   it("calls mockFunction", ()=>{
     expect(mockFunction).toBeCalled
