@@ -4,9 +4,11 @@ const mockState = [{"name":"some mock data","hash":"fakeHash"}]
 
 describe("standardizeCreatureData()", ()=>{
   let result
-  it("returns an object with correct keys", () => {
+  beforeEach(() => {
     result = standardizeCreatureData({}, mockState)
     expect(typeof result).toBe("object")
+  })
+  it("returns an object with correct keys", () => {
     expect(Object.keys(result)).toEqual([
       "name","team","cr","hash","description",
       "defaultInitiative","armor","hp",
@@ -15,14 +17,11 @@ describe("standardizeCreatureData()", ()=>{
   })
   
   it("returns valid defaults for important keys", () => {
-    result = standardizeCreatureData({}, mockState)
-    expect(typeof result).toBe("object")
     expect(typeof result.name).toBe("string")
-    expect(result.name.length).toBeGreaterThan(0)
     expect(result.hash.length).toBe(8)
-    expect(result.defaultInitiative).toBe(10)
-    expect(result.armor).toBe(10)
-    expect(result.hp).toBe(15)
+    expect(result.initiative).toBe(0)
+    expect(result.armor).toBe(0)
+    expect(result.hp).toBe(0)
   })
 
   it("refuses to generate a new hash when not given a state", () => {
