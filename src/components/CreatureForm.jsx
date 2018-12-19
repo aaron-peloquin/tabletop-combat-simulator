@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import CreatureFormGridField from "./CreatureFormGridField"
 import standardizeCreatureData from "./../helpers/standardizeCreatureData"
 import SaveCreature from "./../store/action/SaveCreature"
+import UpdateEditCreature from "./../store/action/UpdateEditCreature"
 
 /**
  * A form for managing creature data.
@@ -17,6 +18,7 @@ import SaveCreature from "./../store/action/SaveCreature"
 const CreatureForm = (props) => {
   const {
     SaveCreature,
+    UpdateEditCreature,
     AllCreatures={},
     onChange,
     onSubmit,
@@ -28,11 +30,18 @@ const CreatureForm = (props) => {
   let buttonText = (typeof EditingCreature.hash === "undefined"?"Create":"Save")
 
   /** Ensure we have all the proper data keys, and a unique hash */
-  EditingCreature = standardizeCreatureData(EditingCreature, AllCreatures)
+  // EditingCreature = standardizeCreatureData(EditingCreature, AllCreatures)
+
+  const WrappedChange = (k, v) => {
+    if(typeof onChange === "function") {
+      onChange(k, v)
+    }
+    UpdateEditCreature(k, v)
+  }
 
   const FieldProps = {
-    onChange,
-    "creature": EditingCreature
+    onChange: WrappedChange,
+    creature: EditingCreature
   }
 
   /** Handles form submissions and the onSubmit callback */
@@ -91,6 +100,7 @@ const mapStateToProps = (state) => {
 const MapActionsToProps = (dispatch) => {
   return {
     SaveCreature: data => { SaveCreature(dispatch, data) },
+    UpdateEditCreature: (key, value) => { UpdateEditCreature(dispatch, key, value) }
   }
 }
 

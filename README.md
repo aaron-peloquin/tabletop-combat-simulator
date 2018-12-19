@@ -31,3 +31,5 @@ _This is a single creature object, see the Creature's Data listed above for keys
   * Sets a _CreatureObject_ into `store.editing`
 * ToggleSidebar { bool }
   * Opens and closes the side navigation drawer
+* UpdateEditCreature { "key", "value" }
+  * Used whenever we update a field in the edit form

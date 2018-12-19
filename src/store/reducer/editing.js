@@ -32,6 +32,13 @@ const editingReducer = (state=defaultState, { type=false, payload={} }) => {
     state = Object.assign({}, state)
     state = payload
     break
+
+  /** Payload: { key, value } */
+  case actionTypes.UpdateEditCreature:
+    /** Set a new creature into the state */
+    state = Object.assign({}, state)
+    state[payload.key] = payload.value
+    break
   }
   return state
 }

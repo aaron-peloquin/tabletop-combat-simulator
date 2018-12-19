@@ -9,6 +9,7 @@ const actions = {
   SaveCreature: "SaveCreature",
   SetEditCreature: "SetEditCreature",
   ToggleSidebar: "ToggleSidebar",
+  UpdateEditCreature: "UpdateEditCreature",
 }
 
 export default actions
