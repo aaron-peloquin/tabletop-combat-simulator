@@ -35,22 +35,12 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
     saveToStorage = false
     break
 
-  /** Payload: { starting creature data } */
-  case actionTypes.CreatureCreate:
-    if(payload) {
-      /** Ensure creatures have standardized data */
-      payload = standardize(payload, state)
-      /** If this creature has any data, add them into the state */
-      state.push(payload)
-    }
-    break
-
-  /** Update a creature based on it's hash, otherwise create that creature. */
-  case actionTypes.CreatureCreateUpdate:
+    /** Update a creature based on it's hash, otherwise create that creature. */
+  case actionTypes.SaveCreature:
     if(payload) {
       /** Attempt to find an id for this hash. */
       id = lookup(payload, state)
-      if(id>=0) {
+      if( id >= 0 ) {
         /** Update this creature */
         state[id] = payload
       }
@@ -64,12 +54,12 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
     break
 
     /** Payload: { } */
-  case actionTypes.CreatureDeleteAll:
+  case actionTypes.DeleteAllCreatures:
     state = defaultState
     break
 
   /** Payload: hash */
-  case actionTypes.CreatureDeleteOne:
+  case actionTypes.DeleteCreature:
     id = lookup(payload, state)
     if(id>=0) {
       state.splice(id,1)
