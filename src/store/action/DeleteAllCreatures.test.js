@@ -1,17 +1,17 @@
-import CreatureDeleteAll from "./CreatureDeleteAll"
+import DeleteAllCreatures from "./DeleteAllCreatures"
 
-describe("[reduxAction] CreatureDeleteAll", ()=>{
+describe("[reduxAction] DeleteAllCreatures", ()=>{
   const mockFunction = jest.fn(()=>{})
   const mockValidPayload = "delete all"
   const mockInvalidPayload = ["delete none"]
 
   it("mockFunction is not called with invalid payload", ()=>{
-    CreatureDeleteAll(mockFunction, mockInvalidPayload)
+    DeleteAllCreatures(mockFunction, mockInvalidPayload)
     expect(mockFunction).toBeCalledTimes(0)
   })
 
   it("mockFunction is called with valid payload", ()=>{
-    CreatureDeleteAll(mockFunction, mockValidPayload)
+    DeleteAllCreatures(mockFunction, mockValidPayload)
     expect(mockFunction).toBeCalledTimes(1)
   })
 })
