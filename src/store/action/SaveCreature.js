@@ -5,12 +5,12 @@ import actionTypes from "../actionTypes"
  * @param {func} dispatch the redux dispatcher action
  * @param {obj} payload of the creature's data
  */
-const CreatureCreateUpdate = (dispatch, payload) => {
+const SaveCreature = (dispatch, payload) => {
   const data = {
-    type: actionTypes.CreatureCreateUpdate,
+    type: actionTypes.SaveCreature,
     payload
   }
   return dispatch(data)
 }
 
-export default CreatureCreateUpdate
+export default SaveCreature
