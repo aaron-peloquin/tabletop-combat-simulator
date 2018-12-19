@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 
 import CreatureFormGridField from "./CreatureFormGridField"
 import standardizeCreatureData from "./../helpers/standardizeCreatureData"
+import SaveCreature from "./../store/action/SaveCreature"
 
 /**
  * A form for managing creature data.
@@ -14,34 +15,42 @@ import standardizeCreatureData from "./../helpers/standardizeCreatureData"
  *    @param {func} onSubmit called when the form is submitted
  */
 const CreatureForm = (props) => {
-  const { EditingCreature={}, AllCreatures={}, onChange, onSubmit, classes } = props
+  const {
+    SaveCreature,
+    AllCreatures={},
+    onChange,
+    onSubmit,
+    classes,
+  } = props
+  let {
+    EditingCreature = {}
+  } = props
   let buttonText = (typeof EditingCreature.hash === "undefined"?"Create":"Save")
 
   /** Ensure we have all the proper data keys, and a unique hash */
-  let _data = standardizeCreatureData(EditingCreature, AllCreatures)
-  
+  EditingCreature = standardizeCreatureData(EditingCreature, AllCreatures)
+
   const FieldProps = {
     onChange,
-    "creature":_data
+    "creature": EditingCreature
   }
 
   /** Handles form submissions and the onSubmit callback */
   const submitData = (e) => {
     e.preventDefault()
 
-    if(_data.team.length === 0) {
-      _data.team = "a"
+    if(EditingCreature.team.length === 0) {
+      EditingCreature.team = "a"
     }
 
-    console.log("_data.team", typeof _data.team, _data.team)
-
-    if(_data.name.length>0 && typeof onSubmit=="function") {
-      onSubmit(_data)
+    if(EditingCreature.name.length>0 && typeof onSubmit=="function") {
+      onSubmit(EditingCreature)
     }
+    SaveCreature()
   }
 
   const submitDataTeamB = (e) => {
-    _data.team = "b"
+    EditingCreature.team = "b"
     submitData(e)
   }
 
@@ -79,6 +88,12 @@ const mapStateToProps = (state) => {
   }
 }
 
+const MapActionsToProps = (dispatch) => {
+  return {
+    SaveCreature: data => { SaveCreature(dispatch, data) },
+  }
+}
+
 const styles = (theme) => {
   return {
     submitButtons: {
@@ -90,5 +105,5 @@ const styles = (theme) => {
 }
 
 const CreatureFormStyled = withStyles(styles)(CreatureForm)
-const CreatureFormStyledConnected = connect(mapStateToProps)(CreatureFormStyled)
+const CreatureFormStyledConnected = connect(mapStateToProps, MapActionsToProps)(CreatureFormStyled)
 export default CreatureFormStyledConnected

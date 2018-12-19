@@ -16,17 +16,17 @@ describe("[reduxReducer] creatures", ()=>{
     expect(state[0].name).toBe("Hello World")
   })
 
-  it("[CreatureDeleteAll] deletes all creature data", ()=>{
+  it("[DeleteAllCreatures] deletes all creature data", ()=>{
     expect(state.length).toBe(2)
-    data = { type: actionTypes.CreatureDeleteAll }
+    data = { type: actionTypes.DeleteAllCreatures }
     state = creatures(state, data)
     expect(state.length).toBe(0)
   })
 
-  it("[CreatureDeleteOne] modifies creature data", ()=>{
+  it("[DeleteCreature] modifies creature data", ()=>{
     expect(state.length).toBe(1)
     data = {
-      type: actionTypes.CreatureDeleteOne,
+      type: actionTypes.DeleteCreature,
       payload: state[0].hash
     }
     state = creatures(state, data)

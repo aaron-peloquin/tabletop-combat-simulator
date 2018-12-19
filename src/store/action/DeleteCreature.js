@@ -7,7 +7,7 @@ import actionTypes from "../actionTypes"
  */
 const DeleteCreature = (dispatch, hash) => {
   const data = {
-    type: actionTypes.CreatureDeleteOne,
+    type: actionTypes.DeleteCreature,
     payload:hash
   }
   return dispatch(data)
