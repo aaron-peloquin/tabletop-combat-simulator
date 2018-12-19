@@ -23,7 +23,9 @@ const defaultState = []
 const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
   let saveToStorage = true
   let id
+
   const creaturesStorage = load("creatures")
+
   if(creaturesStorage.length>0) {
     state = creaturesStorage
   }
@@ -38,15 +40,19 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
     /** Update a creature based on it's hash, otherwise create that creature. */
   case actionTypes.SaveCreature:
     if(payload) {
+
       /** Attempt to find an id for this hash. */
       id = lookup(payload, state)
       if( id >= 0 ) {
+
         /** Update this creature */
         state[id] = payload
       }
       else {
+
         /** Ensure creatures have standardized data */
         payload = standardize(payload, state)
+
         /** Create a new creature */
         state.push(payload)
       }
@@ -55,6 +61,7 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
 
     /** Payload: { } */
   case actionTypes.DeleteAllCreatures:
+    /** Reset state to default */
     state = defaultState
     break
 
