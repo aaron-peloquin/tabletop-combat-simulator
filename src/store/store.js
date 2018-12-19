@@ -5,10 +5,12 @@ import thunkMiddleware from "redux-thunk"
 /** Reducers */
 import creatures from "./reducer/creatures"
 import sideBar from "./reducer/sideBar"
+import editing from "./reducer/editing"
 
 /** Reducers */
 const reducers = combineReducers({
   creatures,
+  editing,
   sideBar,
 })
 
