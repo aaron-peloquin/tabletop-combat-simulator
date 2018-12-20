@@ -1,17 +1,17 @@
 import { connect } from "react-redux"
 import {Button} from "@material-ui/core"
 
-import CreatureDeleteAll from "./../store/action/CreatureDeleteAll"
+import DeleteAll from "./../store/action/DeleteAllCreatures"
 
 const DeleteAllCreatures = (props) => {
-  const { dispatch, ActionDeleteAll } = props
+  const { dispatch, DeleteAll } = props
   return <Button data-id="delete-all" onClick={()=>{
-    ActionDeleteAll(dispatch,"delete all")
+    DeleteAll(dispatch,"delete all")
   }} variant="contained" color="secondary">Delete All Creatures</Button>
 }
 
 DeleteAllCreatures.getInitialProps = async () => {
-  return { ActionDeleteAll: CreatureDeleteAll }
+  return { ActionDeleteAll: DeleteAll }
 }
 
 export default connect()(DeleteAllCreatures)
