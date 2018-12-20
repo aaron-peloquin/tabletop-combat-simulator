@@ -6,10 +6,11 @@ import CreatureFormGridField from "./CreatureFormGridField"
 import standardizeCreatureData from "./../helpers/standardizeCreatureData"
 import SaveCreature from "./../store/action/SaveCreature"
 import UpdateEditCreature from "./../store/action/UpdateEditCreature"
+import SetEditCreature from "./../store/action/SetEditCreature"
 
 /**
  * A form for managing creature data.
- * @param {obj} props 
+ * @param {obj} props
  *    @param {obj} creature a creature data object
  *    @param {obj} AllCreatures all of this visitor's creatures
  *    @param {func} onChange called when any field in this form
@@ -19,6 +20,7 @@ const CreatureForm = (props) => {
   const {
     SaveCreature,
     UpdateEditCreature,
+    SetEditCreature,
     AllCreatures={},
     onChange,
     onSubmit,
@@ -30,7 +32,10 @@ const CreatureForm = (props) => {
   let buttonText = (typeof EditingCreature.hash === "undefined"?"Create":"Save")
 
   /** Ensure we have all the proper data keys, and a unique hash */
-  // EditingCreature = standardizeCreatureData(EditingCreature, AllCreatures)
+  let StandardizedEditingCreature = standardizeCreatureData(EditingCreature, AllCreatures)
+  if(JSON.stringify(StandardizedEditingCreature) !== JSON.stringify(EditingCreature)) {
+    SetEditCreature
+  }
 
   const WrappedChange = (k, v) => {
     if(typeof onChange === "function") {
@@ -100,6 +105,7 @@ const mapStateToProps = (state) => {
 const MapActionsToProps = (dispatch) => {
   return {
     SaveCreature: data => { SaveCreature(dispatch, data) },
+    SetEditCreature: data => { SetEditCreature(dispatch, data) },
     UpdateEditCreature: (key, value) => { UpdateEditCreature(dispatch, key, value) }
   }
 }
