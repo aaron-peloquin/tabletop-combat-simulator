@@ -26,15 +26,14 @@ const CreatureForm = (props) => {
     onSubmit,
     classes,
   } = props
-  let {
-    EditingCreature = {}
-  } = props
+  let EditingCreature = props.EditingCreature
+  console.log("EditingCreature", EditingCreature)
   let buttonText = (typeof EditingCreature.hash === "undefined"?"Create":"Save")
 
   /** Ensure we have all the proper data keys, and a unique hash */
   let StandardizedEditingCreature = standardizeCreatureData(EditingCreature, AllCreatures)
   if(JSON.stringify(StandardizedEditingCreature) !== JSON.stringify(EditingCreature)) {
-    SetEditCreature
+    SetEditCreature(StandardizedEditingCreature)
   }
 
   const WrappedChange = (k, v) => {
@@ -53,14 +52,16 @@ const CreatureForm = (props) => {
   const submitData = (e) => {
     e.preventDefault()
 
-    if(EditingCreature.team.length === 0) {
+    if(typeof EditingCreature.team == "undefined" || EditingCreature.team.length === 0) {
       EditingCreature.team = "a"
     }
 
-    if(EditingCreature.name.length>0 && typeof onSubmit=="function") {
-      onSubmit(EditingCreature)
+    if(EditingCreature.name.length > 0) {
+      if(typeof onSubmit=="function") {
+        onSubmit(EditingCreature)
+      }
+      SaveCreature(EditingCreature)
     }
-    SaveCreature()
   }
 
   const submitDataTeamB = (e) => {

@@ -14,7 +14,7 @@ describe("<CreatureForm />", ()=>{
     props = {
       onSubmit: jest.fn(()=>{}),
       router: { push: jest.fn(() => {}) },
-      creature: mockStoreState.creatures[0]
+      EditingCreature: mockStoreState.creatures[0],
     }
     Component = RenderShallowUntilComponent(<Provider store={store}><CreatureForm {...props} /></Provider>)
   })
