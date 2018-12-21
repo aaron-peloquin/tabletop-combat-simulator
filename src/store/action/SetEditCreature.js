@@ -10,6 +10,7 @@ const SetEditCreature = (dispatch, payload) => {
     type: actionTypes.SetEditCreature,
     payload
   }
+
   return dispatch(data)
 }
 
