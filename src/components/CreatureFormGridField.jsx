@@ -74,7 +74,6 @@ const styles = (theme) => {
 
 const MapStateToProps = (state, props) => {
   const dataValue = state.editing[props.dataKey]
-  console.log("dataValue", props.dataKey, dataValue)
   return {
     dataValue,
   }
