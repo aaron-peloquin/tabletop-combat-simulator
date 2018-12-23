@@ -16,7 +16,7 @@ describe("<TeamList />", () => {
   })
 
   it("renders", () => {
-    expect(TeamListComponent).toBe("object")
+    expect(typeof TeamListComponent).toBe("object")
   })
 
   it("snapshots", () => {
