@@ -27,7 +27,6 @@ const CreatureForm = (props) => {
     classes,
   } = props
   let EditingCreature = props.EditingCreature
-  console.log("EditingCreature", EditingCreature)
   let buttonText = (typeof EditingCreature.hash === "undefined"?"Create":"Save")
 
   /** Ensure we have all the proper data keys, and a unique hash */
@@ -45,7 +44,7 @@ const CreatureForm = (props) => {
 
   const FieldProps = {
     onChange: WrappedChange,
-    creature: EditingCreature
+    // creature: EditingCreature
   }
 
   /** Handles form submissions and the onSubmit callback */

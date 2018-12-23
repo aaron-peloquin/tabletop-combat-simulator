@@ -1,15 +1,27 @@
-import { Grid, TextField, Select, MenuItem } from "@material-ui/core/"
+import {
+  Grid,
+  TextField,
+} from "@material-ui/core/"
 import { withStyles } from "@material-ui/core/styles"
+import { connect } from "react-redux"
 
 /** Builds <Grid> input fields for the <CreatureForm /> element */
 let CreatureFormGridField = (props) => {
-  const {classes, dataKey, field, label, size, onChange, creature} = props
+  const {
+    classes,
+    dataKey,
+    field,
+    label,
+    size,
+    onChange,
+  } = props
   let wrappedField, DataField
+  let dataValue = props.dataValue
 
   /** Handle updating creature data, and call onChange callback */
   const updateData = (e, key) => {
     const curValue = e.target.value||""
-    creature[key] = curValue
+    dataValue = curValue
 
     if(typeof onChange=="function") {
       onChange(key,curValue)
@@ -19,7 +31,7 @@ let CreatureFormGridField = (props) => {
   let FieldProps = {
     "onChange": (e)=>{ updateData(e, dataKey) },
     className: classes.formField,
-    defaultValue: creature[dataKey],
+    value: dataValue,
     label: label
   }
 
@@ -60,6 +72,14 @@ const styles = (theme) => {
   }
 }
 
+const MapStateToProps = (state, props) => {
+  const dataValue = state.editing[props.dataKey]
+  console.log("dataValue", props.dataKey, dataValue)
+  return {
+    dataValue,
+  }
+}
+
 CreatureFormGridField = withStyles(styles)(CreatureFormGridField)
 
-export default CreatureFormGridField
+export default connect(MapStateToProps)(CreatureFormGridField)
