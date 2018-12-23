@@ -1,5 +1,11 @@
 import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
   Grid,
+  Typography,
+
 } from "@material-ui/core/"
 // import { withStyles } from "@material-ui/core/styles"
 import { connect } from "react-redux"
@@ -9,9 +15,13 @@ const TeamList = (Props) => {
     Creatures,
     Team,
   } = Props
-  console.log("Team", Team)
-  console.log("Creatures", Creatures)
-  return <p>Placeholder</p>
+  console.log("Team", Team, Creatures)
+  return <Grid container>
+    <Grid item xs={12}>Team {Team.toUpperCase()}</Grid>
+    {Creatures.map((Creature, k)=>{
+      return <Grid item sm={6} key={k}>Name: {Creature.name}</Grid>
+    })}
+  </Grid>
 }
 
 const MapStateToProps = (state, props) => {
