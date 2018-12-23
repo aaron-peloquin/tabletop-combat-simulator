@@ -5,7 +5,6 @@ import { initializeStore } from "../store/store"
 
 import DeleteAllCreatures from "../components/DeleteAllCreatures"
 
-
 describe("<DeleteAllCreatures />", ()=>{
   const RenderShallowUntilComponent = createShallow({"untilSelector":"DeleteAllCreatures"})
   let store, props, DeleteAllCreaturesComponent
