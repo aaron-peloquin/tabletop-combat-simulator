@@ -4,7 +4,7 @@ import actionTypes from "../actionTypes"
 describe("[reduxAction] SaveCreature", ()=>{
   const mockFunction = jest.fn((d)=>{return d})
   const mockValidParam = {"name":"Goplin", "hash":"h328dj8"}
-  const expectedReturn = {"type":actionTypes.CreatureUpdate, "payload":mockValidParam}
+  const expectedReturn = {"type":actionTypes.SaveCreature, "payload":mockValidParam}
   const actualValidReturn = SaveCreature(mockFunction, mockValidParam)
 
   it("calls mockFunction", ()=>{
