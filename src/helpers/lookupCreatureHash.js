@@ -4,7 +4,7 @@
  * @param {obj} state the state of characters
  * @returns {int} of the key that was found, or -1
  */
-const lookupCreatureHash = (hash,state) => {
+const lookupCreatureHash = (hash, state) => {
   let key = -1
   state.forEach((v,k)=>{
     if(v.hash===hash){
