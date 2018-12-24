@@ -11,10 +11,15 @@ import {
 import { connect } from "react-redux"
 
 import SetEditCreature from "./../store/action/SetEditCreature"
+import DeleteCreature from "./../store/action/DeleteCreature"
 
 const TeamList = (Props) => {
   const {
+    /** Actions */
     SetEditCreature,
+    DeleteCreature,
+
+    /** Attributes */
     Creatures,
     Team,
   } = Props
@@ -22,14 +27,14 @@ const TeamList = (Props) => {
   return <Grid container>
     <Grid item xs={12}>Team {Team.toUpperCase()}</Grid>
     {Creatures.map((Creature, k)=>{
-      return <Grid item sm={6} key={k}>
+      return <Grid item md={6} key={k}>
         <Card>
           <CardContent>
             <Typography variant="body2">{Creature.name}</Typography>
           </CardContent>
           <CardActions>
             <Button onClick={() => { SetEditCreature(Creature) }}>Edit</Button>
-            <Button>Delete</Button>
+            <Button onClick={() => { DeleteCreature(Creature.hash) }}>Delete</Button>
           </CardActions>
         </Card>
       </Grid>
@@ -49,7 +54,8 @@ const MapStateToProps = (state, props) => {
 
 const MapActionsToProps = (dispatch) => {
   return {
-    SetEditCreature: (Creature) => { SetEditCreature(dispatch, Creature) }
+    SetEditCreature: (Creature) => { SetEditCreature(dispatch, Creature) },
+    DeleteCreature: (Hash) => { DeleteCreature(dispatch, Hash) },
   }
 }
 
