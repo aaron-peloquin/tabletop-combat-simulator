@@ -63,6 +63,11 @@ const CreatureForm = (props) => {
     }
   }
 
+  const submitDataTeamA = (e) => {
+    EditingCreature.team = "a"
+    submitData(e)
+  }
+
   const submitDataTeamB = (e) => {
     EditingCreature.team = "b"
     submitData(e)
@@ -83,7 +88,7 @@ const CreatureForm = (props) => {
       </Grid>
       <Grid container justify="center">
         <Grid item sm={6}>
-          <Button className={classes.submitButtons} type="submit" variant="contained" color="primary" onClick={submitData}>{buttonText} to Team A</Button>
+          <Button className={classes.submitButtons} type="submit" variant="contained" color="primary" onClick={submitDataTeamA}>{buttonText} to Team A</Button>
         </Grid>
         <Grid item sm={6}>
           <Button className={classes.submitButtons} type="submit" variant="contained" color="secondary" onClick={submitDataTeamB}>{buttonText} to Team B</Button>
