@@ -42,7 +42,8 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
     if(payload) {
 
       /** Attempt to find an id for this hash. */
-      id = lookup(payload, state)
+      id = lookup(payload.hash, state)
+      console.log("id id", id)
       if( id >= 0 ) {
 
         /** Update this creature */
