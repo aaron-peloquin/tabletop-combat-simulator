@@ -35,7 +35,7 @@ const editingReducer = (state=defaultState, { type=false, payload={} }) => {
 
   /** Payload: { key, value } */
   case actionTypes.UpdateEditCreature:
-    /** Set a new creature into the state */
+    /** Update a single key's value in the current state */
     state = Object.assign({}, state)
     state[payload.key] = payload.value
     break
