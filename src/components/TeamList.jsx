@@ -23,7 +23,6 @@ const TeamList = (Props) => {
     Creatures,
     Team,
   } = Props
-  console.log("Team", Team, Creatures)
   return <Grid container>
     <Grid item xs={12}>Team {Team.toUpperCase()}</Grid>
     {Creatures.map((Creature, k)=>{
