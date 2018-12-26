@@ -11,6 +11,9 @@ describe("<TeamList />", () => {
 
   beforeEach(() => {
     store = initializeStore({})
+    props = {
+      Team: "a",
+    }
     TeamListComponent = RenderShallowUntilComponent(<Provider store={store}><TeamList {...props} /></Provider>)
 
   })
