@@ -9,7 +9,9 @@ const DeleteAllCreatures = (props) => {
 }
 
 const MapActionsToProps = (dispatch) => {
-  ActionDeleteAll = () => { DeleteAll(dispatch,"delete all") },
+  return {
+    ActionDeleteAll: () => { DeleteAll(dispatch,"delete all") },
+  }
 }
 
 export default connect({}, MapActionsToProps)(DeleteAllCreatures)
