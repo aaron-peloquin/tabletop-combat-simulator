@@ -42,5 +42,16 @@ export default {
       "damageDiceEquation": "1d10+2"
     }
   ],
+  "editing": {
+    "name": "Goplin",
+    "team": "a",
+    "cr": "1/4",
+    "hash": "hivn3p0k",
+    "initiative": 10,
+    "armor": 11,
+    "hp": 5,
+    "hitDiceEquation": "1d20+1",
+    "damageDiceEquation": "1d4"
+  },
   "sideBar": false,
 }
