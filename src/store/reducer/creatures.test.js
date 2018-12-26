@@ -6,13 +6,13 @@ describe("[reduxReducer] creatures", ()=>{
   let state, data
   beforeEach(()=>{
     data = {}
-    data.type = actionTypes.CreatureCreate
+    data.type = actionTypes.SaveCreature
     data.payload = { name: "Hello World" }
     state = creatures(state, data)
     data = {}
   })
 
-  it("[CreatureCreate] adds the new creature in as 0", ()=>{
+  it("[SaveCreature] adds the new creature in as 0", ()=>{
     expect(state[0].name).toBe("Hello World")
   })
 
@@ -33,9 +33,9 @@ describe("[reduxReducer] creatures", ()=>{
     expect(state.length).toBe(0)
   })
 
-  it("[CreatureUpdate] modifies creature data", ()=>{
+  it("[SaveCreature] modifies creature data", ()=>{
     data = {
-      type: actionTypes.CreatureUpdate,
+      type: actionTypes.SaveCreature,
       payload: {
         name: "New Name",
         hash: state[0].hash
