@@ -10,9 +10,9 @@ describe("standardizeCreatureData()", ()=>{
   })
   it("returns an object with correct keys", () => {
     expect(Object.keys(result)).toEqual([
-      "name","team","cr","hash","description",
-      "defaultInitiative","armor","hp",
-      "hitDiceEquation","damageDiceEquation"
+      "name", "team", "hash",
+      "initiative", "armor", "hp",
+      "hitDiceEquation", "damageDiceEquation"
     ])
   })
   

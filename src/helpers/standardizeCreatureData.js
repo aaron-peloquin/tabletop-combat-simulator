@@ -13,14 +13,12 @@ const standardizeCreatureData = (creatureData={}, state=null) => {
   let {
     name = "",
     team = "",
-    cr = "",
     hash = null,
-    description = "",
-    defaultInitiative = "",
-    armor = "",
-    hp = "",
+    initiative = 0,
+    armor = 0,
+    hp = 0,
     hitDiceEquation = "1d20+2",
-    damageDiceEquation = "1d6+3"
+    damageDiceEquation = "1d6+3",
   } = creatureData
 
   /** If we were not given a hash, and we were given a state, generate a unique hash */
@@ -36,8 +34,7 @@ const standardizeCreatureData = (creatureData={}, state=null) => {
   }
 
   return {
-    name, team, cr, hash, description,
-    defaultInitiative, armor, hp,
+    name, team, hash, initiative, armor, hp,
     hitDiceEquation, damageDiceEquation
   }
 }
