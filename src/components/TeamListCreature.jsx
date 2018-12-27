@@ -36,10 +36,8 @@ const MapStateToProps = () => {
 }
 
 const MapActionsToProps = (dispatch) => {
-  console.log("dispatch", typeof dispatch)
   return {
     FuncSetEditCreature: (Creature) => {
-      console.log("SetEditCreature", typeof dispatch)
       SetEditCreature(dispatch, Creature)
     },
     FuncDeleteCreature: (Hash) => {
