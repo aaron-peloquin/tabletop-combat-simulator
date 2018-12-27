@@ -8,17 +8,14 @@ import DeleteAllCreatures from "../components/DeleteAllCreatures"
 describe("<DeleteAllCreatures />", ()=>{
   const RenderShallowUntilComponent = createShallow({"untilSelector":"DeleteAllCreatures"})
   let store, props, DeleteAllCreaturesComponent
-  beforeEach(async ()=>{
+  beforeEach(()=>{
     store = initializeStore({})
     store.dispatch = jest.fn(store.dispatch)
-    props = await DeleteAllCreatures.getInitialProps()
-    props.ActionDeleteAll = jest.fn(props.ActionDeleteAll)
     DeleteAllCreaturesComponent = RenderShallowUntilComponent(<Provider store={store}><DeleteAllCreatures {...props} /></Provider>)
   })
 
   it("calls dispatch on click", () => {
     DeleteAllCreaturesComponent.simulate("click")
-    expect(props.ActionDeleteAll).toBeCalledTimes(1)
     expect(store.dispatch).toBeCalledTimes(1)
   })
 
