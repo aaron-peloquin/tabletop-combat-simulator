@@ -27,7 +27,6 @@ describe("[reduxReducer] editing", ()=>{
     data.type = actionTypes.UpdateEditCreature
     data.payload = { key:"name", value:"New Name Value" }
     result = editing(state, data)
-    console.log("result.name", result.name)
     expect(result.name).toBe("New Name Value")
   })
 })
