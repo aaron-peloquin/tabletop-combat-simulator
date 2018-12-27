@@ -3,6 +3,7 @@ import { Grid } from "@material-ui/core"
 
 import CreatureForm from "./../components/CreatureForm"
 import TeamList from "./../components/TeamList"
+import DeleteAllCreatures from "./../components/DeleteAllCreatures"
 
 const Index = () => {
   return <Grid container spacing={24}>
@@ -16,6 +17,10 @@ const Index = () => {
     <Grid item xs={12} container spacing={24}>
       <Grid item sm={6}>Simulation Results</Grid>
       <Grid item sm={6}>Simulation Log</Grid>
+    </Grid>
+    <Grid item xs={12} container spacing={24} justify="center">
+      <Grid item sm={6}><DeleteAllCreatures /></Grid>
+      <Grid item sm={6}><DeleteAllCreatures /></Grid>
     </Grid>
   </Grid>
 }
