@@ -8,10 +8,14 @@ const DeleteAllCreatures = (props) => {
   return <Button data-id="delete-all" onClick={ActionDeleteAll} variant="contained" color="secondary">Delete All Creatures</Button>
 }
 
+const MapStateToProps = () => {
+  return { }
+}
+
 const MapActionsToProps = (dispatch) => {
   return {
     ActionDeleteAll: () => { DeleteAll(dispatch,"delete all") },
   }
 }
 
-export default connect({}, MapActionsToProps)(DeleteAllCreatures)
+export default connect(MapStateToProps, MapActionsToProps)(DeleteAllCreatures)
