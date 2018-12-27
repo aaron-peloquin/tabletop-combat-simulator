@@ -64,12 +64,6 @@ describe("<CreatureFormGridField />", ()=>{
     expect(props.onChange).toHaveBeenCalledTimes(1)
   })
 
-  it("updates props.creature on change", ()=> {
-    Component = RenderShallowUntilComponent(<Provider store={store}><CreatureFormGridField {...props} /></Provider>)
-    Component.find("TextField").simulate("change", {target:{value:"Some new name"}})
-    expect(props.creature.name).toBe("Some new name")
-  })
-
   it("snapshots", () => {
     Component = RenderShallowUntilComponent(<Provider store={store}><CreatureFormGridField {...props} /></Provider>)
     expect(toJson(Component)).toMatchSnapshot()
