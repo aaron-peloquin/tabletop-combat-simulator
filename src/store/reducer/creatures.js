@@ -72,16 +72,7 @@ const creaturesReducer = (state=defaultState, { type=false, payload={} }) => {
       state.splice(id,1)
     }
     break
-
-  /** Payload: { new creature data, hash key is requierd} */
-  case actionTypes.CreatureUpdate:
-    id = lookup(payload.hash, state)
-    if(id>=0) {
-      state[id] = payload
-    }
-    break
   }
-
   /** If we have modified our state, save it */
   if(saveToStorage) {
     save("creatures", state)
