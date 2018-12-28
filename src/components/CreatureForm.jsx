@@ -51,10 +51,6 @@ const CreatureForm = (props) => {
   const submitData = (e) => {
     e.preventDefault()
 
-    if(typeof EditingCreature.team == "undefined" || EditingCreature.team.length === 0) {
-      EditingCreature.team = "a"
-    }
-
     if(EditingCreature.name.length > 0) {
       if(typeof onSubmit=="function") {
         onSubmit(EditingCreature)
