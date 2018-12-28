@@ -3,9 +3,13 @@ import {
   Card,
   CardActions,
   CardContent,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
   Typography,
 } from "@material-ui/core/"
-// import { withStyles } from "@material-ui/core/styles"
+import { withStyles } from "@material-ui/core/styles"
 import { connect } from "react-redux"
 
 import SetEditCreature from "./../store/action/SetEditCreature"
@@ -22,7 +26,31 @@ const TeamListCreature = (props) => {
   } = props
   return <Card>
     <CardContent>
-      <Typography variant="body2">{Creature.name}</Typography>
+      <Typography variant="body1"><strong>{Creature.name}</strong></Typography>
+      <Table padding="dense">
+        <TableBody>
+          <TableRow>
+            <TableCell>HP</TableCell>
+            <TableCell>{Creature.hp}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Armor</TableCell>
+            <TableCell>{Creature.armor}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Init.</TableCell>
+            <TableCell>{Creature.initiative}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Hit</TableCell>
+            <TableCell>{Creature.hitDiceEquation}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Damage</TableCell>
+            <TableCell>{Creature.damageDiceEquation}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
     </CardContent>
     <CardActions>
       <Button onClick={() => { FuncSetEditCreature(Creature) }}>Edit</Button>
