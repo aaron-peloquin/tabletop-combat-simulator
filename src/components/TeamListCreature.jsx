@@ -8,10 +8,10 @@ import {
   withStyles,
 } from "@material-ui/core/"
 // import { withStyles } from "@material-ui/core/styles"
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 
-import SetEditCreature from "./../store/action/SetEditCreature"
-import DeleteCreature from "./../store/action/DeleteCreature"
+import setEditCreature from "./../store/action/SetEditCreature"
+import deleteCreature from "./../store/action/DeleteCreature"
 import {
   Heart,
   Boot,
@@ -24,8 +24,8 @@ const TeamListCreature = (props) => {
   const {
     classes,
     /** Actions */
-    FuncSetEditCreature,
-    FuncDeleteCreature,
+    funcSetEditCreature,
+    funcDeleteCreature,
 
     /** Attributes */
     Creature,
@@ -43,8 +43,12 @@ const TeamListCreature = (props) => {
     </CardContent>
     <CardActions>
       <Grid container spacing={8} alignItems="stretch" justify="center">
-        <Grid item xs={6}><Button variant="contained" color="primary" onClick={() => { FuncSetEditCreature(Creature) }}>Edit</Button></Grid>
-        <Grid item xs={6}><Button variant="contained" color="secondary" onClick={() => { FuncDeleteCreature(Creature.hash) }}>Delete</Button></Grid>
+        <Grid item xs={6}><Button variant="contained" color="primary" onClick={() => {
+          funcSetEditCreature(Creature)
+        }}>Edit</Button></Grid>
+        <Grid item xs={6}><Button variant="contained" color="secondary" onClick={() => {
+          funcDeleteCreature(Creature.hash)
+        }}>Delete</Button></Grid>
       </Grid>
     </CardActions>
   </Card>
@@ -56,13 +60,13 @@ const MapStateToProps = () => {
 
 const MapActionsToProps = (dispatch) => {
   return {
-    FuncSetEditCreature: (Creature) => {
-      SetEditCreature(dispatch, Creature)
+    funcSetEditCreature: (Creature) => {
+      setEditCreature(dispatch, Creature)
     },
-    FuncDeleteCreature: (Hash) => {
-      DeleteCreature(dispatch, Hash)
+    funcDeleteCreature: (Hash) => {
+      deleteCreature(dispatch, Hash)
     },
-  } 
+  }
 }
 
 const Styles = () => {

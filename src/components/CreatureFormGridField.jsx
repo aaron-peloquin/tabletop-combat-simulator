@@ -2,10 +2,20 @@ import {
   Grid,
   TextField,
 } from "@material-ui/core/"
-import { withStyles } from "@material-ui/core/styles"
-import { connect } from "react-redux"
+import {withStyles} from "@material-ui/core/styles"
+import {connect} from "react-redux"
 
-/** Builds <Grid> input fields for the <CreatureForm /> element */
+/**
+ * Builds <Grid> input fields for the <CreatureForm /> element
+ * @param {obj} props
+ *  @param {obj} classes MUI styles
+ *  @param {str} dataKey the data key of this field
+ *  @param {str} field the type of field
+ *  @param {str} label the display label
+ *  @param {str} size the grid width
+ *  @param {func} onChange a callback function fired when this input field changes
+ * @return {jsx} Component
+ */
 let CreatureFormGridField = (props) => {
   const {
     classes,
@@ -15,27 +25,34 @@ let CreatureFormGridField = (props) => {
     size,
     onChange,
   } = props
-  let wrappedField, DataField
+  let wrappedField; let DataField
   let dataValue = props.dataValue
 
-  /** Handle updating creature data, and call onChange callback */
+  /**
+   * Handle updating creature data, and call onChange callback
+   * @param {obj} e event object
+   * @param {str} key the key we are going to update
+   * @return {void}
+   */
   const updateData = (e, key) => {
     const curValue = e.target.value||""
     dataValue = curValue
 
-    if(typeof onChange=="function") {
-      onChange(key,curValue)
+    if (typeof onChange=="function") {
+      onChange(key, curValue)
     }
   }
 
-  let FieldProps = {
-    "onChange": (e)=>{ updateData(e, dataKey) },
-    className: classes.formField,
-    value: dataValue,
-    label: label
+  const FieldProps = {
+    "onChange": (e)=>{
+      updateData(e, dataKey)
+    },
+    "className": classes.formField,
+    "value": dataValue,
+    "label": label,
   }
 
-  switch(field) {
+  switch (field) {
   default:
     DataField = <TextField {...FieldProps} />
     break
@@ -44,7 +61,7 @@ let CreatureFormGridField = (props) => {
     break
   }
 
-  switch(size) {
+  switch (size) {
   default:
   case "small":
     wrappedField = <Grid item xs={12} sm={4} md={4}>{DataField}</Grid>
@@ -63,12 +80,12 @@ let CreatureFormGridField = (props) => {
 const styles = (theme) => {
   return {
     formField: {
-      width:"100%",
+      width: "100%",
       marginTop: theme.spacing.unit,
       marginBottom: theme.spacing.unit,
       paddingLeft: theme.spacing.unit,
       paddingRight: theme.spacing.unit,
-    }
+    },
   }
 }
 

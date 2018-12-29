@@ -1,12 +1,12 @@
-import { Button, TableRow, TableCell } from "@material-ui/core"
-import { Edit, Delete } from "@material-ui/icons"
+import {Button, TableRow, TableCell} from "@material-ui/core"
+import {Edit, Delete} from "@material-ui/icons"
 import Link from "next/link"
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 
-import DeleteCreature from "./../store/action/DeleteCreature"
+import deleteCreature from "./../store/action/DeleteCreature"
 
 const CreaturesTableRow = (props) => {
-  const { creature, FuncDeleteCreature, dispatch } = props
+  const {creature, funcDeleteCreature, dispatch} = props
   return <TableRow key={creature.hash}>
     <TableCell>
       <Link as={`/creature/${creature.hash}`} href={`/creature?hash=${creature.hash}`}>
@@ -16,7 +16,9 @@ const CreaturesTableRow = (props) => {
           </Button>
         </a>
       </Link>
-      <Button variant="contained" color="secondary" onClick={()=>{FuncDeleteCreature(dispatch, creature.hash)}}>
+      <Button variant="contained" color="secondary" onClick={()=>{
+        funcDeleteCreature(dispatch, creature.hash)
+      }}>
         <Delete />
       </Button>
     </TableCell>
@@ -26,7 +28,7 @@ const CreaturesTableRow = (props) => {
 }
 
 CreaturesTableRow.defaultProps = {
-  FuncDeleteCreature: DeleteCreature
+  funcDeleteCreature: deleteCreature,
 }
 
 export default connect()(CreaturesTableRow)

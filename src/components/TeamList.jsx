@@ -2,7 +2,7 @@ import {
   Grid, Typography,
 } from "@material-ui/core/"
 // import { withStyles } from "@material-ui/core/styles"
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 
 import TeamListCreature from "./TeamListCreature"
 
@@ -21,7 +21,7 @@ const TeamList = (Props) => {
 }
 
 const MapStateToProps = (state, props) => {
-  const { Team } = props
+  const {Team} = props
   /** Get all of the creatures on this team */
   const Creatures = state.creatures.filter((Creature)=>{
     return Creature.team === Team

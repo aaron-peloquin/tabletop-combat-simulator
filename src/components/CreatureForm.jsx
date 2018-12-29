@@ -1,12 +1,12 @@
-import { Button, Grid } from "@material-ui/core/"
-import { withStyles } from "@material-ui/core/styles"
-import { connect } from "react-redux"
+import {Button, Grid} from "@material-ui/core/"
+import {withStyles} from "@material-ui/core/styles"
+import {connect} from "react-redux"
 
 import CreatureFormGridField from "./CreatureFormGridField"
 import standardizeCreatureData from "./../helpers/standardizeCreatureData"
-import SaveCreature from "./../store/action/SaveCreature"
-import UpdateEditCreature from "./../store/action/UpdateEditCreature"
-import SetEditCreature from "./../store/action/SetEditCreature"
+import saveCreature from "./../store/action/SaveCreature"
+import updateEditCreature from "./../store/action/UpdateEditCreature"
+import setEditCreature from "./../store/action/SetEditCreature"
 
 /**
  * A form for managing creature data.
@@ -15,31 +15,32 @@ import SetEditCreature from "./../store/action/SetEditCreature"
  *    @param {obj} AllCreatures all of this visitor's creatures
  *    @param {func} onChange called when any field in this form
  *    @param {func} onSubmit called when the form is submitted
+ * @return {jsx} Component
  */
 const CreatureForm = (props) => {
   const {
-    SaveCreature,
-    UpdateEditCreature,
-    SetEditCreature,
+    funcSaveCreature,
+    funcUpdateEditCreature,
+    funcSetEditCreature,
     AllCreatures={},
     onChange,
     onSubmit,
     classes,
   } = props
-  let EditingCreature = props.EditingCreature
-  let buttonText = (typeof EditingCreature.hash === "undefined"?"Create":"Save")
+  const EditingCreature = props.EditingCreature
+  const buttonText = (typeof EditingCreature.hash === "undefined"?"Create":"Save")
 
   /** Ensure we have all the proper data keys, and a unique hash */
-  let StandardizedEditingCreature = standardizeCreatureData(EditingCreature, AllCreatures)
-  if(JSON.stringify(StandardizedEditingCreature) !== JSON.stringify(EditingCreature)) {
-    SetEditCreature(StandardizedEditingCreature)
+  const StandardizedEditingCreature = standardizeCreatureData(EditingCreature, AllCreatures)
+  if (JSON.stringify(StandardizedEditingCreature) !== JSON.stringify(EditingCreature)) {
+    funcSetEditCreature(StandardizedEditingCreature)
   }
 
   const WrappedChange = (k, v) => {
-    if(typeof onChange === "function") {
+    if (typeof onChange === "function") {
       onChange(k, v)
     }
-    UpdateEditCreature(k, v)
+    funcUpdateEditCreature(k, v)
   }
 
   const FieldProps = {
@@ -47,15 +48,19 @@ const CreatureForm = (props) => {
     // creature: EditingCreature
   }
 
-  /** Handles form submissions and the onSubmit callback */
+  /**
+   * Handles form submissions and the onSubmit callback
+   * @param {obj} e the event object
+   * @return {void}
+   */
   const submitData = (e) => {
     e.preventDefault()
 
-    if(EditingCreature.name.length > 0) {
-      if(typeof onSubmit=="function") {
+    if (EditingCreature.name.length > 0) {
+      if (typeof onSubmit=="function") {
         onSubmit(EditingCreature)
       }
-      SaveCreature(EditingCreature)
+      funcSaveCreature(EditingCreature)
     }
   }
 
@@ -79,15 +84,19 @@ const CreatureForm = (props) => {
         <CreatureFormGridField {...FieldProps} dataKey="armor" label="Armor" />
         <CreatureFormGridField {...FieldProps} dataKey="initiative" label="Initiative" />
 
-        <CreatureFormGridField {...FieldProps} size="medium" dataKey="hitDiceEquation" label="Hit Dice Equation" placeholder="eg. 1d20+4" />
-        <CreatureFormGridField {...FieldProps} size="medium" dataKey="damageDiceEquation" label="Damage Dice Equation" placeholder="eg. 1d6+2d4+2" />
+        <CreatureFormGridField {...FieldProps} size="medium"
+          dataKey="hitDiceEquation" label="Hit Dice Equation" placeholder="eg. 1d20+4" />
+        <CreatureFormGridField {...FieldProps} size="medium"
+          dataKey="damageDiceEquation" label="Damage Dice Equation" placeholder="eg. 1d6+2d4+2" />
       </Grid>
       <Grid container justify="center">
         <Grid item sm={6}>
-          <Button className={classes.submitButtons} type="submit" variant="contained" color="primary" onClick={submitDataTeamA}>{buttonText} to Team A</Button>
+          <Button className={classes.submitButtons} type="submit" variant="contained"
+            color="primary" onClick={submitDataTeamA}>{buttonText} to Team A</Button>
         </Grid>
         <Grid item sm={6}>
-          <Button className={classes.submitButtons} type="submit" variant="contained" color="secondary" onClick={submitDataTeamB}>{buttonText} to Team B</Button>
+          <Button className={classes.submitButtons} type="submit" variant="contained"
+            color="secondary" onClick={submitDataTeamB}>{buttonText} to Team B</Button>
         </Grid>
       </Grid>
     </fieldset>
@@ -105,9 +114,15 @@ const mapStateToProps = (state) => {
 
 const MapActionsToProps = (dispatch) => {
   return {
-    SaveCreature: data => { SaveCreature(dispatch, data) },
-    SetEditCreature: data => { SetEditCreature(dispatch, data) },
-    UpdateEditCreature: (key, value) => { UpdateEditCreature(dispatch, key, value) }
+    funcSaveCreature: (data) => {
+      saveCreature(dispatch, data)
+    },
+    funcSetEditCreature: (data) => {
+      setEditCreature(dispatch, data)
+    },
+    funcUpdateEditCreature: (key, value) => {
+      updateEditCreature(dispatch, key, value)
+    },
   }
 }
 
@@ -115,9 +130,8 @@ const styles = (theme) => {
   return {
     submitButtons: {
       width: "90%",
-      //justify: "center",
-      marginTop: theme.spacing.unit
-    }
+      marginTop: theme.spacing.unit,
+    },
   }
 }
 

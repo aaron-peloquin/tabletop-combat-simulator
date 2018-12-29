@@ -1,11 +1,13 @@
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 import {Button} from "@material-ui/core"
 
-import DeleteAll from "./../store/action/DeleteAllCreatures"
+import deleteAll from "./../store/action/DeleteAllCreatures"
 
 const DeleteAllCreatures = (props) => {
-  const { ActionDeleteAll } = props
-  return <Button data-id="delete-all" onClick={ActionDeleteAll} variant="contained" color="secondary">Delete All Creatures</Button>
+  const {ActionDeleteAll} = props
+  return <Button data-id="delete-all" onClick={ActionDeleteAll} variant="contained" color="secondary">
+    Delete All Creatures
+  </Button>
 }
 
 const MapStateToProps = () => {
@@ -14,7 +16,9 @@ const MapStateToProps = () => {
 
 const MapActionsToProps = (dispatch) => {
   return {
-    ActionDeleteAll: () => { DeleteAll(dispatch,"delete all") },
+    ActionDeleteAll: () => {
+      deleteAll(dispatch, "delete all")
+    },
   }
 }
 
