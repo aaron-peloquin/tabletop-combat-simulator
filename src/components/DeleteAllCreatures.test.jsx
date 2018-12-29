@@ -1,17 +1,17 @@
-import { Provider } from "react-redux"
-import { createShallow } from "@material-ui/core/test-utils"
+import {Provider} from "react-redux"
+import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
-import { initializeStore } from "../store/store"
+import {initializeStore} from "../store/store"
 
 import DeleteAllCreatures from "../components/DeleteAllCreatures"
 
 describe("<DeleteAllCreatures />", ()=>{
-  const RenderShallowUntilComponent = createShallow({"untilSelector":"DeleteAllCreatures"})
-  let store, props, DeleteAllCreaturesComponent
+  const renderShallowUntilComponent = createShallow({"untilSelector": "DeleteAllCreatures"})
+  let store; let props; let DeleteAllCreaturesComponent
   beforeEach(()=>{
     store = initializeStore({})
     store.dispatch = jest.fn(store.dispatch)
-    DeleteAllCreaturesComponent = RenderShallowUntilComponent(<Provider store={store}><DeleteAllCreatures {...props} /></Provider>)
+    DeleteAllCreaturesComponent = renderShallowUntilComponent(<Provider store={store}><DeleteAllCreatures {...props} /></Provider>)
   })
 
   it("calls dispatch on click", () => {

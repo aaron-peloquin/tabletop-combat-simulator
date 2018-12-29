@@ -1,14 +1,14 @@
 // import { Provider } from "react-redux"
-import { createShallow } from "@material-ui/core/test-utils"
+import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
 
 import Layout from "./index"
 
 describe("<Layout />", async ()=>{
-  const RenderShallowUntilComponent = createShallow({"untilSelector":"Layout"})
-  let props, Component
+  const renderShallowUntilComponent = createShallow({"untilSelector": "Layout"})
+  let props; let Component
   beforeEach(async ()=>{
-    Component = await RenderShallowUntilComponent(<Layout {...props} />)
+    Component = await renderShallowUntilComponent(<Layout {...props} />)
   })
 
   it("loads", () => {

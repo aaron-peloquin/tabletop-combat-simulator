@@ -1,15 +1,15 @@
-import { createShallow } from "@material-ui/core/test-utils"
+import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
 
 import About from "../pages/about"
 
 describe("<Creature /> Page", ()=>{
-  const RenderShallowUntilComponent = createShallow()
-  let props, Component
+  const renderShallowUntilComponent = createShallow()
+  let props; let Component
 
   beforeEach( async ()=>{
     props = await About.getInitialProps()
-    Component = RenderShallowUntilComponent(<About {...props} />)
+    Component = renderShallowUntilComponent(<About {...props} />)
   })
 
   it("loads", ()=>{

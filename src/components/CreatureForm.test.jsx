@@ -1,23 +1,23 @@
-import { Provider } from "react-redux"
-import { createShallow } from "@material-ui/core/test-utils"
+import {Provider} from "react-redux"
+import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
-import { initializeStore } from "../store/store"
+import {initializeStore} from "../store/store"
 
 import CreatureForm from "./CreatureForm"
 import mockStoreState from "../testHelpers/mockStoreState"
 
 describe("<CreatureForm />", ()=>{
-  const RenderShallowUntilComponent = createShallow({"untilSelector":"CreatureForm"})
-  let store, props, Component
+  const renderShallowUntilComponent = createShallow({"untilSelector": "CreatureForm"})
+  let store; let props; let Component
   beforeEach(()=>{
     store = initializeStore(mockStoreState)
     props = {
       onSubmit: jest.fn(()=>{}),
       onChange: jest.fn(()=>{}),
-      router: { push: jest.fn(() => {}) },
+      router: {push: jest.fn(() => {})},
       EditingCreature: mockStoreState.creatures[0],
     }
-    Component = RenderShallowUntilComponent(<Provider store={store}><CreatureForm {...props} /></Provider>)
+    Component = renderShallowUntilComponent(<Provider store={store}><CreatureForm {...props} /></Provider>)
   })
 
   it("loads", () => {
@@ -29,12 +29,12 @@ describe("<CreatureForm />", ()=>{
   })
 
   it("fires submit callback with primary button", ()=>{
-    Component.find("WithStyles(Button)[color=\"primary\"]").simulate("click", { preventDefault:()=>{} })
+    Component.find("WithStyles(Button)[color=\"primary\"]").simulate("click", {preventDefault: ()=>{}})
     expect(props.onSubmit).toHaveBeenCalledTimes(1)
   })
 
   it("fires submit callback with secondary button", ()=>{
-    Component.find("WithStyles(Button)[color=\"secondary\"]").simulate("click", { preventDefault:()=>{} })
+    Component.find("WithStyles(Button)[color=\"secondary\"]").simulate("click", {preventDefault: ()=>{}})
     expect(props.onSubmit).toHaveBeenCalledTimes(1)
   })
 

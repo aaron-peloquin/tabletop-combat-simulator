@@ -1,17 +1,17 @@
-import { Provider } from "react-redux"
-import { createShallow } from "@material-ui/core/test-utils"
+import {Provider} from "react-redux"
+import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
-import { initializeStore } from "../store/store"
+import {initializeStore} from "../store/store"
 
-import CreaturesList, { mapStateToProps } from "./CreaturesList"
+import CreaturesList from "./CreaturesList"
 import mockStoreState from "../testHelpers/mockStoreState"
 
 describe("<CreaturesList />", ()=>{
-  const RenderShallowUntilComponent = createShallow({"untilSelector":"CreaturesList"})
-  let store, state, props, Component
+  const renderShallowUntilComponent = createShallow({"untilSelector": "CreaturesList"})
+  let store; let state; let Component
   beforeEach(async ()=>{
     store = initializeStore(mockStoreState)
-    Component = RenderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
+    Component = renderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
   })
 
   it("loads", () => {
@@ -31,7 +31,7 @@ describe("<CreaturesList />", ()=>{
 
   it("shows message when empty", () => {
     store = initializeStore({})
-    Component = RenderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
+    Component = renderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
     expect(Component.text()).toBe("No creatures exist yet")
   })
 
@@ -41,7 +41,7 @@ describe("<CreaturesList />", ()=>{
 
   it("Snapshots without any creatures", () => {
     store = initializeStore({})
-    Component = RenderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
+    Component = renderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
     expect(toJson(Component)).toMatchSnapshot()
   })
 })

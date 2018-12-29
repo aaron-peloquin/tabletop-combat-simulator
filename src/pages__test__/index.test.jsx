@@ -1,19 +1,19 @@
-import { Provider } from "react-redux"
-import { createShallow } from "@material-ui/core/test-utils"
+import {Provider} from "react-redux"
+import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
-import { initializeStore } from "../store/store"
+import {initializeStore} from "../store/store"
 
 import Index from "../pages/index"
 import mockStoreState from "../testHelpers/mockStoreState"
 
 describe("<Index /> Page", ()=>{
-  const RenderShallowUntilComponent = createShallow({"untilSelector":"Index"})
-  let store, props, Component
+  const renderShallowUntilComponent = createShallow({"untilSelector": "Index"})
+  let store; let props; let Component
 
   beforeEach(()=>{
     store = initializeStore(mockStoreState)
     props = Index.getInitialProps(props)
-    Component = RenderShallowUntilComponent(<Provider store={store}><Index {...props} /></Provider>)
+    Component = renderShallowUntilComponent(<Provider store={store}><Index {...props} /></Provider>)
   })
 
   it("loads", ()=>{

@@ -1,19 +1,19 @@
-import { Provider } from "react-redux"
-import { createShallow } from "@material-ui/core/test-utils"
+import {Provider} from "react-redux"
+import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
-import { initializeStore } from "../store/store"
+import {initializeStore} from "../store/store"
 
 import CreaturesTableRow from "./CreaturesTableRow"
 import mockStoreState from "../testHelpers/mockStoreState"
 
 describe("<CreaturesTableRow />", ()=>{
-  const RenderShallowUntilComponent = createShallow({"untilSelector":"CreaturesTableRow"})
-  let store, props, Component
+  const renderShallowUntilComponent = createShallow({"untilSelector": "CreaturesTableRow"})
+  let store; let props; let Component
   beforeEach(async ()=>{
     store = initializeStore(mockStoreState)
     store.dispatch = jest.fn(store.dispatch)
-    props = { creature: mockStoreState.creatures[0] }
-    Component = RenderShallowUntilComponent(<Provider store={store}><CreaturesTableRow {...props} /></Provider>)
+    props = {creature: mockStoreState.creatures[0]}
+    Component = renderShallowUntilComponent(<Provider store={store}><CreaturesTableRow {...props} /></Provider>)
   })
 
   it("loads", () => {
@@ -40,5 +40,4 @@ describe("<CreaturesTableRow />", ()=>{
   it("snapshots", () => {
     expect(toJson(Component)).toMatchSnapshot()
   })
-
 })

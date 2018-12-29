@@ -1,21 +1,21 @@
-import { Provider } from "react-redux"
-import { createShallow } from "@material-ui/core/test-utils"
+import {Provider} from "react-redux"
+import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
-import { initializeStore } from "../../store/store"
+import {initializeStore} from "../../store/store"
 
-import SideBar, { mapStateToProps } from "./SideBar"
+import SideBar, {mapStateToProps} from "./SideBar"
 import mockStoreState from "./../../testHelpers/mockStoreState"
 
 describe("<SideBar />", ()=>{
-  const RenderShallowUntilComponent = createShallow({"untilSelector":"SideBar"})
-  let store, props, Component
+  const renderShallowUntilComponent = createShallow({"untilSelector": "SideBar"})
+  let store; let props; let Component
   beforeEach(async ()=>{
     store = initializeStore(mockStoreState)
     props = mapStateToProps(store.getState())
 
     /** Attach spy to store.dispatch */
     store.dispatch = jest.fn(store.dispatch)
-    Component = RenderShallowUntilComponent(<Provider store={store}><SideBar {...props} /></Provider>)
+    Component = renderShallowUntilComponent(<Provider store={store}><SideBar {...props} /></Provider>)
   })
 
   it("loads", async () => {

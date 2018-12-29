@@ -1,12 +1,11 @@
-import { Provider } from "react-redux"
-import { createShallow } from "@material-ui/core/test-utils"
+import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
 
 import SideBarLink from "./SideBarLink"
 
 describe("<SideBarLink />", ()=>{
-  const RenderShallowUntilComponent = createShallow({"untilSelector":"SideBarLink"})
-  let store, props, Component
+  const renderShallowUntilComponent = createShallow({"untilSelector": "SideBarLink"})
+  let store; let props; let Component
   beforeEach(async ()=>{
     props = {
       text: "hello",
@@ -14,7 +13,7 @@ describe("<SideBarLink />", ()=>{
     }
 
     /** Attach spy to store.dispatch */
-    Component = RenderShallowUntilComponent(<SideBarLink {...props} />)
+    Component = renderShallowUntilComponent(<SideBarLink {...props} />)
   })
 
   it("loads", async () => {
