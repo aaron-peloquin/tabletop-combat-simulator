@@ -17,7 +17,7 @@
     "react/jsx-uses-vars": "error",
     "no-console": ["error",{"allow": ["warn","log"]}],
     "linebreak-style": "off",
-    "max-len": ["error", { "code": 125 }],
+    "max-len": ["warn", { "code": 125 }],
     "indent": ["error",2],
     "quotes": ["error","double"],
     "semi": ["error","never"]
