@@ -5,7 +5,7 @@
     "es6": true,
     "jest": true
   },
-  "extends": "eslint:recommended",
+  "extends": "google",
   "parserOptions": {
     "ecmaFeatures": {"jsx": true},
     "ecmaVersion": 2018,
@@ -16,6 +16,8 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "no-console": ["error",{"allow": ["warn","log"]}],
+    "linebreak-style": "off",
+    "max-len": ["error", { "code": 125 }],
     "indent": ["error",2],
     "quotes": ["error","double"],
     "semi": ["error","never"]
