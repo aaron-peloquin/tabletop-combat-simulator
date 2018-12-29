@@ -1,12 +1,15 @@
 import React from "react"
-import { Grid } from "@material-ui/core"
+import {Button, Grid} from "@material-ui/core"
+import {withStyles} from "@material-ui/core/styles"
 
 import CreatureForm from "./../components/CreatureForm"
 import TeamList from "./../components/TeamList"
 import DeleteAllCreatures from "./../components/DeleteAllCreatures"
+import SimulateCombat from "./../components/SimulateCombat"
 
-const Index = () => {
-  return <Grid container spacing={24}>
+const Index = (Props) => {
+  const {classes} = Props
+  return <Grid container className={classes.CenterItems} spacing={24} alignItems="stretch" justify="center">
     <Grid item xs={12}>
       <CreatureForm />
     </Grid>
@@ -14,20 +17,30 @@ const Index = () => {
       <Grid item sm={6}><TeamList Team="a" /></Grid>
       <Grid item sm={6}><TeamList Team="b" /></Grid>
     </Grid>
+    <Grid item xs={12}>
+      <SimulateCombat />
+    </Grid>
     <Grid item xs={12} container spacing={24}>
       <Grid item sm={6}>Simulation Results</Grid>
       <Grid item sm={6}>Simulation Log</Grid>
     </Grid>
-    <Grid item xs={12} container spacing={24} justify="center">
-      <Grid item sm={6}><DeleteAllCreatures /></Grid>
-      <Grid item sm={6}><DeleteAllCreatures /></Grid>
+    <Grid item xs={12}>
+      <DeleteAllCreatures />
     </Grid>
   </Grid>
 }
 
 Index.getInitialProps = () => {
   const title = "Tabletop Combat Simulator"
-  return { title }
+  return {title}
 }
 
-export default Index
+const Styles = () => {
+  return {
+    CenterItems: {
+      textAlign: "center",
+    }
+  }
+}
+
+export default withStyles(Styles)(Index)
