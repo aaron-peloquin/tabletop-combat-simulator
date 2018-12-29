@@ -3,11 +3,11 @@ import actionTypes from "./../actionTypes"
 import creatures from "./creatures"
 
 describe("[reduxReducer] creatures", ()=>{
-  let state, data
+  let state; let data
   beforeEach(()=>{
     data = {}
     data.type = actionTypes.SaveCreature
-    data.payload = { name: "Hello World" }
+    data.payload = {name: "Hello World"}
     state = creatures(state, data)
     data = {}
   })
@@ -18,7 +18,7 @@ describe("[reduxReducer] creatures", ()=>{
 
   it("[DeleteAllCreatures] deletes all creature data", ()=>{
     expect(state.length).toBe(2)
-    data = { type: actionTypes.DeleteAllCreatures }
+    data = {type: actionTypes.DeleteAllCreatures}
     state = creatures(state, data)
     expect(state.length).toBe(0)
   })
@@ -27,7 +27,7 @@ describe("[reduxReducer] creatures", ()=>{
     expect(state.length).toBe(1)
     data = {
       type: actionTypes.DeleteCreature,
-      payload: state[0].hash
+      payload: state[0].hash,
     }
     state = creatures(state, data)
     expect(state.length).toBe(0)
@@ -38,8 +38,8 @@ describe("[reduxReducer] creatures", ()=>{
       type: actionTypes.SaveCreature,
       payload: {
         name: "New Name",
-        hash: state[0].hash
-      }
+        hash: state[0].hash,
+      },
     }
     state = creatures(state, data)
     expect(state[0].name).toBe("New Name")

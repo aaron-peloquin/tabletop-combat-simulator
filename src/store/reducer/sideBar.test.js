@@ -3,9 +3,9 @@ import actionTypes from "./../actionTypes"
 import sideBar from "./sideBar"
 
 describe("[reduxReducer] sideBar", ()=>{
-  let result, state, payload
+  let result; let state; let payload
   beforeEach(()=>{
-    payload = { type: actionTypes.ToggleSidebar }
+    payload = {type: actionTypes.ToggleSidebar}
     result = null
     state = null
   })

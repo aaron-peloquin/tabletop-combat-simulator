@@ -11,10 +11,9 @@ const defaultState = {}
  * @param {obj} data
  *   @param {str} type a String to identify how we want to update the state
  *   @param {obj} payload the data we use to update the state
- * @returns {obj} The new state of creature
+ * @return {obj} The new state of creature
  */
-const editingReducer = (state=defaultState, { type=false, payload={} }) => {
-
+const editingReducer = (state=defaultState, {type=false, payload={}}) => {
   switch (type) {
   default:
     /** do nothing */
