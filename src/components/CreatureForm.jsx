@@ -76,9 +76,9 @@ const CreatureForm = (props) => {
 
   return <form autoComplete="off" onSubmit={submitData}>
     <fieldset>
-      <legend>Creature</legend>
+      <legend>Player or Creature</legend>
       <Grid container>
-        <CreatureFormGridField {...FieldProps} size="large" dataKey="name" label="Name" />
+        <CreatureFormGridField {...FieldProps} size="large" dataKey="name" label="Name (Required)" />
 
         <CreatureFormGridField {...FieldProps} dataKey="hp" label="Hit Points" />
         <CreatureFormGridField {...FieldProps} dataKey="armor" label="Armor" />
