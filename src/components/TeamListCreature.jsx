@@ -32,13 +32,13 @@ const TeamListCreature = (props) => {
   } = props
   return <Card className={classes.CreatureCard}>
     <CardContent>
-      <Grid container spacing={24} alignItems="center" justify="center">
-        <Grid item sm={12}><Typography variant="body1"><strong>{Creature.name}</strong></Typography></Grid>
-        <Grid item sm={4}><Typography variant="body2"><Heart className={classes.CardIcon} /> {Creature.hp}</Typography></Grid>
-        <Grid item sm={4}><Typography variant="body2"><Shield className={classes.CardIcon} /> {Creature.armor}</Typography></Grid>
-        <Grid item sm={4}><Typography variant="body2"><Boot className={classes.CardIcon} /> {Creature.initiative}</Typography></Grid>
-        <Grid item sm={6}><Typography variant="body2"><Aim className={classes.CardIcon} /> {Creature.hitDiceEquation}</Typography></Grid>
-        <Grid item sm={6}><Typography variant="body2"><Blade className={classes.CardIcon} /> {Creature.damageDiceEquation}</Typography></Grid>
+      <Grid container spacing={8} alignItems="center" justify="center">
+        <Grid item xs={12}><Typography variant="body1"><strong>{Creature.name}</strong></Typography></Grid>
+        <Grid item xs={4}><Typography variant="body2"><Heart /> {Creature.hp}</Typography></Grid>
+        <Grid item xs={4}><Typography variant="body2"><Shield /> {Creature.armor}</Typography></Grid>
+        <Grid item xs={4}><Typography variant="body2"><Boot /> {Creature.initiative}</Typography></Grid>
+        <Grid item xs={6}><Typography variant="body2"><Aim /> {Creature.hitDiceEquation}</Typography></Grid>
+        <Grid item xs={6}><Typography variant="body2"><Blade /> {Creature.damageDiceEquation}</Typography></Grid>
       </Grid>
     </CardContent>
     <CardActions>

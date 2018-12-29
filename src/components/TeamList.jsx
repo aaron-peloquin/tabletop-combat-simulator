@@ -1,5 +1,5 @@
 import {
-  Grid,
+  Grid, Typography,
 } from "@material-ui/core/"
 // import { withStyles } from "@material-ui/core/styles"
 import { connect } from "react-redux"
@@ -12,8 +12,8 @@ const TeamList = (Props) => {
     Creatures,
     Team,
   } = Props
-  return <Grid container>
-    <Grid item xs={12}>Team {Team.toUpperCase()}</Grid>
+  return <Grid container spacing={24}>
+    <Grid item xs={12}><Typography variant="h4">Team {Team.toUpperCase()}</Typography></Grid>
     {Creatures.map((Creature, k)=>{
       return <Grid item md={6} key={k}><TeamListCreature Creature={Creature} /></Grid>
     })}
