@@ -3,20 +3,26 @@ import {
   Card,
   CardActions,
   CardContent,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
+  Grid,
   Typography,
+  withStyles,
 } from "@material-ui/core/"
-import { withStyles } from "@material-ui/core/styles"
+// import { withStyles } from "@material-ui/core/styles"
 import { connect } from "react-redux"
 
 import SetEditCreature from "./../store/action/SetEditCreature"
 import DeleteCreature from "./../store/action/DeleteCreature"
+import {
+  Heart,
+  Boot,
+  Shield,
+  Aim,
+  Blade,
+} from "./../helpers/Icons"
 
 const TeamListCreature = (props) => {
   const {
+    classes,
     /** Actions */
     FuncSetEditCreature,
     FuncDeleteCreature,
@@ -24,37 +30,20 @@ const TeamListCreature = (props) => {
     /** Attributes */
     Creature,
   } = props
-  return <Card>
+  return <Card className={classes.CreatureCard}>
     <CardContent>
-      <Typography variant="body1"><strong>{Creature.name}</strong></Typography>
-      <Table padding="dense">
-        <TableBody>
-          <TableRow>
-            <TableCell>HP</TableCell>
-            <TableCell>{Creature.hp}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Armor</TableCell>
-            <TableCell>{Creature.armor}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Init.</TableCell>
-            <TableCell>{Creature.initiative}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Hit</TableCell>
-            <TableCell>{Creature.hitDiceEquation}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Damage</TableCell>
-            <TableCell>{Creature.damageDiceEquation}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      <Grid container spacing={24} alignItems="center" justify="center">
+        <Grid item sm={12}><Typography variant="body1"><strong>{Creature.name}</strong></Typography></Grid>
+        <Grid item sm={4}><Typography variant="body2"><Heart className={classes.CardIcon} /> {Creature.hp}</Typography></Grid>
+        <Grid item sm={4}><Typography variant="body2"><Shield className={classes.CardIcon} /> {Creature.armor}</Typography></Grid>
+        <Grid item sm={4}><Typography variant="body2"><Boot className={classes.CardIcon} /> {Creature.initiative}</Typography></Grid>
+        <Grid item sm={6}><Typography variant="body2"><Aim className={classes.CardIcon} /> {Creature.hitDiceEquation}</Typography></Grid>
+        <Grid item sm={6}><Typography variant="body2"><Blade className={classes.CardIcon} /> {Creature.damageDiceEquation}</Typography></Grid>
+      </Grid>
     </CardContent>
     <CardActions>
-      <Button onClick={() => { FuncSetEditCreature(Creature) }}>Edit</Button>
-      <Button onClick={() => { FuncDeleteCreature(Creature.hash) }}>Delete</Button>
+      <Button variant="contained" color="primary" onClick={() => { FuncSetEditCreature(Creature) }}>Edit</Button>
+      <Button variant="contained" color="secondary" onClick={() => { FuncDeleteCreature(Creature.hash) }}>Delete</Button>
     </CardActions>
   </Card>
 }
@@ -74,4 +63,15 @@ const MapActionsToProps = (dispatch) => {
   } 
 }
 
-export default connect(MapStateToProps, MapActionsToProps)(TeamListCreature)
+const Styles = () => {
+  return {
+    CreatureCard: {
+      width: "100%",
+      textAlign: "center",
+    },
+  }
+}
+
+const StyledComponent = withStyles(Styles)(TeamListCreature)
+const ConnectedComponent = connect(MapStateToProps, MapActionsToProps)(StyledComponent)
+export default ConnectedComponent
