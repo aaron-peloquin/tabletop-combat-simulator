@@ -1,6 +1,6 @@
 import {SwipeableDrawer, List} from "@material-ui/core/"
 import {withStyles} from "@material-ui/core/styles"
-import {Home, Info, ViewList} from "@material-ui/icons"
+import {Home, Info} from "@material-ui/icons"
 import {connect} from "react-redux"
 
 import toggleSidebar from "./../../store/action/ToggleSidebar"
@@ -35,8 +35,6 @@ const SideBar = (props) => {
       <List>
         <SideBarLink text="Home" url="/"><Home /></SideBarLink>
         <SideBarLink text="About" url="/about"><Info /></SideBarLink>
-        <SideBarLink text="Creatures" url="/creatures"><ViewList /></SideBarLink>
-        <SideBarLink text="Combat Simulator" url="/combat-simulator"></SideBarLink>
       </List>
     </div>
   </SwipeableDrawer>
