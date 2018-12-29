@@ -12,6 +12,7 @@ import {connect} from "react-redux"
 
 import setEditCreature from "./../store/action/SetEditCreature"
 import deleteCreature from "./../store/action/DeleteCreature"
+
 import {
   Heart,
   Boot,
@@ -19,6 +20,11 @@ import {
   Aim,
   Blade,
 } from "./../helpers/Icons"
+
+import {
+  Edit,
+  Delete,
+} from "@material-ui/icons"
 
 const TeamListCreature = (props) => {
   const {
@@ -45,10 +51,10 @@ const TeamListCreature = (props) => {
       <Grid container spacing={8} alignItems="stretch" justify="center">
         <Grid item xs={6}><Button variant="contained" color="primary" onClick={() => {
           funcSetEditCreature(Creature)
-        }}>Edit</Button></Grid>
+        }}><Edit /></Button></Grid>
         <Grid item xs={6}><Button variant="contained" color="secondary" onClick={() => {
           funcDeleteCreature(Creature.hash)
-        }}>Delete</Button></Grid>
+        }}><Delete /></Button></Grid>
       </Grid>
     </CardActions>
   </Card>
