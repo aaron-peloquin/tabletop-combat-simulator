@@ -19,7 +19,6 @@ const About = () => {
       Special thanks to <a target="_blank" href="https://game-icons.net/">Game-Icons.net</a>,
       who provided the icons on this app under under
       <a target="_blank" href="https://creativecommons.org/licenses/by/3.0/">Creative Commons</a>.
-      see <a href="https://github.com/aaron-peloquin/tabletop-combat-simulator">Github</a>.
     </Typography>
   </Fragment>
 }
