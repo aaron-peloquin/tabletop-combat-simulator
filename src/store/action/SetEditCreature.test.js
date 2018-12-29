@@ -1,11 +1,13 @@
-import SetEditCreature from "./SetEditCreature"
+import setEditCreature from "./SetEditCreature"
 import actionTypes from "../actionTypes"
 
 describe("[reduxAction] SetEditCreature", ()=>{
-  const mockFunction = jest.fn((d)=>{return d})
-  const mockValidParam = {"name":"Goplin", "hash":"h328dj8"}
-  const expectedReturn = {"type":actionTypes.SetEditCreature, "payload":mockValidParam}
-  const actualValidReturn = SetEditCreature(mockFunction, mockValidParam)
+  const mockFunction = jest.fn((d)=>{
+    return d
+  })
+  const mockValidParam = {"name": "Goplin", "hash": "h328dj8"}
+  const expectedReturn = {"type": actionTypes.SetEditCreature, "payload": mockValidParam}
+  const actualValidReturn = setEditCreature(mockFunction, mockValidParam)
 
   it("calls mockFunction", ()=>{
     expect(mockFunction).toBeCalled
