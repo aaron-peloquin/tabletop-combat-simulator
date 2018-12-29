@@ -32,7 +32,7 @@ const TeamListCreature = (props) => {
   } = props
   return <Card className={classes.CreatureCard}>
     <CardContent>
-      <Grid container spacing={8} alignItems="center" justify="center">
+      <Grid container spacing={8} alignItems="stretch" justify="center">
         <Grid item xs={12}><Typography variant="body1"><strong>{Creature.name}</strong></Typography></Grid>
         <Grid item xs={4}><Typography variant="body2"><Heart /> {Creature.hp}</Typography></Grid>
         <Grid item xs={4}><Typography variant="body2"><Shield /> {Creature.armor}</Typography></Grid>
@@ -42,8 +42,10 @@ const TeamListCreature = (props) => {
       </Grid>
     </CardContent>
     <CardActions>
-      <Button variant="contained" color="primary" onClick={() => { FuncSetEditCreature(Creature) }}>Edit</Button>
-      <Button variant="contained" color="secondary" onClick={() => { FuncDeleteCreature(Creature.hash) }}>Delete</Button>
+      <Grid container spacing={8} alignItems="stretch" justify="center">
+        <Grid item xs={6}><Button variant="contained" color="primary" onClick={() => { FuncSetEditCreature(Creature) }}>Edit</Button></Grid>
+        <Grid item xs={6}><Button variant="contained" color="secondary" onClick={() => { FuncDeleteCreature(Creature.hash) }}>Delete</Button></Grid>
+      </Grid>
     </CardActions>
   </Card>
 }
