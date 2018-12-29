@@ -5,8 +5,10 @@ const UpdateEditCreature = (dispatch, key, value) => {
   switch (key) {
   case "hp":
   case "armor":
-  case "initiative":
     value = value.replace(/\D/g, "")
+    break
+  case "initiative":
+    value = value.replace(/\-\D/g, "")
     break
   case "hitDiceEquation":
   case "damageDiceEquation":
