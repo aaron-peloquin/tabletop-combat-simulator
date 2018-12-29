@@ -1,4 +1,4 @@
-import {Grid,Paper} from "@material-ui/core"
+import {Grid, Paper} from "@material-ui/core"
 import {withStyles} from "@material-ui/core/styles"
 
 import HeaderBar from "./HeaderBar"
@@ -8,8 +8,9 @@ import SideBar from "./SideBar"
  * Default page layout, wraps the <HeaderBar />, <SideBar /> and main content area for each page.
  * @param {jsx} children is the page contents
  * @param {obj} classes is the wrapping MUI styles for all pages
+ * @return {jsx} Component
  */
-const Layout = ({children="No page content was passed",classes}) => {
+const Layout = ({children="No page content was passed", classes}) => {
   return (
     <div>
       <HeaderBar />
@@ -24,7 +25,8 @@ const Layout = ({children="No page content was passed",classes}) => {
         </Grid>
       </main>
     </div>
-  )}
+  )
+}
 
 const styles = (theme) => {
   return {
@@ -36,7 +38,7 @@ const styles = (theme) => {
     paper: {
       minHeight: "500px",
       padding: theme.spacing.unit * 4,
-    }
+    },
   }
 }
 

@@ -1,6 +1,6 @@
-import { ListItem, ListItemIcon, ListItemText  } from "@material-ui/core"
+import {ListItem, ListItemIcon, ListItemText} from "@material-ui/core"
 import Link from "next/link"
-import { withStyles } from "@material-ui/core/styles"
+import {withStyles} from "@material-ui/core/styles"
 
 /**
  * Component for links as list items
@@ -25,7 +25,7 @@ const SideBarLink = (props) => {
 
 /** MUI Styles for <SideBarLink /> */
 const styles = {
-  link: { textDecoration: "none", },
+  link: {textDecoration: "none"},
 }
 
 export default withStyles(styles)(SideBarLink)
