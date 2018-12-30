@@ -20,6 +20,16 @@ This is an array of objects. Those objects have the following keys:
 ### Data
 _This is a single creature object, see the Creature's Data listed above for keys_
 
+## SideBar
+### Data
+It's just a boolean to track if the sidebar navigation is open or not.
+
+## Combat
+### Data
+* {obj} AliveTeamCreatures `{a: [hash, hash, ...], b: [hash, ...]}`
+* {obj} CreatureStatus `{hash: {CreatureData}, hash: {...}}`
+* {arr} Log `["description of what happens", ...]`
+
 # Redux Actions
 * DeleteCreature { hash }
   * Removes a creature from our dataset
