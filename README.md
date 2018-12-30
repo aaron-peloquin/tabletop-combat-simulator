@@ -31,15 +31,18 @@ It's just a boolean to track if the sidebar navigation is open or not.
 * {arr} Log `["description of what happens", ...]`
 
 # Redux Actions
-* DeleteCreature { hash }
-  * Removes a creature from our dataset
-* DeleteAllCreatures { "confirm" }
-  * Removes a creature from our dataset
-* SaveCreature { _CreatureObject_ }
+* DeleteCreature(`"hash"`)
+  * Removes a creature from our dataset & localStorage
+* DeleteAllCreatures(`"confirm"`)
+  * Removes **all** creature from the state & localStorage when given a string of "confirm"
+* SaveCreature(`{CreatureData}`)
   * This can both creature or update a creature
-* SetEditCreature { _CreatureObject_ }
-  * Sets a _CreatureObject_ into `store.editing`
-* ToggleSidebar { bool }
-  * Opens and closes the side navigation drawer
-* UpdateEditCreature { "key", "value" }
-  * Used whenever we update a field in the edit form
+* SetEditCreature(`{CreatureData}`)
+  * Sets a new `{CreatureData}` object as `store.editing`
+* ToggleSidebar()
+  * Open or Close the side navigation drawer
+* RunSimulation(`[State.Creatures]`)
+  * Running the simulation using the creatures it's given
+* UpdateEditCreature(`"key"`, `"NewValue"`)
+  * Updating a key in `State.editing`
+
