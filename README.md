@@ -19,6 +19,7 @@ Array of objects. Those objects have the following keys:
 ## Combat
 ### Data
 * {obj} AliveTeamCreatures `{a: [hash, hash, ...], b: [hash, ...]}`
+* {arr} TurnOrder `[hash, hash, hash]`
 * {obj} CreatureStatus `{hash: {CreatureData}, hash: {...}}`
 * {arr} Log `["description of what happens", ...]`
 
