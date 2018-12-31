@@ -1,6 +1,3 @@
-// import standardize from "./../../helpers/standardizeCreatureData"
-// import lookup from "./../../helpers/lookupCreatureHash"
-
 import actionTypes from "./../actionTypes"
 
 /**
