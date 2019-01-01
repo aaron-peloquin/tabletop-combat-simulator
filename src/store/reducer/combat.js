@@ -3,11 +3,10 @@ import sortInitiative from "./../../helpers/sortInitiative"
 import actionTypes from "./../actionTypes"
 
 const defaultState = {
-  AliveTeamCreatures: {a:[], b:[]},
+  AliveTeamCreatures: {a: [], b: []},
   CreatureStatus: [],
   Log: [],
   TurnOrder: [],
-  
 }
 /**
  * Simulates combat between two teams of creatures.
@@ -41,16 +40,26 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
       state.CreatureStatus = defaultState.CreatureStatus.slice()
       state.TurnOrder = defaultState.TurnOrder.slice()
       state.Log = defaultState.Log.slice()
+      state.Log[0] = []
 
       /** Iterate through all creatures */
       payload.map((creature) => {
         if (creature.hp > 0) {
+          /** Set enemy team */
+          creature.enemy = "a"
+          if (creature.team === "a") {
+            creature.enemy = "b"
+          }
+
           /** Sort concious creatures into teams A and B in `AliveTeamCreatures` */
           state.AliveTeamCreatures[creature.team].push(creature.hash)
+
           /** Add creature into `state.CreatureStatus` */
           state.CreatureStatus[creature.hash] = creature
+
           /** Roll inititive, to later sort into `TurnOrder` */
           const initRoll = roll(`1D20+${creature.initiative}`)
+          state.Log[0].push(`${creature.name}  rolled a ${initRoll} initiative`)
           state.TurnOrder.push([creature.hash, parseInt(initRoll), parseInt(creature.initiative)])
         }
       })
@@ -60,9 +69,60 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
           return init[0]
         })
       }
-      console.log("state.TurnOrder", state.TurnOrder)
-      console.log("state.CreatureStatus", state.CreatureStatus)
-      console.log("state.AliveTeamCreatures", state.AliveTeamCreatures)
+
+      /** Loop through combat rounds (max 100) */
+      let round = 0
+      let turnCreature
+      let enemyTeamLength; let enemyTeam
+      let randomTargetNum; let attackTargetHash; let attackTarget; let removeCreatureKey
+      let hitResult; let damageResult
+      let logMessage
+      while (round < 100 && state.AliveTeamCreatures["a"].length > 0 && state.AliveTeamCreatures["b"].length > 0) {
+        round++
+        state.Log[round] = []
+        for (const turnHash of state.TurnOrder) {
+          turnCreature = state.CreatureStatus[turnHash]
+          logMessage = `${turnCreature.name} is unconcious`
+
+          if (turnCreature.hp > 0) {
+            enemyTeam = state.AliveTeamCreatures[turnCreature.enemy]
+            enemyTeamLength = enemyTeam.length
+            if (enemyTeamLength > 0) {
+              randomTargetNum = roll(`1d${enemyTeamLength}`)
+              randomTargetNum -= 1
+              attackTargetHash = enemyTeam[randomTargetNum]
+              attackTarget = state.CreatureStatus[attackTargetHash]
+              hitResult = roll(turnCreature.hitDiceEquation)
+              /** did this attack hit? */
+              if (hitResult >= attackTarget.armor) {
+                /** Roll and deal damage */
+                damageResult = roll(turnCreature.damageDiceEquation)
+                state.CreatureStatus[attackTargetHash].hp -= damageResult
+                if (state.CreatureStatus[attackTargetHash].hp <= 0) {
+                  /** hit, target is knocked unconcious */
+                  logMessage = `${turnCreature.name} knocked out ${attackTarget.name} with ${damageResult} damage`
+                  removeCreatureKey = state.AliveTeamCreatures[turnCreature.enemy].indexOf(attackTargetHash)
+                  state.AliveTeamCreatures[turnCreature.enemy].splice(removeCreatureKey, 1)
+                } else {
+                  /** hit, target is not unconcious */
+                  logMessage = `${turnCreature.name} hit ${attackTarget.name} for ${damageResult} damage`
+                }
+              } else {
+                /** missed */
+                logMessage = `${turnCreature.name} missed ${attackTarget.name}`
+              }
+            } else {
+              /** Combat is over */
+            }
+            state.Log[round].push(logMessage)
+          }
+        }
+      }
+      // console.log("state.TurnOrder", state.TurnOrder)
+      // console.log("state.CreatureStatus", state.CreatureStatus)
+      // console.log("state.AliveTeamCreatures", state.AliveTeamCreatures)
+      console.log(`Team ${(state.AliveTeamCreatures.a.length>0?"A":"B")} won`)
+      console.log("state.Log", state.Log)
     }
     break
   }
