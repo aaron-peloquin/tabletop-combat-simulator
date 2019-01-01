@@ -23,6 +23,13 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
      *    D) if this damage reduces them to 0 or lower, remove the enemy from `state.AliveTeamCreatures`
      *    E) insert a row into `state.Log`, describing what happened
      */
+    if (payload.length>0) {
+      payload.map((creature) => {
+        if (creature.hp > 0) {
+          state.AliveTeamCreatures[creature.team] = creature.hash
+        }
+      })
+    }
     break
   }
   return state
