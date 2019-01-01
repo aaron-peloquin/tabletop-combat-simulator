@@ -1,26 +1,36 @@
-// import {connect} from "react-redux"
+import {connect} from "react-redux"
 import {Button} from "@material-ui/core"
 
-// import runSimulation from "./../store/action/RunSimulation"
+import runSimulation from "./../store/action/RunSimulation"
 
 const SimulateCombat = (props) => {
-  // const {simulateCombat} = props
-  return <Button data-id="delete-all" variant="contained" color="primary">
+  const {
+    /** Actions */
+    funcSimulateCombat,
+
+    /** Props from State */
+    Creatures,
+  } = props
+  return <Button data-id="delete-all" variant="contained" color="primary" onClick={()=>{
+    funcSimulateCombat(Creatures)
+  }}>
     Run Combat Simulation
   </Button>
 }
 
-// const MapStateToProps = () => {
-//   return { }
-// }
+const MapStateToProps = (state) => {
+  const Creatures = state.creatures
+  return {
+    Creatures,
+  }
+}
 
-// const MapActionsToProps = (dispatch) => {
-//   return {
-//     simulateCombat: () => {
-//       runSimulation(dispatch)
-//     },
-//   }
-// }
+const MapActionsToProps = (dispatch) => {
+  return {
+    funcSimulateCombat: (Creatures) => {
+      runSimulation(dispatch, Creatures)
+    },
+  }
+}
 
-// export default connect(MapStateToProps, MapActionsToProps)(SimulateCombat)
-export default SimulateCombat
+export default connect(MapStateToProps, MapActionsToProps)(SimulateCombat)
