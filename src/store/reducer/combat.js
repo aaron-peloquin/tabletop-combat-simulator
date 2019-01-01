@@ -1,12 +1,16 @@
 import roll from "./../../helpers/diceRolling/"
+import sortInitiative from "./../../helpers/sortInitiative"
 import actionTypes from "./../actionTypes"
 
 const defaultState = {
   AliveTeamCreatures: {a:[], b:[]},
-  TurnOrder: [],
   CreatureStatus: [],
+  Log: [],
+  TurnOrder: [],
+  
 }
 /**
+ * Simulates combat between two teams of creatures.
  * @param {obj} state The current state of `combat`
  * @param {obj} data
  *  @param {str} type The redux action type
@@ -14,7 +18,6 @@ const defaultState = {
  * @return {obj} the new state
  */
 const combatReducer = (state=defaultState, {type=false, payload={}}) => {
-  console.log("type", typeof type, type)
   switch (type) {
   case actionTypes.RunSimulation:
     /**
@@ -29,16 +32,37 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
      *    D) if this damage reduces them to 0 or lower, remove the enemy from `state.AliveTeamCreatures`
      *    E) insert a row into `state.Log`, describing what happened
      */
-    console.log("payload", payload)
     if (payload.length>0) {
+      /** Always reset state back to default */
+      state = Object.assign({}, defaultState)
+      state.AliveTeamCreatures = Object.assign({}, defaultState.AliveTeamCreatures)
+      state.AliveTeamCreatures.a = defaultState.AliveTeamCreatures.a.slice()
+      state.AliveTeamCreatures.b = defaultState.AliveTeamCreatures.b.slice()
+      state.CreatureStatus = defaultState.CreatureStatus.slice()
+      state.TurnOrder = defaultState.TurnOrder.slice()
+      state.Log = defaultState.Log.slice()
+
+      /** Iterate through all creatures */
       payload.map((creature) => {
         if (creature.hp > 0) {
           /** Sort concious creatures into teams A and B in `AliveTeamCreatures` */
-          state.AliveTeamCreatures[creature.team] = creature.hash
-          /** Roll inititive, and add into `TurnOrder` */
-          console.log(roll("1D4+5"))
+          state.AliveTeamCreatures[creature.team].push(creature.hash)
+          /** Add creature into `state.CreatureStatus` */
+          state.CreatureStatus[creature.hash] = creature
+          /** Roll inititive, to later sort into `TurnOrder` */
+          const initRoll = roll(`1D20+${creature.initiative}`)
+          state.TurnOrder.push([creature.hash, parseInt(initRoll), parseInt(creature.initiative)])
         }
       })
+      if (state.AliveTeamCreatures.a.length > 0 && state.AliveTeamCreatures.b.length > 0) {
+        /** Sort creatures by init */
+        state.TurnOrder = sortInitiative(state.TurnOrder).map((init) => {
+          return init[0]
+        })
+      }
+      console.log("state.TurnOrder", state.TurnOrder)
+      console.log("state.CreatureStatus", state.CreatureStatus)
+      console.log("state.AliveTeamCreatures", state.AliveTeamCreatures)
     }
     break
   }
