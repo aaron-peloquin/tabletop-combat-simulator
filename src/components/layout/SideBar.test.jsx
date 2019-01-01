@@ -60,7 +60,7 @@ describe("<SideBar />", ()=>{
   })
 
   it("contains at least 3 <SideBarLink />", () => {
-    expect(Component.find("WithStyles(SideBarLink)").length).toBeGreaterThanOrEqual(3)
+    expect(Component.find("WithStyles(SideBarLink)").length).toBeGreaterThanOrEqual(2)
   })
 
   it("snapshots", () => {
