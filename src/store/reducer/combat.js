@@ -7,6 +7,7 @@ const defaultState = {
   CreatureStatus: [],
   Log: [],
   TurnOrder: [],
+  Victory: "",
 }
 /**
  * Simulates combat between two teams of creatures.
@@ -30,6 +31,7 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
      *    C) if it hits their armor, roll and deal damage
      *    D) if this damage reduces them to 0 or lower, remove the enemy from `state.AliveTeamCreatures`
      *    E) insert a row into `state.Log`, describing what happened
+     * 3) Set `state.Victory`
      */
     if (payload.length>0) {
       /** Always reset state back to default */
@@ -118,10 +120,13 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
           }
         }
       }
-      // console.log("state.TurnOrder", state.TurnOrder)
-      // console.log("state.CreatureStatus", state.CreatureStatus)
-      // console.log("state.AliveTeamCreatures", state.AliveTeamCreatures)
-      console.log(`Team ${(state.AliveTeamCreatures.a.length>0?"A":"B")} won`)
+      if (state.AliveTeamCreatures.a.length > 0) {
+        /** Team A won */
+        state.Victory = "a"
+      } else {
+        /** Team B won */
+        state.Victory = "b"
+      }
       console.log("state.Log", state.Log)
     }
     break

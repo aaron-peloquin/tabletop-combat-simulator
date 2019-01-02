@@ -22,6 +22,7 @@ Array of objects. Those objects have the following keys:
 * {arr} TurnOrder `[hash, hash, hash]`
 * {obj} CreatureStatus `{hash: {CreatureData}, hash: {...}}`
 * {arr} Log `["description of what happens", ...]`
+* {str} Victory `a||b`
 
 # Redux Actions
 * DeleteCreature(`"hash"`)
