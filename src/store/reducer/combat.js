@@ -60,7 +60,7 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
           state.CreatureStatus[creature.hash] = creature
 
           /** Roll inititive, to later sort into `TurnOrder` */
-          const initRoll = roll(`1D20+${creature.initiative}`)
+          const initRoll = roll(`1D20+${creature.initiative}`).result
           state.Log[0].push(`${creature.name}  rolled a ${initRoll} initiative`)
           state.TurnOrder.push([creature.hash, parseInt(initRoll), parseInt(creature.initiative)])
         }
@@ -90,15 +90,19 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
             enemyTeam = state.AliveTeamCreatures[turnCreature.enemy]
             enemyTeamLength = enemyTeam.length
             if (enemyTeamLength > 0) {
-              randomTargetNum = roll(`1d${enemyTeamLength}`)
+              randomTargetNum = roll(`1d${enemyTeamLength}`).result
               randomTargetNum -= 1
               attackTargetHash = enemyTeam[randomTargetNum]
               attackTarget = state.CreatureStatus[attackTargetHash]
               hitResult = roll(turnCreature.hitDiceEquation)
               /** did this attack hit? */
-              if (hitResult >= attackTarget.armor) {
+              if (hitResult.critHit || (!hitResult.critMiss && hitResult.result >= attackTarget.armor)) {
                 /** Roll and deal damage */
-                damageResult = roll(turnCreature.damageDiceEquation)
+                damageResult = roll(turnCreature.damageDiceEquation).result
+                /** On critical hits, roll damage twice. */
+                if (hitResult.critHit) {
+                  damageResult += roll(turnCreature.damageDiceEquation).result
+                }
                 state.CreatureStatus[attackTargetHash].hp -= damageResult
                 if (state.CreatureStatus[attackTargetHash].hp <= 0) {
                   /** hit, target is knocked unconcious */
@@ -107,11 +111,15 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
                   state.AliveTeamCreatures[turnCreature.enemy].splice(removeCreatureKey, 1)
                 } else {
                   /** hit, target is not unconcious */
-                  logMessage = `${turnCreature.name} hit ${attackTarget.name} for ${damageResult} damage`
+                  logMessage = `${turnCreature.name} ${hitResult.critHit?"critically ":""}hit ${attackTarget.name} for ${damageResult} damage`
                 }
               } else {
                 /** missed */
-                logMessage = `${turnCreature.name} missed ${attackTarget.name}`
+                if (hitResult.critMiss) {
+                  logMessage = `${turnCreature.name} critically missed ${attackTarget.name}`
+                } else {
+                  logMessage = `${turnCreature.name} missed ${attackTarget.name}`
+                }
               }
             } else {
               /** Combat is over */
