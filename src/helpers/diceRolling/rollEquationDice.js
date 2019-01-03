@@ -8,7 +8,7 @@ const rollEquationDice = (diceEquation) => {
   let critHit = false
   let critMiss = false
   diceEquation = diceEquation.replace(/(\d+d+?\d+)/gi, (dieString) => {
-    let roll = rollDie(dieString)
+    const roll = rollDie(dieString)
     if (roll.critHit) {
       critHit = true
     }
