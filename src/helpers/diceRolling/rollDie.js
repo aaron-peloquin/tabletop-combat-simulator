@@ -39,11 +39,11 @@ const rollDie = (dieString) => {
       }
       rollResult += roll
     }
-    return {
-      critMiss,
-      critHit,
-      rollResult,
-    }
+  }
+  return {
+    critMiss,
+    critHit,
+    rollResult: parseInt(rollResult),
   }
 }
 
