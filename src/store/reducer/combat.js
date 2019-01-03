@@ -106,12 +106,14 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
                 state.CreatureStatus[attackTargetHash].hp -= damageResult
                 if (state.CreatureStatus[attackTargetHash].hp <= 0) {
                   /** hit, target is knocked unconcious */
-                  logMessage = `${turnCreature.name} knocked out ${attackTarget.name} with ${damageResult} damage`
+                  logMessage = `${turnCreature.name} ${hitResult.critHit?"critically ":""}knocked out ${attackTarget.name}`
+                    +` with ${damageResult} damage`
                   removeCreatureKey = state.AliveTeamCreatures[turnCreature.enemy].indexOf(attackTargetHash)
                   state.AliveTeamCreatures[turnCreature.enemy].splice(removeCreatureKey, 1)
                 } else {
                   /** hit, target is not unconcious */
-                  logMessage = `${turnCreature.name} ${hitResult.critHit?"critically ":""}hit ${attackTarget.name} for ${damageResult} damage`
+                  logMessage = `${turnCreature.name} ${hitResult.critHit?"critically ":""}hit `
+                    +`${attackTarget.name} for ${damageResult} damage`
                 }
               } else {
                 /** missed */

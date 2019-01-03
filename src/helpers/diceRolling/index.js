@@ -12,7 +12,7 @@ const Roll = (Equation) => {
   const RolledEquation = rollEquationDice(CleansedEquation)
   const RanEquation = runEquation(RolledEquation.diceEquation)
   return {
-    result: RanEquation,
+    result: parseInt(RanEquation),
     critHit: RolledEquation.critHit,
     critMiss: RolledEquation.critMiss,
   }
