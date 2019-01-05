@@ -7,7 +7,6 @@ const runEquation = (equation) => {
   let returnEquation
   try {
     const equationResult = Math.round(eval(equation))
-    console.log({equationResult})
     if (isNaN(equationResult)) {
       throw new Error("Invalid equation (NaN)")
     }
