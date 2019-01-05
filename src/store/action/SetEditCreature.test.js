@@ -14,10 +14,6 @@ describe("[reduxAction] SetEditCreature", ()=>{
   })
 
   it("calls mockFunction with correct paramiters", () => {
-    expect(mockFunction).toHaveBeenCalledWith(actualValidReturn)
-  })
-
-  it("returns correctly", () => {
-    expect(expectedReturn).toEqual(actualValidReturn)
+    expect(mockFunction).toHaveBeenCalledWith(expectedReturn)
   })
 })

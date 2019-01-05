@@ -1,4 +1,10 @@
 export default {
+  "combat": {
+    Log: [
+      ["Test", "Test 2"],
+      ["Test 3", "Test 4"]
+    ]
+  },
   "creatures": [
     {
       "name": "Goplin",

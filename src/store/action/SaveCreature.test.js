@@ -7,14 +7,14 @@ describe("[reduxAction] SaveCreature", ()=>{
   })
   const mockValidParam = {"name": "Goplin", "hash": "h328dj8"}
   const expectedReturn = {"type": actionTypes.SaveCreature, "payload": mockValidParam}
-  const actualValidReturn = saveCreature(mockFunction, mockValidParam)
+  saveCreature(mockFunction, mockValidParam)
 
   it("calls mockFunction", ()=>{
     expect(mockFunction).toBeCalled
   })
 
   it("calls mockFunction with correct paramiters", () => {
-    expect(mockFunction).toHaveBeenCalledWith(actualValidReturn)
+    expect(mockFunction).toHaveBeenCalledWith(expectedReturn)
   })
 
   it("does not call mockFunction with invalid paramiters", () => {
@@ -24,9 +24,5 @@ describe("[reduxAction] SaveCreature", ()=>{
     expect(mockFunction).not.toHaveBeenCalledWith(invalidParamiters1)
     mockFunction(mockFunction, invalidParamiters2)
     expect(mockFunction).not.toHaveBeenCalledWith(invalidParamiters2)
-  })
-
-  it("returns correctly", () => {
-    expect(expectedReturn).toEqual(actualValidReturn)
   })
 })
