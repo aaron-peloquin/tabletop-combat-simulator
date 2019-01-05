@@ -6,6 +6,7 @@ import CreatureForm from "./../components/CreatureForm"
 import TeamList from "./../components/TeamList"
 import DeleteAllCreatures from "./../components/DeleteAllCreatures"
 import SimulateCombat from "./../components/SimulateCombat"
+import SimulationResults from "./../components/SimulationResults"
 
 const Index = (Props) => {
   const {classes} = Props
@@ -21,7 +22,7 @@ const Index = (Props) => {
       <SimulateCombat />
     </Grid>
     <Grid item xs={12} container spacing={24}>
-      <Grid item sm={6}>Simulation Results</Grid>
+      <Grid item sm={6}><SimulationResults /></Grid>
       <Grid item sm={6}>Simulation Log</Grid>
     </Grid>
     <Grid item xs={12}>
