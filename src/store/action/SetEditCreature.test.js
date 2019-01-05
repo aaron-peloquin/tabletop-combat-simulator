@@ -7,7 +7,7 @@ describe("[reduxAction] SetEditCreature", ()=>{
   })
   const mockValidParam = {"name": "Goplin", "hash": "h328dj8"}
   const expectedReturn = {"type": actionTypes.SetEditCreature, "payload": mockValidParam}
-  const actualValidReturn = setEditCreature(mockFunction, mockValidParam)
+  setEditCreature(mockFunction, mockValidParam)
 
   it("calls mockFunction", ()=>{
     expect(mockFunction).toBeCalled

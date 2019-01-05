@@ -7,7 +7,7 @@ describe("[reduxAction] DeleteCreature", ()=>{
   })
   const mockValidParam = "hd39ej3"
   const expectedReturn = {"type": actionTypes.DeleteCreature, "payload": mockValidParam}
-  const actualValidReturn = deleteCreature(mockFunction, mockValidParam)
+  deleteCreature(mockFunction, mockValidParam)
 
   it("calls mockFunction", ()=>{
     expect(mockFunction).toBeCalled
