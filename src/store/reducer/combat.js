@@ -137,7 +137,6 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
         /** Team B won */
         state.Victory = "b"
       }
-      console.log("state.Log", state.Log)
     }
     break
   }
