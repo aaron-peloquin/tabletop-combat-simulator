@@ -6,13 +6,14 @@ import {
 } from "@material-ui/core"
 import {withStyles} from "@material-ui/core/styles"
 
-const Styles = () => {
+const Styles = (theme) => {
   return {
     CreatureName: {
-      textAlign: "right",
+      textAlign: "left",
     },
     CreatureHealth: {
-      textAlign: "left",
+      textAlign: "right",
+      paddingRight: theme.spacing.unit,
     },
   }
 }
@@ -25,8 +26,8 @@ const SimulationResults = (props) => {
     {(Survivors.length > 0?<Grid container>
       {Survivors.map((Creature, k) => {
         return <Fragment key={k}>
-          <Grid className={classes.CreatureName} item xs={6}>{Creature.Name}</Grid>
           <Grid className={classes.CreatureHealth} item xs={6}>{Creature.Health} HP</Grid>
+          <Grid className={classes.CreatureName} item xs={6}>{Creature.Name}</Grid>
         </Fragment>
       })}</Grid>:"")}
   </Fragment>
