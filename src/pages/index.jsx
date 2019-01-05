@@ -7,6 +7,7 @@ import TeamList from "./../components/TeamList"
 import DeleteAllCreatures from "./../components/DeleteAllCreatures"
 import SimulateCombat from "./../components/SimulateCombat"
 import SimulationResults from "./../components/SimulationResults"
+import SimulationLog from "./../components/SimulationLog"
 
 const Index = (Props) => {
   const {classes} = Props
@@ -23,7 +24,7 @@ const Index = (Props) => {
     </Grid>
     <Grid item xs={12} container spacing={24}>
       <Grid item sm={6}><SimulationResults /></Grid>
-      <Grid item sm={6}>Simulation Log</Grid>
+      <Grid item sm={6}><SimulationLog /></Grid>
     </Grid>
     <Grid item xs={12}>
       <DeleteAllCreatures />
