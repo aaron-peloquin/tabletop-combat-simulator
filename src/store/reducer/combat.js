@@ -125,6 +125,7 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
               }
             } else {
               /** Combat is over */
+              logMessage = `${turnCreature.name} has nothing to do`
             }
             state.Log[round].push(logMessage)
           }
