@@ -46,11 +46,22 @@ describe("<SideBar />", ()=>{
   it("properly toggles key press of escape", () => {
     const wrappingDiv = Component.find("div")
     wrappingDiv.simulate("click")
-    expect(store.dispatch).toBeCalledTimes(1)
+
     props = mapStateToProps(store.getState())
     expect(props.open).toBe(true)
     wrappingDiv.simulate("keyDown", {key: "Escape"})
     expect(store.dispatch).toBeCalledTimes(2)
+    props = mapStateToProps(store.getState())
+    expect(props.open).toBe(false)
+  })
+
+  it("opens and closes", () => {
+    const wrappingDiv = Component.find("div")
+    wrappingDiv.simulate("click")
+    props = mapStateToProps(store.getState())
+    expect(props.open).toBe(true)
+
+    wrappingDiv.simulate("click")
     props = mapStateToProps(store.getState())
     expect(props.open).toBe(false)
   })
