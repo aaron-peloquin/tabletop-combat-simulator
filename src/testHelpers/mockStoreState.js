@@ -1,9 +1,10 @@
 export default {
   "combat": {
+    Victory: "a",
     Log: [
       ["Test", "Test 2"],
-      ["Test 3", "Test 4"]
-    ]
+      ["Test 3", "Test 4"],
+    ],
   },
   "creatures": [
     {
@@ -15,7 +16,7 @@ export default {
       "armor": 11,
       "hp": 5,
       "hitDiceEquation": "1d20+1",
-      "damageDiceEquation": "1d4"
+      "damageDiceEquation": "1d4",
     },
     {
       "name": "Elven Ranger",
@@ -25,7 +26,7 @@ export default {
       "armor": 13,
       "hp": 10,
       "hitDiceEquation": "1d20+8",
-      "damageDiceEquation": "1d6+3"
+      "damageDiceEquation": "1d6+3",
     },
     {
       "name": "Knight",
@@ -35,7 +36,7 @@ export default {
       "armor": 18,
       "hp": 25,
       "hitDiceEquation": "1d20+4",
-      "damageDiceEquation": "1d12+4"
+      "damageDiceEquation": "1d12+4",
     },
     {
       "name": "Lizardfolk",
@@ -45,8 +46,8 @@ export default {
       "armor": 14,
       "hp": 15,
       "hitDiceEquation": "1d20+5",
-      "damageDiceEquation": "1d10+2"
-    }
+      "damageDiceEquation": "1d10+2",
+    },
   ],
   "editing": {
     "name": "Goplin",
@@ -57,7 +58,7 @@ export default {
     "armor": 11,
     "hp": 5,
     "hitDiceEquation": "1d20+1",
-    "damageDiceEquation": "1d4"
+    "damageDiceEquation": "1d4",
   },
   "sideBar": false,
 }

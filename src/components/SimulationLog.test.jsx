@@ -4,13 +4,14 @@ import toJson from "enzyme-to-json"
 import {initializeStore} from "../store/store"
 
 import SimulationLog from "./SimulationLog"
+import mockState from "./../testHelpers/mockStoreState"
 
 describe("<SimulationLog />", () => {
   const renderShallowUntilComponent = createShallow({"untilSelector": "SimulationLog"})
   let store; let props; let SimulationLogComponent
 
   beforeEach(() => {
-    store = initializeStore({})
+    store = initializeStore(mockState)
 
     SimulationLogComponent = renderShallowUntilComponent(<Provider store={store}>
       <SimulationLog />
