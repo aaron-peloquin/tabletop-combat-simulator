@@ -40,12 +40,16 @@ const SideBar = (props) => {
   </SwipeableDrawer>
 }
 
-SideBar.defaultProps = {
-  funcToggleSidebar: toggleSidebar,
+const mapStateToProps = (state) => {
+  return {open: state.sideBar}
 }
 
-export const mapStateToProps = (state) => {
-  return {open: state.sideBar}
+const mapActionsToState = (dispatch) => {
+  return {
+    funcToggleSidebar: () => {
+      return toggleSidebar(dispatch)
+    },
+  }
 }
 
 /** MUI Styles for <SideBar /> */
@@ -56,4 +60,4 @@ const styles = {
 /** Add MUI styles to this component */
 const SideBarWithStyles = withStyles(styles)(SideBar)
 /** Connect this component to Redux */
-export default connect(mapStateToProps)(SideBarWithStyles)
+export default connect(mapStateToProps, mapActionsToState)(SideBarWithStyles)
