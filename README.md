@@ -25,18 +25,20 @@ Array of objects. Those objects have the following keys:
 * {str} Victory `a||b`
 
 # Redux Actions
-* DeleteCreature(`"hash"`)
-  * Removes a creature from our dataset & localStorage
+* CopyCreature(`"hash"`)
+  * Creatures a copy of the creature who has this `hash`, generating a new hash for the new creature.
 * DeleteAllCreatures(`"confirm"`)
   * Removes **all** creature from the state & localStorage when given a string of "confirm"
+* DeleteCreature(`"hash"`)
+  * Removes a creature from our dataset & localStorage
+* RunSimulation(`[State.Creatures]`)
+  * Running the simulation using the creatures it's given
 * SaveCreature(`{CreatureData}`)
   * This can both creature or update a creature
 * SetEditCreature(`{CreatureData}`)
   * Sets a new `{CreatureData}` object as `store.editing`
 * ToggleSidebar()
   * Open or Close the side navigation drawer
-* RunSimulation(`[State.Creatures]`)
-  * Running the simulation using the creatures it's given
 * UpdateEditCreature(`"key"`, `"NewValue"`)
   * Updating a key in `State.editing`
 
