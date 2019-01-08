@@ -42,18 +42,19 @@ const creaturesReducer = (state=defaultState, {type=false, payload={}}) => {
   case actionTypes.CopyCreature:
     id = lookup(payload, state)
     if ( id >= 0 ) {
-      state = state.slice()
-      let newCreature = state.slice(id)
+      let newCreature = state[id]
 
-      console.log({id, newCreature})
+      console.log("Peek", state[id])
+      console.log("Pull", newCreature)
+
+      newCreature = Object.assign({}, newCreature)
 
       /** Set hash to null so standardize will generates a new one */
       newCreature.hash = null
       newCreature = standardize(newCreature, state)
 
-      console.log({id, newCreature})
+      console.log("Standard", newCreature)
 
-      state = state.slice()
       state.push(newCreature)
     }
     break
@@ -70,7 +71,6 @@ const creaturesReducer = (state=defaultState, {type=false, payload={}}) => {
         payload = standardize(payload, state)
 
         /** Create a new creature */
-        state = state.slice()
         state.push(payload)
       }
     }
@@ -87,7 +87,6 @@ const creaturesReducer = (state=defaultState, {type=false, payload={}}) => {
   case actionTypes.DeleteCreature:
     id = lookup(payload, state)
     if (id>=0) {
-      state = state.slice()
       state.splice(id, 1)
     }
     break
