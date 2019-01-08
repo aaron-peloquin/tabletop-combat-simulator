@@ -44,16 +44,11 @@ const creaturesReducer = (state=defaultState, {type=false, payload={}}) => {
     if ( id >= 0 ) {
       let newCreature = state[id]
 
-      console.log("Peek", state[id])
-      console.log("Pull", newCreature)
-
       newCreature = Object.assign({}, newCreature)
 
       /** Set hash to null so standardize will generates a new one */
       newCreature.hash = null
       newCreature = standardize(newCreature, state)
-
-      console.log("Standard", newCreature)
 
       state.push(newCreature)
     }
