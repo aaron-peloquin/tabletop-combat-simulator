@@ -56,7 +56,6 @@ const TeamListCreature = (props) => {
           funcSetEditCreature(Creature)
         }}><Edit /></Button></Grid>
         <Grid item xs={4}><Button variant="contained" color="primary" onClick={() => {
-          console.log("Creature Data?", Creature)
           funcCopyCreature(Creature.hash)
         }}><FileCopy /></Button></Grid>
         <Grid item xs={4}><Button variant="contained" color="secondary" onClick={() => {
