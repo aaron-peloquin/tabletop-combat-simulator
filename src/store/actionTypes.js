@@ -4,6 +4,7 @@
  *  also be used as a list of our existing actions
 */
 const actions = {
+  CopyCreature: "CopyCreature",
   DeleteAllCreatures: "DeleteAllCreatures",
   DeleteCreature: "DeleteCreature",
   SaveCreature: "SaveCreature",
