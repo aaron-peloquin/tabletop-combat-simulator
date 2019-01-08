@@ -38,7 +38,18 @@ const creaturesReducer = (state=defaultState, {type=false, payload={}}) => {
     saveToStorage = false
     break
 
-    /** Update a creature based on it's hash, otherwise create that creature. */
+  /** Payload: "hash" */
+  case actionTypes.CopyCreature:
+    id = lookup(payload, state)
+    if ( id >= 0 ) {
+      let newCreature = state[id]
+      /** Set hash to null so standardize will generates a new one */
+      newCreature.hash = null
+      newCreature = standardize(newCreature, state)
+      state.push(newCreature)
+    }
+    break
+  /** Update a creature based on it's hash, otherwise create that creature. */
   case actionTypes.SaveCreature:
     if (payload) {
       /** Attempt to find an id for this hash. */
