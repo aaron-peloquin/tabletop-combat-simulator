@@ -22,9 +22,9 @@ const standardizeCreatureData = (creatureData={}, state=null) => {
   } = creatureData
 
   /** If we were not given a hash, and we were given a state, generate a unique hash */
-  if(hash===null) {
-    if(state!==null) {
-      while(hash===null || lookupCreatureHash(hash, state)>=0){
+  if (hash===null) {
+    if (state!==null) {
+      while (hash===null || lookupCreatureHash(hash, state)>=0) {
         hash = generateHash()
       }
     }
@@ -35,7 +35,7 @@ const standardizeCreatureData = (creatureData={}, state=null) => {
 
   return {
     name, team, hash, initiative, armor, hp,
-    hitDiceEquation, damageDiceEquation
+    hitDiceEquation, damageDiceEquation,
   }
 }
 
