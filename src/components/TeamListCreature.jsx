@@ -12,6 +12,7 @@ import {connect} from "react-redux"
 
 import setEditCreature from "./../store/action/SetEditCreature"
 import deleteCreature from "./../store/action/DeleteCreature"
+import copyCreature from "./../store/action/CopyCreature"
 
 import {
   Heart,
@@ -22,6 +23,7 @@ import {
 } from "./../helpers/Icons"
 
 import {
+  FileCopy,
   Edit,
   Delete,
 } from "@material-ui/icons"
@@ -30,6 +32,7 @@ const TeamListCreature = (props) => {
   const {
     classes,
     /** Actions */
+    funcCopyCreature,
     funcSetEditCreature,
     funcDeleteCreature,
 
@@ -49,10 +52,14 @@ const TeamListCreature = (props) => {
     </CardContent>
     <CardActions>
       <Grid container spacing={8} alignItems="stretch" justify="center">
-        <Grid item xs={6}><Button variant="contained" color="primary" onClick={() => {
+        <Grid item xs={4}><Button variant="contained" color="primary" onClick={() => {
           funcSetEditCreature(Creature)
         }}><Edit /></Button></Grid>
-        <Grid item xs={6}><Button variant="contained" color="secondary" onClick={() => {
+        <Grid item xs={4}><Button variant="contained" color="primary" onClick={() => {
+          console.log("Creature Data?", Creature)
+          funcCopyCreature(Creature.hash)
+        }}><FileCopy /></Button></Grid>
+        <Grid item xs={4}><Button variant="contained" color="secondary" onClick={() => {
           funcDeleteCreature(Creature.hash)
         }}><Delete /></Button></Grid>
       </Grid>
@@ -66,6 +73,10 @@ const MapStateToProps = () => {
 
 const MapActionsToProps = (dispatch) => {
   return {
+    funcCopyCreature: (Hash) => {
+      console.log({Hash})
+      copyCreature(dispatch, Hash)
+    },
     funcSetEditCreature: (Creature) => {
       setEditCreature(dispatch, Creature)
     },
