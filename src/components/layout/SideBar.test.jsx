@@ -3,19 +3,18 @@ import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
 import {initializeStore} from "../../store/store"
 
-import SideBar, {mapStateToProps} from "./SideBar"
+import SideBar from "./SideBar"
 import mockStoreState from "./../../testHelpers/mockStoreState"
 
 describe("<SideBar />", ()=>{
   const renderShallowUntilComponent = createShallow({"untilSelector": "SideBar"})
-  let store; let props; let Component
+  let store; let Component
   beforeEach(async ()=>{
     store = initializeStore(mockStoreState)
-    props = mapStateToProps(store.getState())
 
     /** Attach spy to store.dispatch */
     store.dispatch = jest.fn(store.dispatch)
-    Component = renderShallowUntilComponent(<Provider store={store}><SideBar {...props} /></Provider>)
+    Component = renderShallowUntilComponent(<Provider store={store}><SideBar /></Provider>)
   })
 
   it("loads", async () => {
@@ -23,7 +22,7 @@ describe("<SideBar />", ()=>{
   })
 
   it("is closed by default", () => {
-    expect(props.open).toBe(false)
+    expect(Component.props().open).toBe(false)
   })
 
   /**
@@ -34,36 +33,32 @@ describe("<SideBar />", ()=>{
   it("properly toggles onClick", () => {
     const wrappingDiv = Component.find("div")
     wrappingDiv.simulate("click")
+
     expect(store.dispatch).toBeCalledTimes(1)
-    props = mapStateToProps(store.getState())
-    expect(props.open).toBe(true)
+    expect(store.getState().sideBar).toBe(true)
+
     wrappingDiv.simulate("click")
     expect(store.dispatch).toBeCalledTimes(2)
-    props = mapStateToProps(store.getState())
-    expect(props.open).toBe(false)
+    expect(store.getState().sideBar).toBe(false)
   })
 
   it("properly toggles key press of escape", () => {
     const wrappingDiv = Component.find("div")
     wrappingDiv.simulate("click")
 
-    props = mapStateToProps(store.getState())
-    expect(props.open).toBe(true)
+    expect(store.getState().sideBar).toBe(true)
     wrappingDiv.simulate("keyDown", {key: "Escape"})
     expect(store.dispatch).toBeCalledTimes(2)
-    props = mapStateToProps(store.getState())
-    expect(props.open).toBe(false)
+    expect(store.getState().sideBar).toBe(false)
   })
 
   it("opens and closes", () => {
     const wrappingDiv = Component.find("div")
     wrappingDiv.simulate("click")
-    props = mapStateToProps(store.getState())
-    expect(props.open).toBe(true)
+    expect(store.getState().sideBar).toBe(true)
 
     wrappingDiv.simulate("click")
-    props = mapStateToProps(store.getState())
-    expect(props.open).toBe(false)
+    expect(store.getState().sideBar).toBe(false)
   })
 
   it("contains a <List />", () => {
