@@ -23,17 +23,14 @@ const SimulationLog = (props) => {
     <Table className={classes.LogItems}>
       <TableHead>
         <TableRow>
-          <TableCell>Round</TableCell>
-          <TableCell>Creature</TableCell>
+          <TableCell>Round: Creature</TableCell>
           <TableCell>Message</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {Log.map((Item, k) => {
-          console.log(`#${k}`, Item)
           return <TableRow key={k}>
-            <TableCell>{Item.Round}</TableCell>
-            <TableCell>{Item.Creature}</TableCell>
+            <TableCell>{Item.Round}: {Item.Creature} ({Item.Team.toUpperCase()})</TableCell>
             <TableCell>{Item.Message}</TableCell>
           </TableRow>
         })}

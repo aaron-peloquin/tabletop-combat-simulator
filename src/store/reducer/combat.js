@@ -64,6 +64,7 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
             Round: "Initiative",
             Message: `Rolled a ${initRoll} initiative`,
             Creature: creature.name,
+            Team: creature.team,
           })
           state.TurnOrder.push([creature.hash, parseInt(initRoll), parseInt(creature.initiative)])
         }
@@ -133,6 +134,7 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
               Round: `#${round}`,
               Creature: turnCreature.name,
               Message: logMessage,
+              Team: turnCreature.team,
             })
           }
         }
