@@ -83,7 +83,7 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
       let randomTargetNum; let attackTargetHash; let attackTarget; let removeCreatureKey
       let hitResult; let damageResult
       let logMessage
-      while (round < 100 && state.AliveTeamCreatures["a"].length > 0 && state.AliveTeamCreatures["b"].length > 0) {
+      while (round < 999 && state.AliveTeamCreatures["a"].length > 0 && state.AliveTeamCreatures["b"].length > 0) {
         round++
         for (const turnHash of state.TurnOrder) {
           turnCreature = state.CreatureStatus[turnHash]
