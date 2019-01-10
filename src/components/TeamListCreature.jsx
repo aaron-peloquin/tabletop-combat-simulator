@@ -73,7 +73,6 @@ const MapStateToProps = () => {
 const MapActionsToProps = (dispatch) => {
   return {
     funcCopyCreature: (Hash) => {
-      console.log({Hash})
       copyCreature(dispatch, Hash)
     },
     funcSetEditCreature: (Creature) => {
