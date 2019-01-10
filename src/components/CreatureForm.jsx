@@ -75,6 +75,7 @@ const CreatureForm = (props) => {
   }
 
   return <form autoComplete="off" onSubmit={submitData}>
+    <button type="submit" className={classes.hidden} />
     <fieldset>
       <legend>Player or Creature</legend>
       <Grid container>
@@ -128,6 +129,9 @@ const MapActionsToProps = (dispatch) => {
 
 const styles = (theme) => {
   return {
+    hidden: {
+      display: "none",
+    },
     submitButtons: {
       width: "90%",
       marginTop: theme.spacing.unit,
