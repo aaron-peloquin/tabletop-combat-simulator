@@ -15,16 +15,16 @@ const Index = (Props) => {
     <Grid item xs={12}>
       <CreatureForm />
     </Grid>
-    <Grid item xs={12} container spacing={24}>
-      <Grid item sm={6}><TeamList Team="a" /></Grid>
-      <Grid item sm={6}><TeamList Team="b" /></Grid>
+    <Grid item xs={12} container spacing={24} justify="center">
+      <Grid item md={6}><TeamList Team="a" /></Grid>
+      <Grid item md={6}><TeamList Team="b" /></Grid>
     </Grid>
     <Grid item xs={12}>
       <SimulateCombat />
     </Grid>
-    <Grid item xs={12} container spacing={24}>
-      <Grid item sm={6}><SimulationResults /></Grid>
-      <Grid item sm={6}><SimulationLog /></Grid>
+    <Grid item xs={12} container spacing={24} justify="center">
+      <Grid item md={6}><SimulationResults /></Grid>
+      <Grid item md={6}><SimulationLog /></Grid>
     </Grid>
     <Grid item xs={12}>
       <DeleteAllCreatures />
