@@ -14,6 +14,7 @@ const TeamList = (Props) => {
   } = Props
   return <Grid container spacing={24} justify="center">
     <Grid item xs={12}><Typography variant="h4">Team {Team.toUpperCase()}</Typography></Grid>
+    <Grid item xs={12}><Typography variant="body2">{Creatures.length} Creatures</Typography></Grid>
     {Creatures.map((Creature, k)=>{
       return <Grid item lg={6} key={k}><TeamListCreature Creature={Creature} /></Grid>
     })}
