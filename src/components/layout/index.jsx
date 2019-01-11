@@ -33,10 +33,10 @@ const styles = (theme) => {
     content: {
       margin: "0 auto",
       marginTop: "90px",
-      width: "80%",
+      width: "90%",
     },
     paper: {
-      minHeight: "500px",
+      minHeight: theme.spacing.unit * 500,
       padding: theme.spacing.unit * 4,
     },
   }
