@@ -19,10 +19,18 @@ const Styles = (theme) => {
 }
 
 const SimulationResults = (props) => {
-  const {classes, Victory, Survivors} = props
+  const {
+    /** MUI Styles */
+    classes,
 
+    /** State */
+    FinalRound,
+    Survivors,
+    Victory,
+  } = props
   return <Fragment>
     {(Victory.length > 0?<Typography variant="h4">Team <strong>{Victory.toUpperCase()}</strong> Won</Typography>:"")}
+    {(FinalRound > 0?<Typography variant="body1">Combat resolved after <strong>{FinalRound}</strong> rounds.</Typography>:"")}
     {(Survivors.length > 0?<Grid container>
       {Survivors.map((Creature, k) => {
         return <Fragment key={k}>
@@ -36,6 +44,7 @@ const SimulationResults = (props) => {
 const MapStateToProps = (state) => {
   const Victory = state.combat.Victory
   let Survivors = false
+  const FinalRound = state.combat.FinalRound
   if (Victory.length > 0) {
     Survivors = state.combat.AliveTeamCreatures[Victory].map((hash) => {
       const creature = state.combat.CreatureStatus[hash]
@@ -47,8 +56,9 @@ const MapStateToProps = (state) => {
   }
 
   return {
-    Victory,
+    FinalRound,
     Survivors,
+    Victory,
   }
 }
 

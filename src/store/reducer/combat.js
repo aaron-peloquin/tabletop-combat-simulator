@@ -5,6 +5,7 @@ import actionTypes from "./../actionTypes"
 const defaultState = {
   AliveTeamCreatures: {a: [], b: []},
   CreatureStatus: [],
+  FinalRound: 0,
   Log: [],
   TurnOrder: [],
   Victory: "",
@@ -42,6 +43,7 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
       state.CreatureStatus = defaultState.CreatureStatus.slice()
       state.TurnOrder = defaultState.TurnOrder.slice()
       state.Log = defaultState.Log.slice()
+      state.Victory = defaultState.Victory.slice()
 
       /** Iterate through all creatures */
       payload.map((creature) => {
@@ -139,6 +141,7 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
           }
         }
       }
+      state.FinalRound = round
       if (state.AliveTeamCreatures.a.length > 0) {
         /** Team A won */
         state.Victory = "a"
