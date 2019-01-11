@@ -45,7 +45,7 @@ const TeamListCreature = (props) => {
         <Grid item xs={12}><Typography variant="body1"><strong>{Creature.name}</strong></Typography></Grid>
         <Grid item xs={4}><Typography variant="body2"><Heart /> {Creature.hp}</Typography></Grid>
         <Grid item xs={4}><Typography variant="body2"><Shield /> {Creature.armor}</Typography></Grid>
-        <Grid item xs={4}><Typography variant="body2"><Boot /> {Creature.initiative}</Typography></Grid>
+        <Grid item xs={4}><Typography variant="body2"><Boot /> +{Creature.initiative}</Typography></Grid>
         <Grid item xs={6}><Typography variant="body2"><Aim /> {Creature.hitDiceEquation}</Typography></Grid>
         <Grid item xs={6}><Typography variant="body2"><Blade /> {Creature.damageDiceEquation}</Typography></Grid>
       </Grid>
