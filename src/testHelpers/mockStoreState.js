@@ -2,8 +2,18 @@ export default {
   "combat": {
     Victory: "a",
     Log: [
-      ["Test", "Test 2"],
-      ["Test 3", "Test 4"],
+      {
+        Round: "#1",
+        Creature: "Goblin",
+        Team: "a",
+        Message: "This is a test message",
+      },
+      {
+        Round: "#1",
+        Creature: "Elven Ranger",
+        Team: "b",
+        Message: "This is a second test message",
+      },
     ],
   },
   "creatures": [
