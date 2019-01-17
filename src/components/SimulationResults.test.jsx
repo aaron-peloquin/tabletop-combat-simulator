@@ -7,7 +7,7 @@ import SimulationResults from "./SimulationResults"
 
 describe("<SimulationResults />", () => {
   const renderShallowUntilComponent = createShallow({"untilSelector": "SimulationResults"})
-  let store; let props; let SimulationResultsComponent
+  let store; let SimulationResultsComponent
 
   beforeEach(() => {
     store = initializeStore({})
