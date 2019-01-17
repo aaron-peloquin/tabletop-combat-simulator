@@ -30,7 +30,10 @@ const SimulationResults = (props) => {
   } = props
   return <Fragment>
     {(Victory.length > 0?<Typography variant="h4">Team <strong>{Victory.toUpperCase()}</strong> Won</Typography>:"")}
-    {(FinalRound > 0?<Typography variant="body1">Combat resolved after <strong>{FinalRound}</strong> rounds.</Typography>:"")}
+    {(FinalRound > 0?
+      <Typography variant="body1">Combat resolved after <strong>{FinalRound}</strong> rounds.</Typography>
+      :""
+    )}
     {(Survivors.length > 0?<Grid container>
       {Survivors.map((Creature, k) => {
         return <Fragment key={k}>
