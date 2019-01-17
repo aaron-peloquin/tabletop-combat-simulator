@@ -15,6 +15,18 @@ export default {
         Message: "This is a second test message",
       },
     ],
+    Survivors: [
+      {
+        "name": "Knight",
+        "team": "a",
+        "hash": "hee9p286",
+        "initiative": 11,
+        "armor": 18,
+        "hp": 12,
+        "hitDiceEquation": "1d20+4",
+        "damageDiceEquation": "1d12+4",
+      },
+    ],
   },
   "creatures": [
     {
