@@ -1,31 +1,37 @@
 /** Example code https://github.com/mui-org/material-ui/tree/master/examples/nextjs */
 import React from "react"
 import PropTypes from "prop-types"
-import Document, { Head, Main, NextScript } from "next/document"
+import Document, {Head, Main, NextScript} from "next/document"
 import flush from "styled-jsx/server"
 
+/**
+ * This file wraps every NextJS page.
+ * @return {jsx}
+ */
 class MyDocument extends Document {
+/**
+ * The DOM that is wrapped around every page
+ * @param {jsx} this.props.pageContext the page content JSX to wrap
+ * @return {jsx}
+ */
   render() {
-    const { pageContext } = this.props
-
-    return (
-      <html lang="en" dir="ltr">
-        <Head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"/>
-          <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"/>
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    )
+    const {pageContext} = this.props
+    return <html lang="en" dir="ltr">
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"/>
+        <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"/>
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </html>
   }
 }
 
-MyDocument.getInitialProps = ctx => {
+MyDocument.getInitialProps = (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -50,8 +56,8 @@ MyDocument.getInitialProps = ctx => {
 
   // Render app and page and get the context of the page with collected side effects.
   let pageContext
-  const page = ctx.renderPage(Component => {
-    const WrappedComponent = props => {
+  const page = ctx.renderPage((Component) => {
+    const WrappedComponent = (props) => {
       pageContext = props.pageContext
       return <Component {...props} />
     }
@@ -69,7 +75,7 @@ MyDocument.getInitialProps = ctx => {
     // Styles fragment is rendered after the app and page rendering finish.
     styles: (
       <React.Fragment>
-        <style id="jss-server-side" dangerouslySetInnerHTML={{ __html: pageContext.sheetsRegistry.toString() }}/>
+        <style id="jss-server-side" dangerouslySetInnerHTML={{__html: pageContext.sheetsRegistry.toString()}}/>
         {flush() || null}
       </React.Fragment>
     ),
