@@ -22,7 +22,7 @@ const CreatureForm = (props) => {
     funcSaveCreature,
     funcUpdateEditCreature,
     funcSetEditCreature,
-    AllCreatures={},
+    AllCreatures,
     onChange,
     onSubmit,
     classes,
