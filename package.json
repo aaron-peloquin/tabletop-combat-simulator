@@ -23,6 +23,7 @@
     "@material-ui/icons": "^3.0.1",
     "enzyme-redux": "^0.2.1",
     "express": "^4.16.4",
+    "immutable": "^4.0.0-rc.12",
     "isomorphic-fetch": "^2.2.1",
     "next": "^7.0.2",
     "next-redux-wrapper": "^2.0.0",
