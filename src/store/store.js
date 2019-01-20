@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware, combineReducers } from "redux"
-import { composeWithDevTools } from "redux-devtools-extension"
+import {createStore, applyMiddleware, combineReducers} from "redux"
+import {composeWithDevTools} from "redux-devtools-extension"
 import thunkMiddleware from "redux-thunk"
 
 /** Reducers */
@@ -16,7 +16,11 @@ const reducers = combineReducers({
   sideBar,
 })
 
-/** initialize store */
-export function initializeStore (initialState = initialState) {
+/**
+ * Initializes the store
+ * @param {obj} initialState the state our app starts with
+ * @return {obj} the redux store
+ */
+export function initializeStore(initialState = initialState) {
   return createStore(reducers, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))
 }
