@@ -1,3 +1,5 @@
+import {Stack} from "immutable"
+
 import roll from "./../../helpers/diceRolling/"
 import sortInitiative from "./../../helpers/sortInitiative"
 import actionTypes from "./../actionTypes"
@@ -6,10 +8,11 @@ const defaultState = {
   AliveTeamCreatures: {a: [], b: []},
   CreatureStatus: [],
   FinalRound: 0,
-  Log: [],
+  Log: Stack(), // eslint-disable-line
   TurnOrder: [],
   Victory: "",
 }
+
 /**
  * Simulates combat between two teams of creatures.
  * @param {obj} state The current state of `combat`
@@ -23,27 +26,34 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
   case actionTypes.RunSimulation:
     /**
      * 1) Parse and set all creatures (all payload) into state
-     *    A) Fill `state.AliveTeamCreatures` with creature hashes `{a: [hash, hash], b: [hash]}`
-     *    B) Roll Inititive and fill `state.TurnOrder` like `[hash, hash, hash]`
-     *    C) Fill `state.CreatureStatus` `{hash:Data}`
+     *    A) Fill `AliveTeamCreatures` with creature hashes `{a: [hash, hash], b: [hash]}`
+     *    B) Roll Inititive and fill `TurnOrder` like `[hash, hash, hash]`
+     *    C) Fill `CreatureStatus` `{hash:Data}`
      * 2) Run a while loop for combat rounds (end when 1 team is fully knocked out, or 100 rounds)
-     *    A) Loop through `state.TurnOrder`
-     *    B) rolling attacks against random creatures found in the oposite team of `state.AliveTeamCreatures`
+     *    A) Loop through `TurnOrder`
+     *    B) rolling attacks against random creatures found in the oposite team of `AliveTeamCreatures`
      *    C) if it hits their armor, roll and deal damage
-     *    D) if this damage reduces them to 0 or lower, remove the enemy from `state.AliveTeamCreatures`
-     *    E) insert a row into `state.Log`, describing what happened
-     * 3) Set `state.Victory`
+     *    D) if this damage reduces them to 0 or lower, remove the enemy from `AliveTeamCreatures`
+     *    E) insert a row into `Log`, describing what happened
+     * 3) Set `Victory`
      */
     if (payload.length>0) {
       /** Always reset state back to default */
-      state = Object.assign({}, defaultState)
-      state.AliveTeamCreatures = Object.assign({}, defaultState.AliveTeamCreatures)
-      state.AliveTeamCreatures.a = defaultState.AliveTeamCreatures.a.slice()
-      state.AliveTeamCreatures.b = defaultState.AliveTeamCreatures.b.slice()
-      state.CreatureStatus = defaultState.CreatureStatus.slice()
-      state.TurnOrder = defaultState.TurnOrder.slice()
-      state.Log = defaultState.Log.slice()
-      state.Victory = defaultState.Victory.slice()
+      // state = Object.assign({}, defaultState)
+      // AliveTeamCreatures = Object.assign({}, defaultAliveTeamCreatures)
+      // AliveTeamCreatures.a = defaultAliveTeamCreatures.a.slice()
+      // AliveTeamCreatures.b = defaultAliveTeamCreatures.b.slice()
+      // CreatureStatus = defaultCreatureStatus.slice()
+      // TurnOrder = defaultTurnOrder.slice()
+      // Log = defaultLog.slice()
+      // Victory = defaultVictory.slice()
+
+      const AliveTeamCreatures = {a: [], b: []}
+      const CreatureStatus = []
+      let TurnOrder = []
+      let Log = Stack() // eslint-disable-line
+      let Victory = ""
+      let FinalRound = 0
 
       /** Iterate through all creatures */
       payload.map((creature) => {
@@ -55,25 +65,25 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
           }
 
           /** Sort concious creatures into teams A and B in `AliveTeamCreatures` */
-          state.AliveTeamCreatures[creature.team].push(creature.hash)
+          AliveTeamCreatures[creature.team].push(creature.hash)
 
-          /** Add creature into `state.CreatureStatus` */
-          state.CreatureStatus[creature.hash] = creature
+          /** Add creature into `CreatureStatus` */
+          CreatureStatus[creature.hash] = creature
 
           /** Roll inititive, to later sort into `TurnOrder` */
           const initRoll = roll(`1D20+${creature.initiative}`).result
-          state.Log.push({
+          Log = Log.push({
             Round: "Initiative",
             Message: `Rolled a ${initRoll} initiative`,
             Creature: creature.name,
             Team: creature.team,
           })
-          state.TurnOrder.push([creature.hash, parseInt(initRoll), parseInt(creature.initiative)])
+          TurnOrder.push([creature.hash, parseInt(initRoll), parseInt(creature.initiative)])
         }
       })
-      if (state.AliveTeamCreatures.a.length > 0 && state.AliveTeamCreatures.b.length > 0) {
+      if (AliveTeamCreatures.a.length > 0 && AliveTeamCreatures.b.length > 0) {
         /** Sort creatures by init */
-        state.TurnOrder = sortInitiative(state.TurnOrder).map((init) => {
+        TurnOrder = sortInitiative(TurnOrder).map((init) => {
           return init[0]
         })
       }
@@ -85,20 +95,20 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
       let randomTargetNum; let attackTargetHash; let attackTarget; let removeCreatureKey
       let hitResult; let damageResult
       let logMessage
-      while (round < 999 && state.AliveTeamCreatures["a"].length > 0 && state.AliveTeamCreatures["b"].length > 0) {
+      while (round < 999 && AliveTeamCreatures.a.length > 0 && AliveTeamCreatures.b.length > 0) {
         round++
-        for (const turnHash of state.TurnOrder) {
-          turnCreature = state.CreatureStatus[turnHash]
+        for (const turnHash of TurnOrder) {
+          turnCreature = CreatureStatus[turnHash]
           logMessage = "Skips their turn since they are unconcious"
 
           if (turnCreature.hp > 0) {
-            enemyTeam = state.AliveTeamCreatures[turnCreature.enemy]
+            enemyTeam = AliveTeamCreatures[turnCreature.enemy]
             enemyTeamLength = enemyTeam.length
             if (enemyTeamLength > 0) {
               randomTargetNum = roll(`1d${enemyTeamLength}`).result
               randomTargetNum -= 1
               attackTargetHash = enemyTeam[randomTargetNum]
-              attackTarget = state.CreatureStatus[attackTargetHash]
+              attackTarget = CreatureStatus[attackTargetHash]
               hitResult = roll(turnCreature.hitDiceEquation)
               /** did this attack hit? */
               if (hitResult.critHit || (!hitResult.critMiss && hitResult.result >= attackTarget.armor)) {
@@ -108,13 +118,13 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
                 if (hitResult.critHit) {
                   damageResult += roll(turnCreature.damageDiceEquation).result
                 }
-                state.CreatureStatus[attackTargetHash].hp -= damageResult
-                if (state.CreatureStatus[attackTargetHash].hp <= 0) {
+                CreatureStatus[attackTargetHash].hp -= damageResult
+                if (CreatureStatus[attackTargetHash].hp <= 0) {
                   /** hit, target is knocked unconcious */
                   logMessage = `${hitResult.critHit?"Critically knocked":"Knocked"} out ${attackTarget.name}`
                     +` with ${damageResult} damage`
-                  removeCreatureKey = state.AliveTeamCreatures[turnCreature.enemy].indexOf(attackTargetHash)
-                  state.AliveTeamCreatures[turnCreature.enemy].splice(removeCreatureKey, 1)
+                  removeCreatureKey = AliveTeamCreatures[turnCreature.enemy].indexOf(attackTargetHash)
+                  AliveTeamCreatures[turnCreature.enemy].splice(removeCreatureKey, 1)
                 } else {
                   /** hit, target is not unconcious */
                   logMessage = `${hitResult.critHit?"Critically hit":"Hit"} `
@@ -132,7 +142,7 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
               /** Combat is over */
               logMessage = "Has nothing to do"
             }
-            state.Log.push({
+            Log = Log.push({
               Round: `#${round}`,
               Creature: turnCreature.name,
               Message: logMessage,
@@ -141,13 +151,20 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
           }
         }
       }
-      state.FinalRound = round
-      if (state.AliveTeamCreatures.a.length > 0) {
+      FinalRound = round
+      if (AliveTeamCreatures.a.length > 0) {
         /** Team A won */
-        state.Victory = "a"
+        Victory = "a"
       } else {
         /** Team B won */
-        state.Victory = "b"
+        Victory = "b"
+      }
+      state = {
+        AliveTeamCreatures,
+        CreatureStatus,
+        TurnOrder,
+        Log: Log.toArray(),
+        Victory,
       }
     }
     break
