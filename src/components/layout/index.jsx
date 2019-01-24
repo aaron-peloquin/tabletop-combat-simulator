@@ -36,7 +36,6 @@ const styles = (theme) => {
       width: "90%",
     },
     paper: {
-      minHeight: theme.spacing.unit * 500,
       padding: theme.spacing.unit * 4,
     },
   }
