@@ -162,8 +162,9 @@ const combatReducer = (state=defaultState, {type=false, payload={}}) => {
       state = {
         AliveTeamCreatures,
         CreatureStatus,
-        TurnOrder,
+        FinalRound,
         Log: Log.toArray(),
+        TurnOrder,
         Victory,
       }
     }
