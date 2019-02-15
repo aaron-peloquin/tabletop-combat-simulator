@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreaturesTableRow /> snapshots 1`] = `
+<WithStyles(TableRow)
+  key="hivn3p0k"
+>
+  <WithStyles(TableCell)>
+    <Link
+      as="/creature/hivn3p0k"
+      href="/creature?hash=hivn3p0k"
+    >
+      <a>
+        <WithStyles(Button)
+          color="primary"
+          variant="contained"
+        >
+          <pure(EditIcon) />
+        </WithStyles(Button)>
+      </a>
+    </Link>
+    <WithStyles(Button)
+      color="secondary"
+      onClick={[Function]}
+      variant="contained"
+    >
+      <pure(DeleteIcon) />
+    </WithStyles(Button)>
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    Goplin
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    1/4
+  </WithStyles(TableCell)>
+</WithStyles(TableRow)>
+`;

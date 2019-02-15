@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeleteAllCreatures /> snapshots 1`] = `
+<WithStyles(Button)
+  color="secondary"
+  data-id="delete-all"
+  onClick={[Function]}
+  variant="contained"
+>
+  Delete All Creatures
+</WithStyles(Button)>
+`;

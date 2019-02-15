@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TeamList /> snapshots 1`] = `
+<WithStyles(Grid)
+  container={true}
+  justify="center"
+  spacing={24}
+>
+  <WithStyles(Grid)
+    item={true}
+    xs={12}
+  >
+    <WithStyles(Typography)
+      variant="h4"
+    >
+      Team 
+      A
+    </WithStyles(Typography)>
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    item={true}
+    xs={12}
+  >
+    <WithStyles(Typography)
+      variant="body2"
+    >
+      0
+       Creatures
+    </WithStyles(Typography)>
+  </WithStyles(Grid)>
+</WithStyles(Grid)>
+`;

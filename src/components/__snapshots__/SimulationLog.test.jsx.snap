@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SimulationLog /> snapshots 1`] = `
+<Fragment>
+  <WithStyles(Typography)
+    variant="h4"
+  >
+    Combat Log
+  </WithStyles(Typography)>
+  <WithStyles(Table)
+    className="Connect-SimulationLog--LogItems-1"
+  >
+    <WithStyles(TableHead)>
+      <WithStyles(TableRow)>
+        <WithStyles(TableCell)>
+          Round: Creature
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Message
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+    </WithStyles(TableHead)>
+    <WithStyles(TableBody)>
+      <WithStyles(TableRow)
+        key="0"
+      >
+        <WithStyles(TableCell)>
+          #1
+          : 
+          Goblin
+           (
+          A
+          )
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          This is a test message
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+      <WithStyles(TableRow)
+        key="1"
+      >
+        <WithStyles(TableCell)>
+          #1
+          : 
+          Elven Ranger
+           (
+          B
+          )
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          This is a second test message
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+    </WithStyles(TableBody)>
+  </WithStyles(Table)>
+</Fragment>
+`;

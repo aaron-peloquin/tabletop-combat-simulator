@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SideBarLink /> snapshots 1`] = `
+<Link
+  href="/world"
+>
+  <a
+    className="SideBarLink-link-1"
+  >
+    <WithStyles(ListItem)
+      button={true}
+    >
+      <WithStyles(ListItemText)
+        primary="hello"
+      />
+    </WithStyles(ListItem)>
+  </a>
+</Link>
+`;

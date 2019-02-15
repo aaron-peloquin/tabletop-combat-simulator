@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SideBar /> snapshots 1`] = `
+<WithTheme(SwipeableDrawer)
+  anchor="left"
+  onClose={[Function]}
+  onOpen={[Function]}
+  open={false}
+>
+  <div
+    className="SideBar-drawerContainer-1"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+  >
+    <WithStyles(List)>
+      <WithStyles(SideBarLink)
+        text="Home"
+        url="/"
+      >
+        <pure(HomeIcon) />
+      </WithStyles(SideBarLink)>
+      <WithStyles(SideBarLink)
+        text="About"
+        url="/about"
+      >
+        <pure(InfoIcon) />
+      </WithStyles(SideBarLink)>
+    </WithStyles(List)>
+  </div>
+</WithTheme(SwipeableDrawer)>
+`;

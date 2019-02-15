@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SimulateCombat /> snapshots 1`] = `
+<WithStyles(Button)
+  color="primary"
+  data-id="delete-all"
+  onClick={[Function]}
+  variant="contained"
+>
+  Run Combat Simulation
+</WithStyles(Button)>
+`;

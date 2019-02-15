@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreaturesList /> Snapshots 1`] = `
+<div>
+  <p>
+    Showing 
+    4
+     Creatures
+  </p>
+  <WithStyles(Table)>
+    <WithStyles(TableHead)>
+      <WithStyles(TableRow)>
+        <WithStyles(TableCell)
+          key="heading-"
+        />
+        <WithStyles(TableCell)
+          key="heading-Name"
+        >
+          Name
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)
+          key="heading-CR"
+        >
+          CR
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+    </WithStyles(TableHead)>
+    <WithStyles(TableBody)>
+      <Connect(CreaturesTableRow)
+        creature={
+          Object {
+            "armor": 13,
+            "damageDiceEquation": "1d6+3",
+            "hash": "h3dxf5wl",
+            "hitDiceEquation": "1d20+8",
+            "hp": 10,
+            "initiative": 16,
+            "name": "Elven Ranger",
+            "team": "b",
+          }
+        }
+        key="creature-h3dxf5wl"
+      />
+      <Connect(CreaturesTableRow)
+        creature={
+          Object {
+            "armor": 11,
+            "cr": "1/4",
+            "damageDiceEquation": "1d4",
+            "hash": "hivn3p0k",
+            "hitDiceEquation": "1d20+1",
+            "hp": 5,
+            "initiative": 10,
+            "name": "Goplin",
+            "team": "a",
+          }
+        }
+        key="creature-hivn3p0k"
+      />
+      <Connect(CreaturesTableRow)
+        creature={
+          Object {
+            "armor": 18,
+            "damageDiceEquation": "1d12+4",
+            "hash": "hee9p286",
+            "hitDiceEquation": "1d20+4",
+            "hp": 25,
+            "initiative": 11,
+            "name": "Knight",
+            "team": "a",
+          }
+        }
+        key="creature-hee9p286"
+      />
+      <Connect(CreaturesTableRow)
+        creature={
+          Object {
+            "armor": 14,
+            "damageDiceEquation": "1d10+2",
+            "hash": "howx26rt",
+            "hitDiceEquation": "1d20+5",
+            "hp": 15,
+            "initiative": 14,
+            "name": "Lizardfolk",
+            "team": "b",
+          }
+        }
+        key="creature-howx26rt"
+      />
+    </WithStyles(TableBody)>
+  </WithStyles(Table)>
+</div>
+`;
+
+exports[`<CreaturesList /> Snapshots without any creatures 1`] = `
+<p>
+  No creatures exist yet
+</p>
+`;

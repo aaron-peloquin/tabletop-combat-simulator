@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreatureForm /> snapshots 1`] = `
+<form
+  autoComplete="off"
+  onSubmit={[Function]}
+>
+  <button
+    className="CreatureForm-hidden-1"
+    type="submit"
+  />
+  <fieldset>
+    <legend>
+      Player or Creature
+    </legend>
+    <WithStyles(Grid)
+      container={true}
+    >
+      <Connect(WithStyles(CreatureFormGridField))
+        dataKey="name"
+        label="Name (Required)"
+        onChange={[Function]}
+        size="large"
+      />
+      <Connect(WithStyles(CreatureFormGridField))
+        dataKey="hp"
+        label="Starting Hit Points"
+        onChange={[Function]}
+      />
+      <Connect(WithStyles(CreatureFormGridField))
+        dataKey="armor"
+        label="Armor"
+        onChange={[Function]}
+      />
+      <Connect(WithStyles(CreatureFormGridField))
+        dataKey="initiative"
+        label="Initiative Bonus"
+        onChange={[Function]}
+      />
+      <Connect(WithStyles(CreatureFormGridField))
+        dataKey="hitDiceEquation"
+        label="Hit Dice Equation"
+        onChange={[Function]}
+        placeholder="eg. 1d20+4"
+        size="medium"
+      />
+      <Connect(WithStyles(CreatureFormGridField))
+        dataKey="damageDiceEquation"
+        label="Damage Dice Equation"
+        onChange={[Function]}
+        placeholder="eg. 1d6+2d4+2"
+        size="medium"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      container={true}
+      justify="center"
+    >
+      <WithStyles(Grid)
+        item={true}
+        sm={6}
+      >
+        <WithStyles(Button)
+          className="CreatureForm-submitButtons-2"
+          color="primary"
+          onClick={[Function]}
+          type="submit"
+          variant="contained"
+        >
+          Save
+           to Team A
+        </WithStyles(Button)>
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        sm={6}
+      >
+        <WithStyles(Button)
+          className="CreatureForm-submitButtons-2"
+          color="secondary"
+          onClick={[Function]}
+          type="submit"
+          variant="contained"
+        >
+          Save
+           to Team B
+        </WithStyles(Button)>
+      </WithStyles(Grid)>
+    </WithStyles(Grid)>
+  </fieldset>
+</form>
+`;

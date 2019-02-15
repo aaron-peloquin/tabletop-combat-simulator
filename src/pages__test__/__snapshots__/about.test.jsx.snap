@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Creature /> Page Snapshots 1`] = `
+<Fragment>
+  <WithStyles(Typography)
+    variant="h2"
+  >
+    About
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    variant="body2"
+  >
+    The goal of this website is to help simulate simple combat scenarios for your tabletop game.
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    variant="h4"
+  >
+    App Code
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    variant="body2"
+  >
+    The code for this web app is open-source, see 
+    <a
+      href="https://github.com/aaron-peloquin/tabletop-combat-simulator"
+    >
+      Github
+    </a>
+    .
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    variant="h4"
+  >
+    Thanks
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    variant="body2"
+  >
+    Special thanks to 
+    <a
+      href="https://game-icons.net/"
+      target="_blank"
+    >
+      Game-Icons.net
+    </a>
+    , who provided the icons on this app under under
+    <a
+      href="https://creativecommons.org/licenses/by/3.0/"
+      target="_blank"
+    >
+      Creative Commons
+    </a>
+    .
+  </WithStyles(Typography)>
+</Fragment>
+`;

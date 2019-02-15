@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HeaderBar /> snapshots 1`] = `
+<WithStyles(AppBar)>
+  <WithStyles(Toolbar)>
+    <WithStyles(IconButton)
+      aria-label="Menu"
+      color="inherit"
+      onClick={[Function]}
+    >
+      <pure(MenuIcon) />
+    </WithStyles(IconButton)>
+    <WithStyles(Typography)
+      color="inherit"
+      variant="h4"
+    >
+      Tabletop Combat Simulator
+    </WithStyles(Typography)>
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;

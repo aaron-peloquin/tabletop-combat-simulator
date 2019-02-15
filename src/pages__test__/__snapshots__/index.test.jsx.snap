@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Index /> Page Snapshots 1`] = `
+<WithStyles(Grid)
+  alignItems="stretch"
+  className="Index-CenterItems-1"
+  container={true}
+  justify="center"
+  spacing={24}
+>
+  <WithStyles(Grid)
+    item={true}
+    xs={12}
+  >
+    <Connect(WithStyles(CreatureForm)) />
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    container={true}
+    item={true}
+    justify="center"
+    spacing={24}
+    xs={12}
+  >
+    <WithStyles(Grid)
+      item={true}
+      md={6}
+    >
+      <Connect(TeamList)
+        Team="a"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      md={6}
+    >
+      <Connect(TeamList)
+        Team="b"
+      />
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    item={true}
+    xs={12}
+  >
+    <Connect(SimulateCombat) />
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    container={true}
+    item={true}
+    justify="center"
+    spacing={24}
+    xs={12}
+  >
+    <WithStyles(Grid)
+      item={true}
+      md={6}
+    >
+      <WithStyles(Connect(SimulationResults)) />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      md={6}
+    >
+      <WithStyles(Connect(SimulationLog)) />
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+  <WithStyles(Grid)
+    item={true}
+    xs={12}
+  >
+    <Connect(DeleteAllCreatures) />
+  </WithStyles(Grid)>
+</WithStyles(Grid)>
+`;
