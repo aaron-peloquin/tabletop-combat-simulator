@@ -44,4 +44,16 @@ describe("[reduxReducer] creatures", ()=>{
     state = creatures(state, data)
     expect(state[0].name).toBe("New Name")
   })
+
+  it("[CopyCreature] modifies creature data", ()=>{
+    data = {
+      type: actionTypes.CopyCreature,
+      payload: {
+        name: "Copied Name",
+        hash: state[0].hash,
+      },
+    }
+    state = creatures(state, data)
+    expect(state[state.length-1].name).toBe("Hello World")
+  })
 })
