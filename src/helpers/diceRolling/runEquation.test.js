@@ -2,24 +2,23 @@ import runEquation from "./runEquation"
 
 describe("runEquation()", ()=>{
   let result
-  let equation
 
   it("evaluates equations", () => {
-    equation = "1+5"
-    result = runEquation(equation)
+    result = runEquation("1+5")
     expect(result).toBe(6)
 
-    equation = "20*15"
-    result = runEquation(equation)
+    result = runEquation("20*15")
     expect(result).toBe(300)
   })
 
   it("fails on invalid equations", () => {
     console.warn = jest.fn()
-    equation = "1f5"
     expect(console.warn).toBeCalledTimes(0)
-    result = runEquation(equation)
-    expect(console.warn).toBeCalledTimes(1)
-  })
 
+    result = runEquation("1f5")
+    expect(console.warn).toBeCalledTimes(1)
+
+    result = runEquation("1d5/0")
+    expect(console.warn).toBeCalledTimes(2)
+  })
 })
