@@ -1,6 +1,5 @@
 import {createShallow} from "@material-ui/core/test-utils"
 import toJson from "enzyme-to-json"
-import {SvgIcon} from "@material-ui/core"
 
 import {Heart, Boot, Shield, Aim, Blade} from "./Icons"
 
