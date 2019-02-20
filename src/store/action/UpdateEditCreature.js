@@ -8,7 +8,7 @@ const UpdateEditCreature = (dispatch, key, value) => {
     value = value.replace(/\D/g, "")
     break
   case "initiative":
-    value = value.replace(/\-\D/g, "")
+    value = value.replace(/[^\d-]/g, "")
     break
   case "hitDiceEquation":
   case "damageDiceEquation":
