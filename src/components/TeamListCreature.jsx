@@ -52,13 +52,13 @@ const TeamListCreature = (props) => {
     </CardContent>
     <CardActions>
       <Grid container spacing={8} alignItems="stretch" justify="center">
-        <Grid item xs={4}><Button variant="contained" color="primary" onClick={() => {
+        <Grid item xs={4}><Button data-testid="editButton" variant="contained" color="primary" onClick={() => {
           funcSetEditCreature(Creature)
         }}><Edit /></Button></Grid>
-        <Grid item xs={4}><Button variant="contained" color="primary" onClick={() => {
+        <Grid item xs={4}><Button data-testid="copyButton" variant="contained" color="primary" onClick={() => {
           funcCopyCreature(Creature.hash)
         }}><FileCopy /></Button></Grid>
-        <Grid item xs={4}><Button variant="contained" color="secondary" onClick={() => {
+        <Grid item xs={4}><Button data-testid="deleteButton" variant="contained" color="secondary" onClick={() => {
           funcDeleteCreature(Creature.hash)
         }}><Delete /></Button></Grid>
       </Grid>
