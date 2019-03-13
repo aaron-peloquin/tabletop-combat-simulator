@@ -6,11 +6,11 @@ import Layout from "./index"
 import HeaderBar from "./HeaderBar"
 import SideBar from "./SideBar"
 
-describe("<Layout />", async ()=>{
+describe("<Layout />", ()=>{
   const renderShallowUntilComponent = createShallow({"untilSelector": "Layout"})
   let props; let Component
-  beforeEach(async ()=>{
-    Component = await renderShallowUntilComponent(<Layout {...props} />)
+  beforeEach(()=>{
+    Component = renderShallowUntilComponent(<Layout {...props} />)
   })
 
   it("loads", () => {
