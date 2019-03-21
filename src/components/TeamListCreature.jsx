@@ -5,9 +5,8 @@ import {
   CardContent,
   Grid,
   Typography,
-  withStyles,
 } from "@material-ui/core/"
-// import { withStyles } from "@material-ui/core/styles"
+import {withStyles} from "@material-ui/core/styles"
 import {connect} from "react-redux"
 
 import setEditCreature from "./../store/action/SetEditCreature"
@@ -28,7 +27,7 @@ import {
   Delete,
 } from "@material-ui/icons"
 
-const TeamListCreature = (props) => {
+export const RawTeamListCreature = (props) => {
   const {
     classes,
     /** Actions */
@@ -93,6 +92,6 @@ const Styles = () => {
   }
 }
 
-const StyledComponent = withStyles(Styles)(TeamListCreature)
+const StyledComponent = withStyles(Styles)(RawTeamListCreature)
 const ConnectedComponent = connect(MapStateToProps, MapActionsToProps)(StyledComponent)
 export default ConnectedComponent

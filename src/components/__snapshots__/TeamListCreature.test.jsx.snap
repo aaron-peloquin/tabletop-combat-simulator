@@ -1,3 +1,137 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TeamListCreature /> snapshots 1`] = `"null"`;
+exports[`<TeamListCreature /> snapshots 1`] = `
+<WithStyles(Card)
+  className={true}
+>
+  <WithStyles(CardContent)>
+    <WithStyles(Grid)
+      alignItems="stretch"
+      container={true}
+      justify="center"
+      spacing={8}
+    >
+      <WithStyles(Grid)
+        item={true}
+        xs={12}
+      >
+        <WithStyles(Typography)
+          variant="body1"
+        >
+          <strong>
+            Goplin
+          </strong>
+        </WithStyles(Typography)>
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        xs={4}
+      >
+        <WithStyles(Typography)
+          variant="body2"
+        >
+          <WithStyles(Component) />
+           
+          5
+        </WithStyles(Typography)>
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        xs={4}
+      >
+        <WithStyles(Typography)
+          variant="body2"
+        >
+          <WithStyles(Component) />
+           
+          11
+        </WithStyles(Typography)>
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        xs={4}
+      >
+        <WithStyles(Typography)
+          variant="body2"
+        >
+          <WithStyles(Component) />
+           +
+          10
+        </WithStyles(Typography)>
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        xs={6}
+      >
+        <WithStyles(Typography)
+          variant="body2"
+        >
+          <WithStyles(Component) />
+           
+          1d20+1
+        </WithStyles(Typography)>
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        xs={6}
+      >
+        <WithStyles(Typography)
+          variant="body2"
+        >
+          <WithStyles(Component) />
+           
+          1d4
+        </WithStyles(Typography)>
+      </WithStyles(Grid)>
+    </WithStyles(Grid)>
+  </WithStyles(CardContent)>
+  <WithStyles(CardActions)>
+    <WithStyles(Grid)
+      alignItems="stretch"
+      container={true}
+      justify="center"
+      spacing={8}
+    >
+      <WithStyles(Grid)
+        item={true}
+        xs={4}
+      >
+        <WithStyles(Button)
+          color="primary"
+          data-testid="editButton"
+          onClick={[Function]}
+          variant="contained"
+        >
+          <pure(EditIcon) />
+        </WithStyles(Button)>
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        xs={4}
+      >
+        <WithStyles(Button)
+          color="primary"
+          data-testid="copyButton"
+          onClick={[Function]}
+          variant="contained"
+        >
+          <pure(FileCopyIcon) />
+        </WithStyles(Button)>
+      </WithStyles(Grid)>
+      <WithStyles(Grid)
+        item={true}
+        xs={4}
+      >
+        <WithStyles(Button)
+          color="secondary"
+          data-testid="deleteButton"
+          onClick={[Function]}
+          variant="contained"
+        >
+          <pure(DeleteIcon) />
+        </WithStyles(Button)>
+      </WithStyles(Grid)>
+    </WithStyles(Grid)>
+  </WithStyles(CardActions)>
+</WithStyles(Card)>
+`;
