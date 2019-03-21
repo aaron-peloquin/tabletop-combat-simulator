@@ -6,6 +6,9 @@ import Layout from "./index"
 import HeaderBar from "./HeaderBar"
 import SideBar from "./SideBar"
 
+jest.mock("./HeaderBar")
+jest.mock("./SideBar")
+
 describe("<Layout />", ()=>{
   const renderShallowUntilComponent = createShallow({"untilSelector": "Layout"})
   let props; let Component
