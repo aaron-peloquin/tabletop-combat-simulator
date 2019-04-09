@@ -5,7 +5,7 @@ import SideBarLink from "./SideBarLink"
 
 describe("<SideBarLink />", ()=>{
   const renderShallowUntilComponent = createShallow({"untilSelector": "SideBarLink"})
-  let store; let props; let Component
+  let props; let Component
   beforeEach(async ()=>{
     props = {
       text: "hello",
