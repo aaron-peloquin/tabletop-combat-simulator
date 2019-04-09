@@ -37,15 +37,7 @@ const MyApp = (props) => {
   )
 }
 
-MyApp.componentDidMount = () => {
-  // Remove the server-side injected CSS.
-  const jssStyles = document.querySelector("#jss-server-side")
-  if (jssStyles && jssStyles.parentNode) {
-    jssStyles.parentNode.removeChild(jssStyles)
-  }
-}
-
-MyApp.getInitialProps = async ({ Component, ctx }) => {
+MyApp.getInitialProps = async ({Component, ctx}) => {
   let pageProps = {}
   /** If this page has getInitialProps(), run it to fill pageProps */
   if (Component.getInitialProps) {
@@ -57,7 +49,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   if (typeof document != "undefined" ) {
     document.title = title
   }
-  return { pageProps }
+  return {pageProps}
 }
 
 export default withRedux(initializeStore)(MyApp)
