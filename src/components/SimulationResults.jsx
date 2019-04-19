@@ -18,16 +18,15 @@ const Styles = (theme) => {
   }
 }
 
-const SimulationResults = (props) => {
-  const {
-    /** MUI Styles */
-    classes,
+const SimulationResults = ( {
+  /** MUI Styles */
+  classes,
 
-    /** State */
-    FinalRound,
-    Survivors,
-    Victory,
-  } = props
+  /** State */
+  FinalRound,
+  Survivors,
+  Victory,
+}) => {
   return <Fragment>
     {(Victory.length > 0?<Typography variant="h4">Team <strong>{Victory.toUpperCase()}</strong> Won</Typography>:"")}
     {(FinalRound > 0?
