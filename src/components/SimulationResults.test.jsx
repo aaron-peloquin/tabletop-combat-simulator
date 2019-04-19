@@ -13,7 +13,17 @@ describe("<SimulationResults />", () => {
     store = initializeStore({})
 
     SimulationResultsComponent = renderShallowUntilComponent(<Provider store={store}>
-      <SimulationResults />
+      <SimulationResults
+        classes={{
+          CreatureHealth: {color: "blue"},
+          CreatureName: {color: "orange"},
+        }}
+        Survivors={[
+          {Name: "Beth", Health: 25},
+          {Name: "Jerry", Health: 50},
+          {Name: "Frank", Health: 75},
+        ]}
+      />
     </Provider>)
   })
 
