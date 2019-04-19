@@ -18,7 +18,7 @@ const Styles = (theme) => {
   }
 }
 
-const SimulationResults = ( {
+const SimulationResults = ({
   /** MUI Styles */
   classes,
 
