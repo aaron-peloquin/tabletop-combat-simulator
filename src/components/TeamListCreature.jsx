@@ -65,9 +65,7 @@ export const RawTeamListCreature = (props) => {
   </Card>
 }
 
-const MapStateToProps = () => {
-  return {}
-}
+const MapStateToProps = () => {}
 
 const MapActionsToProps = (dispatch) => {
   return {
