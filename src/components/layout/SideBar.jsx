@@ -16,21 +16,13 @@ import SideBarLink from "./SideBarLink"
  * @return {jsx} Component
  */
 const SideBar = (props) => {
-  const {dispatch, classes, open, funcToggleSidebar} = props
-  return <SwipeableDrawer onOpen={()=>{
-    funcToggleSidebar(dispatch)
-  }} open={open} anchor="left" onClose={()=>{
-    funcToggleSidebar(dispatch)
-  }}>
+  const {classes, open, funcToggleSidebar} = props
+  return <SwipeableDrawer onOpen={funcToggleSidebar} open={open} anchor="left" onClose={funcToggleSidebar}>
     <div
       className={classes.drawerContainer}
       role="button"
-      onClick={()=>{
-        funcToggleSidebar(dispatch)
-      }}
-      onKeyDown={()=>{
-        funcToggleSidebar(dispatch)
-      }}
+      onClick={funcToggleSidebar}
+      onKeyDown={funcToggleSidebar}
     >
       <List>
         <SideBarLink text="Home" url="/"><Home /></SideBarLink>
