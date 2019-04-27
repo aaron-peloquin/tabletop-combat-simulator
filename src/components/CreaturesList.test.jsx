@@ -17,7 +17,6 @@ describe("<CreaturesList />", ()=>{
   it("loads", () => {
     expect(typeof Component).toBe("object")
   })
-
   it("has a mui table", ()=>{
     expect(Component.find("WithStyles(Table)").length).toBe(1)
     expect(Component.find("WithStyles(TableHead)").length).toBe(1)
