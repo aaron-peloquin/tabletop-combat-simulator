@@ -9,7 +9,7 @@ import mockStoreState from "../testHelpers/mockStoreState"
 describe("<CreaturesList />", ()=>{
   const renderShallowUntilComponent = createShallow({"untilSelector": "CreaturesList"})
   let store; let state; let Component
-  beforeEach(async ()=>{
+  beforeEach(()=>{
     store = initializeStore(mockStoreState)
     Component = renderShallowUntilComponent(<Provider store={store}><CreaturesList /></Provider>)
   })
