@@ -1,4 +1,4 @@
-import copyCreature from "./copyCreature"
+import copyCreature from "./CopyCreature"
 
 describe("[reduxAction] copyCreature", ()=>{
   const mockFunction = jest.fn(()=>{})
