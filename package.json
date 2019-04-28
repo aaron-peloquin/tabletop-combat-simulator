@@ -13,10 +13,10 @@
     ]
   },
   "scripts": {
-    "test": "jest --watch",
-    "dev": "node ./src/devServer.js",
     "build": "next build ./src/",
-    "start": "node ./src/prodServer.js"
+    "dev": "node ./src/devServer.js",
+    "start": "node ./src/prodServer.js",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@material-ui/core": "^3.3.0",
