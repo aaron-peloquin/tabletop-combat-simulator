@@ -2,7 +2,7 @@
   "git.enableSmartCommit": true,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
-  "workbench.colorTheme": "Monokai",
+  "workbench.colorTheme": "Beyond the Horizon",
   "http.proxyStrictSSL": false,
   "workbench.startupEditor": "welcomePage",
   "gitlens.currentLine.enabled": false,
