@@ -6,6 +6,6 @@ describe("Integration test with visual testing", function() {
     cy.visit("/")
 
     // Take a snapshot for visual diffing
-    cy.percySnapshot()
+    // cy.percySnapshot()
   })
 })

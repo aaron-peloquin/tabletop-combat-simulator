@@ -16,6 +16,8 @@
     "build": "next build ./src/",
     "cypress": "cypress open",
     "dev": "node ./src/devServer.js",
+    "docker:build": "docker build -t aaronpeloquin/tabletop-combat-simulator .",
+    "docker:push": "docker push aaronpeloquin/tabletop-combat-simulator:latest",
     "start": "node ./src/prodServer.js",
     "test": "jest --watch"
   },
