@@ -1,0 +1,30 @@
+FROM node:8
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package.json ./
+COPY yarn.lock ./
+COPY src/ ./src/
+
+# Install yarn
+RUN npm i yarn --global
+
+# Install packages
+RUN yarn install
+# RUN npm ci --only=production
+
+# Build the next.js files for our server.js
+RUN yarn build
+
+# Bundle app source
+COPY . .
+
+# Open localhost:80
+EXPOSE 80
+
+# Run server.js
+CMD [ "yarn", "start" ]
