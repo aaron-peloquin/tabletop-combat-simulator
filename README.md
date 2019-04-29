@@ -1,4 +1,4 @@
-# Overview of Tabletop Combat Simulator
+# Tabletop Combat Simulator
 Allows a user to create a number of creature objects, assigned to either **Team A** or **Team B**. The user may then simulate tabletop combat between Team A and Team B, rolling attacks and damage at random.
 
 ![](https://travis-ci.com/aaron-peloquin/tabletop-combat-simulator.svg?branch=master)
