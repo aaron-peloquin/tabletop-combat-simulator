@@ -1,3 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SimulationResults /> snapshots 1`] = `<Fragment />`;
+exports[`<SimulationResults /> snapshots 1`] = `
+<Fragment>
+  <WithStyles(Typography)
+    variant="h4"
+  >
+    Team 
+    <strong>
+      A
+    </strong>
+     Won
+  </WithStyles(Typography)>
+  <WithStyles(Typography)
+    variant="body1"
+  >
+    Combat resolved after 
+    <strong>
+      4
+    </strong>
+     rounds.
+  </WithStyles(Typography)>
+  <WithStyles(Grid)
+    container={true}
+  >
+    <WithStyles(Grid)
+      className="color: \\"blue\\""
+      item={true}
+      xs={6}
+    >
+      25
+       HP
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="color: \\"orange\\""
+      item={true}
+      xs={6}
+    >
+      Beth
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="color: \\"blue\\""
+      item={true}
+      xs={6}
+    >
+      50
+       HP
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="color: \\"orange\\""
+      item={true}
+      xs={6}
+    >
+      Jerry
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="color: \\"blue\\""
+      item={true}
+      xs={6}
+    >
+      75
+       HP
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      className="color: \\"orange\\""
+      item={true}
+      xs={6}
+    >
+      Frank
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</Fragment>
+`;

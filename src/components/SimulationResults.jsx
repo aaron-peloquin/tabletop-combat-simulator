@@ -18,7 +18,7 @@ const Styles = (theme) => {
   }
 }
 
-const SimulationResults = ({
+export const SimulationResults = ({
   /** MUI Styles */
   classes,
 
@@ -28,11 +28,8 @@ const SimulationResults = ({
   Victory,
 }) => {
   return <Fragment>
-    {(Victory.length > 0?<Typography variant="h4">Team <strong>{Victory.toUpperCase()}</strong> Won</Typography>:"")}
-    {(FinalRound > 0?
-      <Typography variant="body1">Combat resolved after <strong>{FinalRound}</strong> rounds.</Typography>
-      :""
-    )}
+    {Victory.length ? <Typography variant="h4">Team <strong>{Victory.toUpperCase()}</strong> Won</Typography> : ""}
+    {FinalRound && <Typography variant="body1">Combat resolved after <strong>{FinalRound}</strong> rounds.</Typography>}
     {(Survivors.length > 0?<Grid container>
       {Survivors.map((Creature, k) => {
         return <Fragment key={k}>
@@ -43,11 +40,12 @@ const SimulationResults = ({
   </Fragment>
 }
 
-const MapStateToProps = (state) => {
+export const MapStateToProps = (state) => {
   const Victory = state.combat.Victory
   let Survivors = false
   const FinalRound = state.combat.FinalRound
-  if (Victory.length > 0) {
+  if (Victory.length) {
+    console.log({Fudgeds: state.combat.AliveTeamCreatures})
     Survivors = state.combat.AliveTeamCreatures[Victory].map((hash) => {
       const creature = state.combat.CreatureStatus[hash]
       return {
