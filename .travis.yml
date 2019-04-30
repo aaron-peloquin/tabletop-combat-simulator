@@ -13,4 +13,4 @@ before_install:
 install:
 - yarn
 script:
-- yarn jest
+- yarn jest --verbose
