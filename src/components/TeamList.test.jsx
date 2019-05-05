@@ -5,6 +5,8 @@ import {initializeStore} from "../store/store"
 
 import TeamList from "./TeamList"
 
+jest.mock('./TeamListCreature')
+
 describe("<TeamList />", () => {
   const renderShallowUntilComponent = createShallow({"untilSelector": "TeamList"})
   let store; let props; let TeamListComponent
@@ -13,6 +15,9 @@ describe("<TeamList />", () => {
     store = initializeStore({})
     props = {
       Team: "a",
+      Creatures: [
+        { name: "foo" }
+      ],
     }
     TeamListComponent = renderShallowUntilComponent(<Provider store={store}><TeamList {...props} /></Provider>)
   })
