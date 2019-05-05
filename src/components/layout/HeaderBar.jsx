@@ -13,7 +13,7 @@ import toggleSidebar from "./../../store/action/ToggleSidebar"
  * @param {func} FuncToggleSidebar is the redux action (dispatcher) for toggling the sidebar open/closed
  * @return {jsx} Component
  */
-const HeaderBar = ({
+export const HeaderBar = ({
   dispatch,
   funcToggleSidebar,
 }) => {

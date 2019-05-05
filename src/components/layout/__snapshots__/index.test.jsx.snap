@@ -2,7 +2,7 @@
 
 exports[`<Layout /> snapshots 1`] = `
 <div>
-  <Connect(HeaderBar) />
+  <HeaderBar />
   <Connect(WithStyles(SideBar)) />
   <main
     className="Layout-content-1"
