@@ -13,8 +13,10 @@ import toggleSidebar from "./../../store/action/ToggleSidebar"
  * @param {func} FuncToggleSidebar is the redux action (dispatcher) for toggling the sidebar open/closed
  * @return {jsx} Component
  */
-const HeaderBar = (props) => {
-  const {dispatch, funcToggleSidebar} = props
+const HeaderBar = ({
+  dispatch,
+  funcToggleSidebar,
+}) => {
   return <AppBar>
     <Toolbar>
       <IconButton color="inherit" aria-label="Menu" onClick={()=>{
@@ -27,12 +29,12 @@ const HeaderBar = (props) => {
   </AppBar>
 }
 
-HeaderBar.defaultProps = {
-  funcToggleSidebar: toggleSidebar,
-}
-
-export const mapStateToProps = (state) => {
+export const mapStateToProps = state => {
   return {open: state.sideBar}
 }
 
-export default connect(mapStateToProps)(HeaderBar)
+export const mapActionsToProps = dispatch => {
+  return {funcToggleSidebar: ()=>{toggleSidebar(dispatch)}}
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(HeaderBar)
