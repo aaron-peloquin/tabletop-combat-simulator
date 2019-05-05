@@ -27,16 +27,18 @@ export const SimulationResults = ({
   Survivors,
   Victory,
 }) => {
-  return <Fragment>
-    {Victory.length ? <Typography variant="h4">Team <strong>{Victory.toUpperCase()}</strong> Won</Typography> : ""}
+  if (!Victory) return ''
+
+return <Fragment>
+    {Victory.length && <Typography variant="h4">Team <strong>{Victory.toUpperCase()}</strong> Won</Typography>}
     {FinalRound && <Typography variant="body1">Combat resolved after <strong>{FinalRound}</strong> rounds.</Typography>}
-    {(Survivors.length > 0?<Grid container>
+    {Survivors.length && <Grid container>
       {Survivors.map((Creature, k) => {
         return <Fragment key={k}>
           <Grid className={classes.CreatureHealth} item xs={6}>{Creature.Health} HP</Grid>
           <Grid className={classes.CreatureName} item xs={6}>{Creature.Name}</Grid>
         </Fragment>
-      })}</Grid>:"")}
+      })}</Grid>}
   </Fragment>
 }
 
@@ -65,4 +67,5 @@ export const MapStateToProps = (state) => {
 const ConnectedComponent = connect(MapStateToProps)(SimulationResults)
 const StyledComponent = withStyles(Styles)(ConnectedComponent)
 
+StyledComponent.displayName = "SimulationResults"
 export default StyledComponent
