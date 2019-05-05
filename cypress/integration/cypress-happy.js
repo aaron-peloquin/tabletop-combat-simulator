@@ -7,5 +7,7 @@ describe("Integration test with visual testing", function() {
 
     // Take a snapshot for visual diffing
     // cy.percySnapshot()
+
+    cy.get("input").fist().type("Test Creature")
   })
 })
