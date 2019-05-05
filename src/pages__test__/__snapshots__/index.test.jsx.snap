@@ -55,7 +55,7 @@ exports[`<Index /> Page Snapshots 1`] = `
       item={true}
       md={6}
     >
-      <WithStyles(Connect(SimulationResults)) />
+      <SimulationResults />
     </WithStyles(Grid)>
     <WithStyles(Grid)
       item={true}
