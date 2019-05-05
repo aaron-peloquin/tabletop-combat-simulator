@@ -47,7 +47,6 @@ export const MapStateToProps = (state) => {
   let Survivors = false
   const FinalRound = state.combat.FinalRound
   if (Victory.length) {
-    console.log({Fudgeds: state.combat.AliveTeamCreatures})
     Survivors = state.combat.AliveTeamCreatures[Victory].map((hash) => {
       const creature = state.combat.CreatureStatus[hash]
       return {
