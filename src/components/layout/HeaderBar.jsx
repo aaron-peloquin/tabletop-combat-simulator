@@ -37,4 +37,6 @@ export const mapActionsToProps = dispatch => {
   return {funcToggleSidebar: ()=>{toggleSidebar(dispatch)}}
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(HeaderBar).displayName = "HeaderBar"
+const ConnectedHeaderBar = connect(mapStateToProps, mapActionsToProps)(HeaderBar)
+ConnectedHeaderBar.displayName = "HeaderBar"
+export default ConnectedHeaderBar
