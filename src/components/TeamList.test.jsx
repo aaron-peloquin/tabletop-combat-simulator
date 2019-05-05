@@ -1,25 +1,20 @@
-import {Provider} from "react-redux"
-import {createShallow} from "@material-ui/core/test-utils"
-import toJson from "enzyme-to-json"
-import {initializeStore} from "../store/store"
+import {shallow} from "enzyme"
 
-import TeamList from "./TeamList"
+import {TeamList} from "./TeamList"
 
 jest.mock('./TeamListCreature')
 
 describe("<TeamList />", () => {
-  const renderShallowUntilComponent = createShallow({"untilSelector": "TeamList"})
-  let store; let props; let TeamListComponent
+  let props; let TeamListComponent
 
   beforeEach(() => {
-    store = initializeStore({})
     props = {
       Team: "a",
       Creatures: [
         { name: "foo" }
       ],
     }
-    TeamListComponent = renderShallowUntilComponent(<Provider store={store}><TeamList {...props} /></Provider>)
+    TeamListComponent = shallow(<TeamList {...props} />)
   })
 
   it("renders", () => {
@@ -27,7 +22,6 @@ describe("<TeamList />", () => {
   })
 
   it("snapshots", () => {
-    const Tree = toJson(TeamListComponent)
-    expect(Tree).toMatchSnapshot()
+    expect(TeamListComponent.debug()).toMatchSnapshot()
   })
 })

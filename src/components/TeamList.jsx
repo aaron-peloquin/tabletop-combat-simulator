@@ -6,12 +6,12 @@ import {connect} from "react-redux"
 
 import TeamListCreature from "./TeamListCreature"
 
-const TeamList = (Props) => {
-  const {
-    /** Attributes */
-    Creatures,
-    Team,
-  } = Props
+export const TeamList = ({
+  /** Attributes */
+  Team,
+  /** Redux Data */
+  Creatures,
+}) => {
   return <Grid container spacing={24} justify="center">
     <Grid item xs={12}><Typography variant="h4">Team {Team.toUpperCase()}</Typography></Grid>
     <Grid item xs={12}><Typography variant="body2">{Creatures.length} Creatures</Typography></Grid>
@@ -24,9 +24,7 @@ const TeamList = (Props) => {
 const MapStateToProps = (state, props) => {
   const {Team} = props
   /** Get all of the creatures on this team */
-  const Creatures = state.creatures.filter((Creature)=>{
-    return Creature.team === Team
-  })
+  const Creatures = state.creatures.filter(Creature => Creature.team === Team)
   return {
     Creatures,
   }
