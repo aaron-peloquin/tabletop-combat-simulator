@@ -63,6 +63,7 @@ exports[`<CreatureForm /> snapshots 1`] = `
         <WithStyles(Button)
           className="CreatureForm-submitButtons-2"
           color="primary"
+          data-cy="aTeamSubmit"
           onClick={[Function]}
           type="submit"
           variant="contained"
@@ -78,6 +79,7 @@ exports[`<CreatureForm /> snapshots 1`] = `
         <WithStyles(Button)
           className="CreatureForm-submitButtons-2"
           color="secondary"
+          data-cy="bTeamSubmit"
           onClick={[Function]}
           type="submit"
           variant="contained"

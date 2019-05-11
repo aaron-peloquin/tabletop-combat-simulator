@@ -7,6 +7,11 @@ exports[`<CreatureFormGridField /> snapshots 1`] = `
 >
   <TextField
     className="CreatureFormGridField-formField-1"
+    inputProps={
+      Object {
+        "data-cy": "name",
+      }
+    }
     label="Name Field"
     onChange={[Function]}
     required={false}
