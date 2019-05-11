@@ -5,13 +5,13 @@ import {
   CardContent,
   Grid,
   Typography,
-} from "@material-ui/core/"
-import {withStyles} from "@material-ui/core/styles"
-import {connect} from "react-redux"
+} from '@material-ui/core/'
+import {withStyles} from '@material-ui/core/styles'
+import {connect} from 'react-redux'
 
-import setEditCreature from "./../store/action/SetEditCreature"
-import deleteCreature from "./../store/action/DeleteCreature"
-import copyCreature from "./../store/action/CopyCreature"
+import setEditCreature from './../store/action/SetEditCreature'
+import deleteCreature from './../store/action/DeleteCreature'
+import copyCreature from './../store/action/CopyCreature'
 
 import {
   Heart,
@@ -19,17 +19,18 @@ import {
   Shield,
   Aim,
   Blade,
-} from "./../helpers/Icons"
+} from './../helpers/Icons'
 
 import {
   FileCopy,
   Edit,
   Delete,
-} from "@material-ui/icons"
+} from '@material-ui/icons'
 
 export const RawTeamListCreature = (props) => {
   const {
     classes,
+
     /** Actions */
     funcCopyCreature,
     funcSetEditCreature,
@@ -38,7 +39,7 @@ export const RawTeamListCreature = (props) => {
     /** Attributes */
     Creature,
   } = props
-  return <Card className={classes.CreatureCard}>
+  return <Card className={classes.CreatureCard} data-cy="TeamListCreature">
     <CardContent>
       <Grid container spacing={8} alignItems="stretch" justify="center">
         <Grid item xs={12}><Typography variant="body1"><strong>{Creature.name}</strong></Typography></Grid>
@@ -84,8 +85,8 @@ const MapActionsToProps = (dispatch) => {
 const Styles = () => {
   return {
     CreatureCard: {
-      width: "100%",
-      textAlign: "center",
+      width: '100%',
+      textAlign: 'center',
     },
   }
 }

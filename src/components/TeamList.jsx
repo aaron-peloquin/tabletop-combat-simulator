@@ -12,7 +12,7 @@ export const TeamList = ({
   /** Redux Data */
   Creatures,
 }) => {
-  return <Grid container spacing={24} justify="center">
+  return <Grid data-cy="TeamList" data-team={Team.toLowerCase()} container spacing={24} justify="center">
     <Grid item xs={12}><Typography variant="h4">Team {Team.toUpperCase()}</Typography></Grid>
     <Grid item xs={12}><Typography variant="body2">{Creatures.length} Creatures</Typography></Grid>
     {Creatures.map((Creature, k)=>{
