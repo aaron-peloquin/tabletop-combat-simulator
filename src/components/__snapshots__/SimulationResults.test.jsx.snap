@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SimulationResults /> snapshots 1`] = `
-<Fragment>
+<div
+  data-cy="SimulationResults"
+>
   <WithStyles(Typography)
     variant="h4"
   >
@@ -69,5 +71,5 @@ exports[`<SimulationResults /> snapshots 1`] = `
       Frank
     </WithStyles(Grid)>
   </WithStyles(Grid)>
-</Fragment>
+</div>
 `;

@@ -3,6 +3,7 @@
 exports[`<TeamListCreature /> snapshots 1`] = `
 <WithStyles(Card)
   className={true}
+  data-cy="TeamListCreature"
 >
   <WithStyles(CardContent)>
     <WithStyles(Grid)
