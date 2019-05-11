@@ -1,18 +1,18 @@
-import React, {Fragment} from "react"
-import {connect} from "react-redux"
+import React, {Fragment} from 'react'
+import {connect} from 'react-redux'
 import {
   Grid,
   Typography,
-} from "@material-ui/core"
-import {withStyles} from "@material-ui/core/styles"
+} from '@material-ui/core'
+import {withStyles} from '@material-ui/core/styles'
 
 const Styles = (theme) => {
   return {
     CreatureName: {
-      textAlign: "left",
+      textAlign: 'left',
     },
     CreatureHealth: {
-      textAlign: "right",
+      textAlign: 'right',
       paddingRight: theme.spacing.unit,
     },
   }
@@ -29,7 +29,7 @@ export const SimulationResults = ({
 }) => {
   if (!Victory) return ''
 
-return <Fragment>
+  return <Fragment>
     {Victory.length && <Typography variant="h4">Team <strong>{Victory.toUpperCase()}</strong> Won</Typography>}
     {FinalRound && <Typography variant="body1">Combat resolved after <strong>{FinalRound}</strong> rounds.</Typography>}
     {Survivors.length && <Grid container>
@@ -66,5 +66,5 @@ export const MapStateToProps = (state) => {
 const ConnectedComponent = connect(MapStateToProps)(SimulationResults)
 const StyledComponent = withStyles(Styles)(ConnectedComponent)
 
-StyledComponent.displayName = "SimulationResults"
+StyledComponent.displayName = 'SimulationResults'
 export default StyledComponent
