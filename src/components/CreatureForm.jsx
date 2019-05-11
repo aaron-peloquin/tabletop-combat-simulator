@@ -112,6 +112,7 @@ const CreatureForm = (props) => {
         <Grid item sm={6}>
           <Button
             className={classes.submitButtons}
+            data-cy="submitForm"
             type="submit"
             variant="contained"
             color="secondary"
