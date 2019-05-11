@@ -85,19 +85,38 @@ const CreatureForm = (props) => {
         <CreatureFormGridField {...FieldProps} dataKey="armor" label="Armor" />
         <CreatureFormGridField {...FieldProps} dataKey="initiative" label="Initiative Bonus" />
 
-        <CreatureFormGridField {...FieldProps} size="medium"
-          dataKey="hitDiceEquation" label="Hit Dice Equation" placeholder="eg. 1d20+4" />
-        <CreatureFormGridField {...FieldProps} size="medium"
-          dataKey="damageDiceEquation" label="Damage Dice Equation" placeholder="eg. 1d6+2d4+2" />
+        <CreatureFormGridField
+          {...FieldProps}
+          size="medium"
+          dataKey="hitDiceEquation"
+          label="Hit Dice Equation"
+          placeholder="eg. 1d20+4"
+        />
+        <CreatureFormGridField
+          {...FieldProps} size="medium"
+          dataKey="damageDiceEquation"
+          label="Damage Dice Equation"
+          placeholder="eg. 1d6+2d4+2"
+        />
       </Grid>
       <Grid container justify="center">
         <Grid item sm={6}>
-          <Button className={classes.submitButtons} type="submit" variant="contained"
-            color="primary" onClick={submitDataTeamA}>{buttonText} to Team A</Button>
+          <Button
+            className={classes.submitButtons}
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={submitDataTeamA}
+          >{buttonText} to Team A</Button>
         </Grid>
         <Grid item sm={6}>
-          <Button className={classes.submitButtons} type="submit" variant="contained"
-            color="secondary" onClick={submitDataTeamB}>{buttonText} to Team B</Button>
+          <Button
+            className={classes.submitButtons}
+            type="submit"
+            variant="contained"
+            color="secondary"
+            onClick={submitDataTeamB}
+          >{buttonText} to Team B</Button>
         </Grid>
       </Grid>
     </fieldset>
