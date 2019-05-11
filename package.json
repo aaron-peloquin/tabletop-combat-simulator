@@ -14,7 +14,8 @@
   },
   "scripts": {
     "build": "next build ./src/",
-    "cypress": "cypress open",
+    "cypressTest": "cypress open --config viewportWidth=1440,viewportHeight=1900",
+    "cypressRecord": "cypress run --record --config viewportWidth=1440,viewportHeight=1900",
     "dev": "node ./src/devServer.js",
     "docker:build": "docker build -t aaronpeloquin/tabletop-combat-simulator .",
     "docker:push": "docker push aaronpeloquin/tabletop-combat-simulator:latest",

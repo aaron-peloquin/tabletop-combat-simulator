@@ -6,8 +6,6 @@ describe('Integration test with visual testing', function() {
 
     // Take a snapshot for visual diffing
     // cy.percySnapshot()
-
-    //
   })
 
   it('Adds a creature to team A', () => {
@@ -18,6 +16,10 @@ describe('Integration test with visual testing', function() {
   it('Adds a creature to team B', () => {
     cy.fillForm({team: 'b'})
     cy.get('[data-team="b"] [data-cy="TeamListCreature"]').should('have.length', 1)
+  })
+
+  xit('Percy Snapshots with 2 creatures', () => {
+    cy.percySnapshot()
   })
 
   it('Simulates Combat and displays result', () => {
