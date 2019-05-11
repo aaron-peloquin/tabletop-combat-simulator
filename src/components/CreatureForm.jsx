@@ -93,7 +93,8 @@ const CreatureForm = (props) => {
           placeholder="eg. 1d20+4"
         />
         <CreatureFormGridField
-          {...FieldProps} size="medium"
+          {...FieldProps}
+          size="medium"
           dataKey="damageDiceEquation"
           label="Damage Dice Equation"
           placeholder="eg. 1d6+2d4+2"
@@ -103,6 +104,7 @@ const CreatureForm = (props) => {
         <Grid item sm={6}>
           <Button
             className={classes.submitButtons}
+            data-cy="aTeamSubmit"
             type="submit"
             variant="contained"
             color="primary"
@@ -112,7 +114,7 @@ const CreatureForm = (props) => {
         <Grid item sm={6}>
           <Button
             className={classes.submitButtons}
-            data-cy="submitForm"
+            data-cy="bTeamSubmit"
             type="submit"
             variant="contained"
             color="secondary"
