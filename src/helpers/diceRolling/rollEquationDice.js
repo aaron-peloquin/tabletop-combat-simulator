@@ -1,4 +1,4 @@
-import rollDie from "./rollDie"
+import rollDie from './rollDie'
 /**
  * Find all sets of #d# in an equation string and roll those dice
  * @param {str} diceEquation the raw diceEquation (eg. 2d6+5+3d4)

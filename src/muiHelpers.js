@@ -1,26 +1,26 @@
-import { SheetsRegistry } from "jss"
-import { createMuiTheme, createGenerateClassName } from "@material-ui/core/styles"
+import {SheetsRegistry} from 'jss'
+import {createMuiTheme, createGenerateClassName} from '@material-ui/core/styles'
 
 /** https://material.io/tools/color/#!/?view.left=1&view.right=0&primary.color=2E7D32&secondary.color=795548 */
 const theme = createMuiTheme({
   typography: {
-    useNextVariants: true
+    useNextVariants: true,
   },
   palette: {
     primary: {
-      main: "#2e7d32",
-      light: "#60ad5e",
-      dark: "#005005"
+      main: '#2e7d32',
+      light: '#60ad5e',
+      dark: '#005005',
     },
     secondary: {
-      main: "#795548",
-      light: "#a98274",
-      dark: "#4b2c20"
+      main: '#795548',
+      light: '#a98274',
+      dark: '#4b2c20',
     },
     text: {
-      primary: "#222",
-      secondary: "#aaa"
-    }
+      primary: '#222',
+      secondary: '#aaa',
+    },
   },
 })
 

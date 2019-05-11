@@ -1,4 +1,4 @@
-import actionTypes from "./../actionTypes"
+import actionTypes from './../actionTypes'
 
 /**
  * Clones a creature
@@ -7,7 +7,7 @@ import actionTypes from "./../actionTypes"
  * @return {void}
  */
 const CopyCreature = (dispatch, hash) => {
-  if (typeof hash === "string") {
+  if (typeof hash === 'string') {
     const data = {
       type: actionTypes.CopyCreature,
       payload: hash,

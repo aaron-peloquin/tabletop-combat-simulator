@@ -1,5 +1,5 @@
-import generateHash from "./generateHash"
-import lookupCreatureHash from "./lookupCreatureHash"
+import generateHash from './generateHash'
+import lookupCreatureHash from './lookupCreatureHash'
 
 /**
  * Standardizes creature data with defaults.
@@ -7,18 +7,18 @@ import lookupCreatureHash from "./lookupCreatureHash"
  * @param {obj} creatureData may contain one or more keys for a creature
  * @param {arr} state (optional) the redux state for creatures. If we are
  *  passed this and you are not given a creatureData.hash, generate a new hash.
- * @returns {obj} standardized creature data
+ * @return {obj} standardized creature data
  */
 const standardizeCreatureData = (creatureData={}, state=null) => {
   let {
-    name = "",
-    team = "a",
+    name = '',
+    team = 'a',
     hash = null,
     initiative = 0,
     armor = 0,
     hp = 0,
-    hitDiceEquation = "1d20+2",
-    damageDiceEquation = "1d6+3",
+    hitDiceEquation = '1d20+2',
+    damageDiceEquation = '1d6+3',
   } = creatureData
 
   /** If we were not given a hash, and we were given a state, generate a unique hash */
@@ -27,9 +27,8 @@ const standardizeCreatureData = (creatureData={}, state=null) => {
       while (hash===null || lookupCreatureHash(hash, state)>=0) {
         hash = generateHash()
       }
-    }
-    else {
-      console.warn("[standardizeCreatureData] creature does not have a hash")
+    } else {
+      console.warn('[standardizeCreatureData] creature does not have a hash')
     }
   }
 

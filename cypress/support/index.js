@@ -1,1 +1,3 @@
-import "./commands"
+import '@percy/cypress'
+
+import './commands/fillForm'

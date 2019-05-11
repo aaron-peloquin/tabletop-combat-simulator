@@ -1,30 +1,30 @@
-import standardizeCreatureData from "./standardizeCreatureData"
+import standardizeCreatureData from './standardizeCreatureData'
 
-const mockState = [{"name":"some mock data","hash":"fakeHash"}]
+const mockState = [{'name': 'some mock data', 'hash': 'fakeHash'}]
 
-describe("standardizeCreatureData()", ()=>{
+describe('standardizeCreatureData()', ()=>{
   let result
   beforeEach(() => {
     result = standardizeCreatureData({}, mockState)
-    expect(typeof result).toBe("object")
+    expect(typeof result).toBe('object')
   })
-  it("returns an object with correct keys", () => {
+  it('returns an object with correct keys', () => {
     expect(Object.keys(result)).toEqual([
-      "name", "team", "hash",
-      "initiative", "armor", "hp",
-      "hitDiceEquation", "damageDiceEquation"
+      'name', 'team', 'hash',
+      'initiative', 'armor', 'hp',
+      'hitDiceEquation', 'damageDiceEquation',
     ])
   })
-  
-  it("returns valid defaults for important keys", () => {
-    expect(typeof result.name).toBe("string")
+
+  it('returns valid defaults for important keys', () => {
+    expect(typeof result.name).toBe('string')
     expect(result.hash.length).toBe(8)
     expect(result.initiative).toBe(0)
     expect(result.armor).toBe(0)
     expect(result.hp).toBe(0)
   })
 
-  it("refuses to generate a new hash when not given a state", () => {
+  it('refuses to generate a new hash when not given a state', () => {
     console.warn = jest.fn(()=>{})
     result = standardizeCreatureData()
     expect(result.hash).toBe(null)

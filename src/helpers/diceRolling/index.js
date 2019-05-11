@@ -1,6 +1,6 @@
-import cleanseEquationStr from "./cleanseEquationStr"
-import runEquation from "./runEquation"
-import rollEquationDice from "./rollEquationDice"
+import cleanseEquationStr from './cleanseEquationStr'
+import runEquation from './runEquation'
+import rollEquationDice from './rollEquationDice'
 
 /**
  * Rolls a dice equation

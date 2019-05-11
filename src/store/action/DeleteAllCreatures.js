@@ -1,4 +1,4 @@
-import actionTypes from "../actionTypes"
+import actionTypes from '../actionTypes'
 
 /**
  * WARNING: Deletes all creature data
@@ -7,7 +7,7 @@ import actionTypes from "../actionTypes"
  * @return {void}
  */
 const DeleteAllCreatures = (dispatch, confirm) => {
-  if (confirm==="delete all") {
+  if (confirm==='delete all') {
     const data = {
       type: actionTypes.DeleteAllCreatures,
       payload: {},

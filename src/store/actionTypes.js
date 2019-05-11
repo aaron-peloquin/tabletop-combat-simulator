@@ -4,14 +4,14 @@
  *  also be used as a list of our existing actions
 */
 const actions = {
-  CopyCreature: "CopyCreature",
-  DeleteAllCreatures: "DeleteAllCreatures",
-  DeleteCreature: "DeleteCreature",
-  SaveCreature: "SaveCreature",
-  SetEditCreature: "SetEditCreature",
-  ToggleSidebar: "ToggleSidebar",
-  RunSimulation: "RunSimulation",
-  UpdateEditCreature: "UpdateEditCreature",
+  CopyCreature: 'CopyCreature',
+  DeleteAllCreatures: 'DeleteAllCreatures',
+  DeleteCreature: 'DeleteCreature',
+  SaveCreature: 'SaveCreature',
+  SetEditCreature: 'SetEditCreature',
+  ToggleSidebar: 'ToggleSidebar',
+  RunSimulation: 'RunSimulation',
+  UpdateEditCreature: 'UpdateEditCreature',
 }
 
 export default actions

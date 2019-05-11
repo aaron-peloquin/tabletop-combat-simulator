@@ -4,7 +4,7 @@
  * @return {str} the cleansed dice equation string
  */
 const cleanseEquationStr = (diceEquation) => {
-  return diceEquation.replace(/([^\d|d|\+|\-|\*|\/|\(|\)])/gi, "").toLowerCase()
+  return diceEquation.replace(/([^\d|d|\+|\-|\*|\/|\(|\)])/gi, '').toLowerCase()
 }
 
 export default cleanseEquationStr

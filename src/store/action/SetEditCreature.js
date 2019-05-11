@@ -1,4 +1,4 @@
-import actionTypes from "../actionTypes"
+import actionTypes from '../actionTypes'
 
 /**
  * Disapatches an action to set the creature we will edit

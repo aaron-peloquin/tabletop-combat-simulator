@@ -1,8 +1,8 @@
-import combat from "./combat"
-import actionTypes from "./../actionTypes"
-import defaultState from "./../../testHelpers/mockStoreState"
+import combat from './combat'
+import actionTypes from './../actionTypes'
+import defaultState from './../../testHelpers/mockStoreState'
 
-describe("[reduxReducer] Combat", () => {
+describe('[reduxReducer] Combat', () => {
   let Result
   let State
   let Data
@@ -15,13 +15,13 @@ describe("[reduxReducer] Combat", () => {
     }
   })
 
-  it("[RunSimulation] returns correctly when given blank creatures", () => {
+  it('[RunSimulation] returns correctly when given blank creatures', () => {
     State = {}
     Result = combat(State, Data)
     expect(Result).toBe(State)
   })
 
-  it("[RunSimulation] returns correctly when given mock creature data", () => {
+  it('[RunSimulation] returns correctly when given mock creature data', () => {
     State = {}
     Data.payload = defaultState.creatures
     const numCreatures = Data.payload.length

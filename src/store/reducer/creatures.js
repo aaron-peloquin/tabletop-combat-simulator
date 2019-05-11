@@ -1,10 +1,10 @@
-import load from "./../../helpers/localStorageLoad"
-import save from "./../../helpers/localStorageSave"
+import load from './../../helpers/localStorageLoad'
+import save from './../../helpers/localStorageSave'
 
-import standardize from "./../../helpers/standardizeCreatureData"
-import lookup from "./../../helpers/lookupCreatureHash"
+import standardize from './../../helpers/standardizeCreatureData'
+import lookup from './../../helpers/lookupCreatureHash'
 
-import actionTypes from "./../actionTypes"
+import actionTypes from './../actionTypes'
 
 const defaultState = []
 
@@ -25,7 +25,7 @@ const creaturesReducer = (state=defaultState, {type=false, payload={}}) => {
   let saveToStorage = true
   let id
 
-  const creaturesStorage = load("creatures")
+  const creaturesStorage = load('creatures')
 
   if (creaturesStorage.length>0) {
     state = creaturesStorage
@@ -88,7 +88,7 @@ const creaturesReducer = (state=defaultState, {type=false, payload={}}) => {
   }
   /** If we have modified our state, save it */
   if (saveToStorage) {
-    save("creatures", state)
+    save('creatures', state)
   }
   return state
 }

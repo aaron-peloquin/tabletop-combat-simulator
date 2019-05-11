@@ -1,23 +1,23 @@
-import {createShallow} from "@material-ui/core/test-utils"
-import toJson from "enzyme-to-json"
+import {createShallow} from '@material-ui/core/test-utils'
+import toJson from 'enzyme-to-json'
 
-import {Heart, Boot, Shield, Aim, Blade} from "./Icons"
+import {Heart, Boot, Shield, Aim, Blade} from './Icons'
 
-describe("Icons", ()=>{
+describe('Icons', ()=>{
   const Components = [
-    createShallow({"untilSelector": "Heart"})(<Heart />),
-    createShallow({"untilSelector": "Boot"})(<Boot />),
-    createShallow({"untilSelector": "Shield"})(<Shield />),
-    createShallow({"untilSelector": "Aim"})(<Aim />),
-    createShallow({"untilSelector": "Blade"})(<Blade />),
+    createShallow({'untilSelector': 'Heart'})(<Heart />),
+    createShallow({'untilSelector': 'Boot'})(<Boot />),
+    createShallow({'untilSelector': 'Shield'})(<Shield />),
+    createShallow({'untilSelector': 'Aim'})(<Aim />),
+    createShallow({'untilSelector': 'Blade'})(<Blade />),
   ]
 
   Components.map((component) => {
-    it("loads", () => {
-      expect(typeof component).toBe("object")
+    it('loads', () => {
+      expect(typeof component).toBe('object')
     })
 
-    it("snapshots", () => {
+    it('snapshots', () => {
       expect(toJson(component)).toMatchSnapshot()
     })
   })

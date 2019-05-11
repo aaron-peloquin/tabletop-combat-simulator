@@ -1,18 +1,17 @@
-import generateHash from "./generateHash"
+import generateHash from './generateHash'
 
-describe("generateHash()", () => {
+describe('generateHash()', () => {
   const hash = generateHash()
 
-  it("is a string", () => {
-    expect(typeof hash).toBe("string")
+  it('is a string', () => {
+    expect(typeof hash).toBe('string')
   })
 
-  it("length of 8", () => {
+  it('length of 8', () => {
     expect(hash.length).toBe(8)
   })
 
-  it("starts with an h", () => {
-    expect(hash[0]).toBe("h")
+  it('starts with an h', () => {
+    expect(hash[0]).toBe('h')
   })
-
 })

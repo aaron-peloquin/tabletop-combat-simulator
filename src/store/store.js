@@ -1,12 +1,12 @@
-import {createStore, applyMiddleware, combineReducers} from "redux"
-import {composeWithDevTools} from "redux-devtools-extension"
-import thunkMiddleware from "redux-thunk"
+import {createStore, applyMiddleware, combineReducers} from 'redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import thunkMiddleware from 'redux-thunk'
 
 /** Reducers */
-import combat from "./reducer/combat"
-import creatures from "./reducer/creatures"
-import sideBar from "./reducer/sideBar"
-import editing from "./reducer/editing"
+import combat from './reducer/combat'
+import creatures from './reducer/creatures'
+import sideBar from './reducer/sideBar'
+import editing from './reducer/editing'
 
 /** Reducers */
 const reducers = combineReducers({

@@ -8,7 +8,7 @@ const runEquation = (equation) => {
   try {
     const equationResult = Math.round(eval(equation))
     if (isNaN(equationResult)) {
-      throw new Error("Invalid equation (NaN)")
+      throw new Error('Invalid equation (NaN)')
     }
     returnEquation = equationResult
   } catch (e) {

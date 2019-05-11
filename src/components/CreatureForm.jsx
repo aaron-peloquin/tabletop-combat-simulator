@@ -1,12 +1,12 @@
-import {Button, Grid} from "@material-ui/core/"
-import {withStyles} from "@material-ui/core/styles"
-import {connect} from "react-redux"
+import {Button, Grid} from '@material-ui/core/'
+import {withStyles} from '@material-ui/core/styles'
+import {connect} from 'react-redux'
 
-import CreatureFormGridField from "./CreatureFormGridField"
-import standardizeCreatureData from "./../helpers/standardizeCreatureData"
-import saveCreature from "./../store/action/SaveCreature"
-import updateEditCreature from "./../store/action/UpdateEditCreature"
-import setEditCreature from "./../store/action/SetEditCreature"
+import CreatureFormGridField from './CreatureFormGridField'
+import standardizeCreatureData from './../helpers/standardizeCreatureData'
+import saveCreature from './../store/action/SaveCreature'
+import updateEditCreature from './../store/action/UpdateEditCreature'
+import setEditCreature from './../store/action/SetEditCreature'
 
 /**
  * A form for managing creature data.
@@ -28,7 +28,7 @@ const CreatureForm = (props) => {
     classes,
   } = props
   const EditingCreature = props.EditingCreature
-  const buttonText = (typeof EditingCreature.hash === "undefined"?"Create":"Save")
+  const buttonText = (typeof EditingCreature.hash === 'undefined'?'Create':'Save')
 
   /** Ensure we have all the proper data keys, and a unique hash */
   const StandardizedEditingCreature = standardizeCreatureData(EditingCreature, AllCreatures)
@@ -37,7 +37,7 @@ const CreatureForm = (props) => {
   }
 
   const WrappedChange = (k, v) => {
-    if (typeof onChange === "function") {
+    if (typeof onChange === 'function') {
       onChange(k, v)
     }
     funcUpdateEditCreature(k, v)
@@ -57,7 +57,7 @@ const CreatureForm = (props) => {
     e.preventDefault()
 
     if (EditingCreature.name.length > 0) {
-      if (typeof onSubmit=="function") {
+      if (typeof onSubmit=='function') {
         onSubmit(EditingCreature)
       }
       funcSaveCreature(EditingCreature)
@@ -65,12 +65,12 @@ const CreatureForm = (props) => {
   }
 
   const submitDataTeamA = (e) => {
-    EditingCreature.team = "a"
+    EditingCreature.team = 'a'
     submitData(e)
   }
 
   const submitDataTeamB = (e) => {
-    EditingCreature.team = "b"
+    EditingCreature.team = 'b'
     submitData(e)
   }
 
@@ -130,10 +130,10 @@ const MapActionsToProps = (dispatch) => {
 const styles = (theme) => {
   return {
     hidden: {
-      display: "none",
+      display: 'none',
     },
     submitButtons: {
-      width: "90%",
+      width: '90%',
       marginTop: theme.spacing.unit,
     },
   }

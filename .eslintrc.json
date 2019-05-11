@@ -19,7 +19,7 @@
     "linebreak-style": "off",
     "max-len": ["warn", { "code": 125 }],
     "indent": ["error",2],
-    "quotes": ["error","double"],
+    "quotes": ["error","single"],
     "semi": ["error","never"]
   }
 }

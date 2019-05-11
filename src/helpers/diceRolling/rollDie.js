@@ -1,4 +1,4 @@
-import "seedrandom"
+import 'seedrandom'
 
 /**
  * Roll a single die string, and return the result
@@ -11,10 +11,10 @@ const rollDie = (dieString) => {
   let critMiss = false
 
   /** Get the number of dice and number of sides */
-  const diceNumSides = dieString.split("d")
+  const diceNumSides = dieString.split('d')
   if (diceNumSides.length!=2) {
     /** invalid dice string (eg. 1d4 and 20d100), return the original dieString, removing any non-digits */
-    rollResult = dieString.replace(/\D/g, "")
+    rollResult = dieString.replace(/\D/g, '')
   } else {
     let diceNum = parseInt(diceNumSides[0])
     let diceSides = parseInt(diceNumSides[1])
