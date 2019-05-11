@@ -3,7 +3,7 @@
 exports[`<SimulateCombat /> snapshots 1`] = `
 <WithStyles(Button)
   color="primary"
-  data-id="delete-all"
+  data-cy="SimulateCombat"
   onClick={[Function]}
   variant="contained"
 >

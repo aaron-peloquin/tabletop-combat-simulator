@@ -29,7 +29,7 @@ export const SimulationResults = ({
 }) => {
   if (!Victory) return ''
 
-  return <Fragment>
+  return <div data-cy="SimulationResults">
     {Victory.length && <Typography variant="h4">Team <strong>{Victory.toUpperCase()}</strong> Won</Typography>}
     {FinalRound && <Typography variant="body1">Combat resolved after <strong>{FinalRound}</strong> rounds.</Typography>}
     {Survivors.length && <Grid container>
@@ -39,7 +39,7 @@ export const SimulationResults = ({
           <Grid className={classes.CreatureName} item xs={6}>{Creature.Name}</Grid>
         </Fragment>
       })}</Grid>}
-  </Fragment>
+  </div>
 }
 
 export const MapStateToProps = (state) => {
