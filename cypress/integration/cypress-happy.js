@@ -3,7 +3,8 @@ describe('Integration test with visual testing', function() {
   it('Loads the homepage', function() {
     // Load the page or perform any other interactions with the app.
     cy.visit('http://localhost:3000')
-    cy.get('input').first().type('Test Creature').next().type(50)
+    cy.fillForm()
+    cy.fillForm({team: 'b'})
 
 
     // expect(expectation).to.equal(true)
