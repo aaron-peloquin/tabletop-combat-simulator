@@ -7,9 +7,12 @@ describe('Integration test with visual testing', function() {
     cy.fillForm({team: 'b'})
 
 
-    // expect(expectation).to.equal(true)
-    // // Take a snapshot for visual diffing
-    // // cy.percySnapshot()
+    cy.get('[data-cy="SimulationResults"]').should('not.exist')
+    cy.get('[data-cy="SimulateCombat"]').click()
+    cy.get('[data-cy="SimulationResults"]').should('exist')
+
+    // Take a snapshot for visual diffing
+    // cy.percySnapshot()
 
     //
   })
