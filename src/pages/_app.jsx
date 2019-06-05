@@ -1,17 +1,17 @@
-import {Container} from "next/app"
-import React from "react"
-import {Provider} from "react-redux"
-import Head from "next/head"
-import {MuiThemeProvider} from "@material-ui/core/styles"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import JssProvider from "react-jss/lib/JssProvider"
+import {Container} from 'next/app'
+import React from 'react'
+import {Provider} from 'react-redux'
+import Head from 'next/head'
+import {MuiThemeProvider} from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import JssProvider from 'react-jss/lib/JssProvider'
 
-import {initializeStore} from "../store/store"
-import withRedux from "next-redux-wrapper"
-import Layout from "./../components/layout"
-import getPageContext from "./../muiHelpers"
+import {initializeStore} from '../store/store'
+import withRedux from 'next-redux-wrapper'
+import Layout from './../components/layout'
+import getPageContext from './../muiHelpers'
 
-const defaultWebsiteTitle = "Default Website Title"
+const defaultWebsiteTitle = 'Default Website Title'
 
 const MyApp = (props) => {
   const {Component, pageProps, store, router} = props
@@ -46,7 +46,7 @@ MyApp.getInitialProps = async ({Component, ctx}) => {
   /** Extract pageProp title, or set title to the default */
   const {title = defaultWebsiteTitle} = pageProps
   /** If we have a document, update it's title for UX */
-  if (typeof document != "undefined" ) {
+  if (typeof document != 'undefined' ) {
     document.title = title
   }
   return {pageProps}

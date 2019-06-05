@@ -1,5 +1,5 @@
-import {Fragment} from "react"
-import {Typography} from "@material-ui/core"
+import {Fragment} from 'react'
+import {Typography} from '@material-ui/core'
 
 const Details = () => {
   return <Fragment>

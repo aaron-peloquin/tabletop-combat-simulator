@@ -1,8 +1,8 @@
 /** Example code https://github.com/mui-org/material-ui/tree/master/examples/nextjs */
-import React from "react"
-import PropTypes from "prop-types"
-import Document, {Head, Main, NextScript} from "next/document"
-import flush from "styled-jsx/server"
+import React from 'react'
+import PropTypes from 'prop-types'
+import Document, {Head, Main, NextScript} from 'next/document'
+import flush from 'styled-jsx/server'
 
 /**
  * This file wraps every NextJS page.

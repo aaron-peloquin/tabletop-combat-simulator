@@ -1,13 +1,13 @@
-import React from "react"
-import {Grid} from "@material-ui/core"
-import {withStyles} from "@material-ui/core/styles"
+import React from 'react'
+import {Grid} from '@material-ui/core'
+import {withStyles} from '@material-ui/core/styles'
 
-import CreatureForm from "./../components/CreatureForm"
-import TeamList from "./../components/TeamList"
-import DeleteAllCreatures from "./../components/DeleteAllCreatures"
-import SimulateCombat from "./../components/SimulateCombat"
-import SimulationResults from "./../components/SimulationResults"
-import SimulationLog from "./../components/SimulationLog"
+import CreatureForm from './../components/CreatureForm'
+import TeamList from './../components/TeamList'
+import DeleteAllCreatures from './../components/DeleteAllCreatures'
+import SimulateCombat from './../components/SimulateCombat'
+import SimulationResults from './../components/SimulationResults'
+import SimulationLog from './../components/SimulationLog'
 
 const Index = (Props) => {
   const {classes} = Props
@@ -33,14 +33,14 @@ const Index = (Props) => {
 }
 
 Index.getInitialProps = () => {
-  const title = "Tabletop Combat Simulator"
+  const title = 'Tabletop Combat Simulator'
   return {title}
 }
 
 const Styles = () => {
   return {
     CenterItems: {
-      textAlign: "center",
+      textAlign: 'center',
     },
   }
 }

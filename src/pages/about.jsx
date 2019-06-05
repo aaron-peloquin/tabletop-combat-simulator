@@ -1,7 +1,7 @@
-import React, {Fragment} from "react"
+import React, {Fragment} from 'react'
 import {
   Typography,
-} from "@material-ui/core"
+} from '@material-ui/core'
 
 const About = () => {
   return <Fragment>
@@ -24,7 +24,7 @@ const About = () => {
 }
 
 About.getInitialProps = async () => {
-  const title = "About"
+  const title = 'About'
   return {title}
 }
 
