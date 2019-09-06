@@ -3,6 +3,12 @@ Allows a user to create a number of creature objects, assigned to either **Team 
 
 ![](https://travis-ci.com/aaron-peloquin/tabletop-combat-simulator.svg?branch=master)
 
+# Running Docker
+Open your computer's port 80 if you want to load it from other machines.
+- Install docker globally with either yarn or npm.
+- `yarn docker:build`
+- `yarn docker:run`
+
 # Redux Data
 ## Creatures
 On update, sync to localStorage
