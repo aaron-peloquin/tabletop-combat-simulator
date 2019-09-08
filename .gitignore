@@ -1,5 +1,7 @@
 /node_modules
 /src/.next
+/src/out
 /coverage
 .env
 cypress/videos/
+
