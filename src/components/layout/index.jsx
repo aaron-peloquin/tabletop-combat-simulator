@@ -1,8 +1,9 @@
-import {Grid, Paper} from "@material-ui/core"
-import {withStyles} from "@material-ui/core/styles"
+import {Grid, Paper} from '@material-ui/core'
+import {withStyles} from '@material-ui/core/styles'
 
-import HeaderBar from "./HeaderBar"
-import SideBar from "./SideBar"
+import HeaderBar from './HeaderBar'
+import SideBar from './SideBar'
+import {initGA, logPageView} from './../../helpers/analytics'
 
 /**
  * Default page layout, wraps the <HeaderBar />, <SideBar /> and main content area for each page.
@@ -10,7 +11,16 @@ import SideBar from "./SideBar"
  * @param {obj} classes is the wrapping MUI styles for all pages
  * @return {jsx} Component
  */
-const Layout = ({children="No page content was passed", classes}) => {
+const Layout = ({children='No page content was passed', classes}) => {
+  React.useEffect(() => {
+    if (window) {
+      if (!window.GA_INITIALIZED) {
+        initGA()
+      }
+      window.GA_INITIALIZED = true
+    }
+    logPageView()
+  }, [])
   return (
     <div>
       <HeaderBar />
@@ -31,9 +41,9 @@ const Layout = ({children="No page content was passed", classes}) => {
 const styles = (theme) => {
   return {
     content: {
-      margin: "0 auto",
-      marginTop: "90px",
-      width: "90%",
+      margin: '0 auto',
+      marginTop: '90px',
+      width: '90%',
     },
     paper: {
       padding: theme.spacing.unit * 4,
