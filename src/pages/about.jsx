@@ -2,7 +2,12 @@ import React, {Fragment} from 'react'
 import {
   Typography,
 } from '@material-ui/core'
+import ReactGA from 'react-ga'
 
+if (window !== undefined) {
+  ReactGA.initialize('UA-123710615-2')
+  ReactGA.pageview(window.location.pathname + window.location.search)
+}
 const About = () => {
   return <Fragment>
     <Typography variant="h2">About</Typography>
@@ -17,8 +22,7 @@ const About = () => {
     <Typography variant="h4">Thanks</Typography>
     <Typography variant="body2">
       Special thanks to <a target="_blank" href="https://game-icons.net/">Game-Icons.net</a>,
-      who provided the icons on this app under under
-      <a target="_blank" href="https://creativecommons.org/licenses/by/3.0/">Creative Commons</a>.
+      who provided the icons on this app under under <a target="_blank" href="https://creativecommons.org/licenses/by/3.0/">Creative Commons</a>.
     </Typography>
   </Fragment>
 }
