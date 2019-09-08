@@ -22,7 +22,7 @@
     "docker:push": "docker push aaronpeloquin/tabletop-combat-simulator:latest",
     "build": "next build ./src/",
     "start": "node ./src/prodServer.js",
-    "flatten": "yarn next export ./src/"
+    "flatten": "next build ./src/ && next export ./src/"
   },
   "dependencies": {
     "@material-ui/core": "^3.3.0",
