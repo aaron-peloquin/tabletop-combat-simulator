@@ -2,12 +2,7 @@ import React, {Fragment} from 'react'
 import {
   Typography,
 } from '@material-ui/core'
-import ReactGA from 'react-ga'
 
-if (window !== undefined) {
-  ReactGA.initialize('UA-123710615-2')
-  ReactGA.pageview(window.location.pathname + window.location.search)
-}
 const About = () => {
   return <Fragment>
     <Typography variant="h2">About</Typography>
