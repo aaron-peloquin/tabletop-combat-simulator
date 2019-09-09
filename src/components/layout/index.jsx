@@ -13,13 +13,15 @@ import {initGA, logPageView} from './../../helpers/analytics'
  */
 const Layout = ({children='No page content was passed', classes}) => {
   React.useEffect(() => {
-    if (window) {
-      if (!window.GA_INITIALIZED) {
+    try {
+      if (window && !window.GA_INITIALIZED) {
         initGA()
       }
       window.GA_INITIALIZED = true
+      logPageView()
+    } catch (e) {
+      console.warn('no metrics recorded')
     }
-    logPageView()
   }, [])
   return (
     <div>
