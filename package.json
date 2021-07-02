@@ -67,6 +67,7 @@
     "jsdom-quokka-plugin": "^1.0.13",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.8.3",
-    "redux-test-utils": "^0.3.0"
+    "redux-test-utils": "^0.3.0",
+    "yarn-audit-fix": "^6.3.5"
   }
 }
